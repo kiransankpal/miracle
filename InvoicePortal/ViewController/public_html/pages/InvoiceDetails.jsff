@@ -1,0 +1,1133 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['view.ViewControllerBundle']}"/>
+  <af:panelStretchLayout id="psl1" topHeight="80px"
+                                   bottomHeight="0px">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelSplitter id="ps2" splitterPosition="600"
+                                  positionedFromEnd="true" firstBorder="none"
+                                  secondBorder="none"
+                                  disabled="true"
+                                  inlineStyle="padding:4.0px;">
+                  <f:facet name="first">
+                    <af:panelSplitter id="ps1" splitterPosition="400"
+                                      positionedFromEnd="true"
+                                      orientation="vertical" firstBorder="none"
+                                      secondBorder="none" disabled="true">
+                      <f:facet name="first">
+                        <af:panelGroupLayout id="pgl1" layout="scroll"
+                                             inlineStyle="padding:5px;">
+                          <af:panelTabbed id="panelTabbed1"
+                                          dimensionsFrom="disclosedChild">
+                            <af:showDetailItem text="#{viewcontrollerBundle.HEADER_TAB_GENERAL}"
+                                               id="sdi1" disclosed="true">
+                              <af:panelFormLayout id="pfl1" maxColumns="2"
+                                                  rows="7" fieldWidth="70%"
+                                                  labelWidth="30%"
+                                                  labelAlignment="start">
+                                <af:inputListOfValues id="vendorNameLOVId"
+                                                      popupTitle="Search and Select: #{bindings.VendorNameLOV.hints.label}"
+                                                      value="#{bindings.VendorNameLOV.inputValue}"
+                                                      label="#{bindings.VendorNameLOV.hints.label}"
+                                                      model="#{bindings.VendorNameLOV.listOfValuesModel}"
+                                                      required="#{bindings.VendorNameLOV.hints.mandatory}"
+                                                      columns="40"
+                                                      shortDesc="#{bindings.VendorNameLOV.hints.tooltip}"
+                                                      resultsTableColumnStretching="none"
+                                                      searchDesc="Search Suppliers">
+                                  <f:validator binding="#{bindings.VendorNameLOV.validator}"/>
+                                </af:inputListOfValues>
+                      <af:inputText value="#{bindings.VendorNumber.inputValue}"
+                                              label="#{bindings.VendorNumber.hints.label}"
+                                              required="#{bindings.VendorNumber.hints.mandatory}"
+                                              columns="40"
+                                              maximumLength="#{bindings.VendorNumber.hints.precision}"
+                                              shortDesc="#{bindings.VendorNumber.hints.tooltip}"
+                                              id="it21" disabled="true">
+                                  <f:validator binding="#{bindings.VendorNumber.validator}"/>
+                                </af:inputText>
+                                <af:selectOneChoice value="#{bindings.VendorSiteCodeLOV.inputValue}"
+                                                    label="#{bindings.VendorSiteCodeLOV.label}"
+                                                    required="#{bindings.VendorSiteCodeLOV.hints.mandatory}"
+                                                    shortDesc="#{bindings.VendorSiteCodeLOV.hints.tooltip}"
+                                                    id="soc2"
+                                                    partialTriggers="vendorNameLOVId"
+                                                    contentStyle="width:230px">
+                                  <f:selectItems value="#{bindings.VendorSiteCodeLOV.items}"
+                                                 id="si3"/>
+                                </af:selectOneChoice>
+                                <af:inputText value="#{bindings.Description.inputValue}"
+                                              label="#{bindings.Description.hints.label}"
+                                              required="#{bindings.Description.hints.mandatory}"
+                                              columns="40"
+                                              maximumLength="#{bindings.Description.hints.precision}"
+                                              shortDesc="#{bindings.Description.hints.tooltip}"
+                                              id="it10" rows="1">
+                                  <f:validator binding="#{bindings.Description.validator}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.InvoiceCurrencyCode.inputValue}"
+                                              label="#{bindings.InvoiceCurrencyCode.hints.label}"
+                                              required="#{bindings.InvoiceCurrencyCode.hints.mandatory}"
+                                              columns="40"
+                                              maximumLength="#{bindings.InvoiceCurrencyCode.hints.precision}"
+                                              shortDesc="#{bindings.InvoiceCurrencyCode.hints.tooltip}"
+                                              id="it20">
+                                  <f:validator binding="#{bindings.InvoiceCurrencyCode.validator}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.DocCategoryCode.inputValue}"
+                                              label="#{bindings.DocCategoryCode.hints.label}"
+                                              required="#{bindings.DocCategoryCode.hints.mandatory}"
+                                              columns="40"
+                                              maximumLength="#{bindings.DocCategoryCode.hints.precision}"
+                                              shortDesc="#{bindings.DocCategoryCode.hints.tooltip}"
+                                              id="it6">
+                                  <f:validator binding="#{bindings.DocCategoryCode.validator}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.GroupId.inputValue}"
+                                              label="#{bindings.GroupId.hints.label}"
+                                              required="#{bindings.GroupId.hints.mandatory}"
+                                              columns="40"
+                                              maximumLength="#{bindings.GroupId.hints.precision}"
+                                              shortDesc="#{bindings.GroupId.hints.tooltip}"
+                                              id="it16" rows="1">
+                                  <f:validator binding="#{bindings.GroupId.validator}"/>
+                                </af:inputText>
+                                <!-- Second Column -->
+                                <af:inputText value="#{bindings.InvoiceNum.inputValue}"
+                                              label="#{bindings.InvoiceNum.hints.label}"
+                                              required="#{bindings.InvoiceNum.hints.mandatory}"
+                                              columns="40"
+                                              maximumLength="#{bindings.InvoiceNum.hints.precision}"
+                                              shortDesc="#{bindings.InvoiceNum.hints.tooltip}"
+                                              id="it14">
+                                  <f:validator binding="#{bindings.InvoiceNum.validator}"/>
+                                </af:inputText>
+                      <af:inputText value="#{bindings.InvoiceTypeLookupCode.inputValue}"
+                                              label="#{bindings.InvoiceTypeLookupCode.hints.label}"
+                                              required="#{bindings.InvoiceTypeLookupCode.hints.mandatory}"
+                                              columns="40"
+                                              maximumLength="#{bindings.InvoiceTypeLookupCode.hints.precision}"
+                                              shortDesc="#{bindings.InvoiceTypeLookupCode.hints.tooltip}"
+                                              id="it11">
+                                  <f:validator binding="#{bindings.InvoiceTypeLookupCode.validator}"/>
+                                </af:inputText>
+                                <af:inputDate value="#{bindings.InvoiceDate.inputValue}"
+                                              label="#{bindings.InvoiceDate.hints.label}"
+                                              required="#{bindings.InvoiceDate.hints.mandatory}"
+                                              shortDesc="#{bindings.InvoiceDate.hints.tooltip}"
+                                              id="id5" columns="40">
+                                  <f:validator binding="#{bindings.InvoiceDate.validator}"/>
+                                  <af:convertDateTime pattern="#{bindings.InvoiceDate.format}"/>
+                                </af:inputDate>
+                                <af:inputText value="#{bindings.InvoiceAmount.inputValue}"
+                                              label="#{bindings.InvoiceAmount.hints.label}"
+                                              required="#{bindings.InvoiceAmount.hints.mandatory}"
+                                              columns="40"
+                                              maximumLength="#{bindings.InvoiceAmount.hints.precision}"
+                                              shortDesc="#{bindings.InvoiceAmount.hints.tooltip}"
+                                              id="it13">
+                                  <f:validator binding="#{bindings.InvoiceAmount.validator}"/>
+                                  <af:convertNumber groupingUsed="false"
+                                                    pattern="#{bindings.InvoiceAmount.format}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.InvoiceAmount.inputValue}"
+                                              label="#{bindings.InvoiceAmount.hints.label}"
+                                              required="#{bindings.InvoiceAmount.hints.mandatory}"
+                                              columns="40"
+                                              maximumLength="#{bindings.InvoiceAmount.hints.precision}"
+                                              shortDesc="#{bindings.InvoiceAmount.hints.tooltip}"
+                                              id="inputText1">
+                                  <f:validator binding="#{bindings.InvoiceAmount.validator}"/>
+                                  <af:convertNumber groupingUsed="false"
+                                                    pattern="#{bindings.InvoiceAmount.format}"/>
+                                </af:inputText>
+                                <af:inputDate value="#{bindings.GlDate.inputValue}"
+                                              label="#{bindings.GlDate.hints.label}"
+                                              required="#{bindings.GlDate.hints.mandatory}"
+                                              shortDesc="#{bindings.GlDate.hints.tooltip}"
+                                              id="id3" columns="40">
+                                  <f:validator binding="#{bindings.GlDate.validator}"/>
+                                  <af:convertDateTime pattern="#{bindings.GlDate.format}"/>
+                                </af:inputDate>
+                                <af:inputText value="#{bindings.Status.inputValue}"
+                                              label="#{bindings.Status.hints.label}"
+                                              required="#{bindings.Status.hints.mandatory}"
+                                              columns="40"
+                                              maximumLength="#{bindings.Status.hints.precision}"
+                                              shortDesc="#{bindings.Status.hints.tooltip}"
+                                              id="it1" rows="1">
+                                  <f:validator binding="#{bindings.Status.validator}"/>
+                                </af:inputText>
+                                <f:facet name="footer">
+                                  <af:panelGroupLayout layout="vertical"
+                                                       id="pgl3"
+                                                       styleClass="AFStretchWidth">
+                                    <af:spacer width="10" height="25" id="s5"/>
+                                    <af:panelGroupLayout layout="horizontal"
+                                                         id="pgl2" halign="end">
+                                      <af:commandButton actionListener="#{bindings.First.execute}"
+                                                        text="First"
+                                                        disabled="#{!bindings.First.enabled}"
+                                                        partialSubmit="true"
+                                                        id="cb4"/>
+                                      <af:commandButton actionListener="#{bindings.Previous.execute}"
+                                                        text="Previous"
+                                                        disabled="#{!bindings.Previous.enabled}"
+                                                        partialSubmit="true"
+                                                        id="cb2"/>
+                                      <af:commandButton actionListener="#{bindings.Next.execute}"
+                                                        text="Next"
+                                                        disabled="#{!bindings.Next.enabled}"
+                                                        partialSubmit="true"
+                                                        id="cb3"/>
+                                      <af:commandButton actionListener="#{bindings.Last.execute}"
+                                                        text="Last"
+                                                        disabled="#{!bindings.Last.enabled}"
+                                                        partialSubmit="true"
+                                                        id="cb5"/>
+                                      <f:facet name="separator">
+                                        <af:spacer width="10" height="10"
+                                                   id="s4"/>
+                                      </f:facet>
+                                    </af:panelGroupLayout>
+                                  </af:panelGroupLayout>
+                                </f:facet>
+                              </af:panelFormLayout>
+                            </af:showDetailItem>
+                            <af:showDetailItem text="#{viewcontrollerBundle.HEADER_TAB_PAYMENT}" id="sdi2">
+                              <af:panelFormLayout id="pfl2" maxColumns="2"
+                                                  rows="5">
+                                <f:facet name="footer"/>
+                      <af:inputText value="#{bindings.PayGroupLookupCode.inputValue}"
+                                    label="#{bindings.PayGroupLookupCode.hints.label}"
+                                    required="#{bindings.PayGroupLookupCode.hints.mandatory}"
+                                    columns="40"
+                                    maximumLength="#{bindings.PayGroupLookupCode.hints.precision}"
+                                    shortDesc="#{bindings.PayGroupLookupCode.hints.tooltip}"
+                                    id="it3">
+                        <f:validator binding="#{bindings.PayGroupLookupCode.validator}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.PaymentMethodCode.inputValue}"
+                                    label="#{bindings.PaymentMethodCode.hints.label}"
+                                    required="#{bindings.PaymentMethodCode.hints.mandatory}"
+                                    columns="40"
+                                    maximumLength="#{bindings.PaymentMethodCode.hints.precision}"
+                                    shortDesc="#{bindings.PaymentMethodCode.hints.tooltip}"
+                                    id="it2">
+                        <f:validator binding="#{bindings.PaymentMethodCode.validator}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.TermsDate.inputValue}"
+                                    label="#{bindings.TermsDate.hints.label}"
+                                    required="#{bindings.TermsDate.hints.mandatory}"
+                                    columns="40"
+                                    maximumLength="#{bindings.TermsDate.hints.precision}"
+                                    shortDesc="#{bindings.TermsDate.hints.tooltip}"
+                                    id="it4">
+                        <f:validator binding="#{bindings.TermsDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.TermsDate.format}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.TermsId.inputValue}"
+                                    label="#{bindings.TermsId.hints.label}"
+                                    required="#{bindings.TermsId.hints.mandatory}"
+                                    columns="40"
+                                    maximumLength="#{bindings.TermsId.hints.precision}"
+                                    shortDesc="#{bindings.TermsId.hints.tooltip}"
+                                    id="it5">
+                        <f:validator binding="#{bindings.TermsId.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.TermsId.format}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.PaymentCurrencyCode.inputValue}"
+                                    label="#{bindings.PaymentCurrencyCode.hints.label}"
+                                    required="#{bindings.PaymentCurrencyCode.hints.mandatory}"
+                                    columns="40"
+                                    maximumLength="#{bindings.PaymentCurrencyCode.hints.precision}"
+                                    shortDesc="#{bindings.PaymentCurrencyCode.hints.tooltip}"
+                                    id="it7">
+                        <f:validator binding="#{bindings.PaymentCurrencyCode.validator}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.ExternalBankAccountId.inputValue}"
+                                    label="#{bindings.ExternalBankAccountId.hints.label}"
+                                    required="#{bindings.ExternalBankAccountId.hints.mandatory}"
+                                    columns="40"
+                                    maximumLength="#{bindings.ExternalBankAccountId.hints.precision}"
+                                    shortDesc="#{bindings.ExternalBankAccountId.hints.tooltip}"
+                                    id="it8">
+                        <f:validator binding="#{bindings.ExternalBankAccountId.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.ExternalBankAccountId.format}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.RemittanceMessage1.inputValue}"
+                                    label="#{bindings.RemittanceMessage1.hints.label}"
+                                    required="#{bindings.RemittanceMessage1.hints.mandatory}"
+                                    columns="40"
+                                    maximumLength="#{bindings.RemittanceMessage1.hints.precision}"
+                                    shortDesc="#{bindings.RemittanceMessage1.hints.tooltip}"
+                                    id="it9">
+                        <f:validator binding="#{bindings.RemittanceMessage1.validator}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.RemittanceMessage2.inputValue}"
+                                    label="#{bindings.RemittanceMessage2.hints.label}"
+                                    required="#{bindings.RemittanceMessage2.hints.mandatory}"
+                                    columns="40"
+                                    maximumLength="#{bindings.RemittanceMessage2.hints.precision}"
+                                    shortDesc="#{bindings.RemittanceMessage2.hints.tooltip}"
+                                    id="it12">
+                        <f:validator binding="#{bindings.RemittanceMessage2.validator}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.RemittanceMessage3.inputValue}"
+                                    label="#{bindings.RemittanceMessage3.hints.label}"
+                                    required="#{bindings.RemittanceMessage3.hints.mandatory}"
+                                    columns="40"
+                                    maximumLength="#{bindings.RemittanceMessage3.hints.precision}"
+                                    shortDesc="#{bindings.RemittanceMessage3.hints.tooltip}"
+                                    id="it15">
+                        <f:validator binding="#{bindings.RemittanceMessage3.validator}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.UniqueRemittanceIdentifier.inputValue}"
+                                    label="#{bindings.UniqueRemittanceIdentifier.hints.label}"
+                                    required="#{bindings.UniqueRemittanceIdentifier.hints.mandatory}"
+                                    columns="40"
+                                    maximumLength="#{bindings.UniqueRemittanceIdentifier.hints.precision}"
+                                    shortDesc="#{bindings.UniqueRemittanceIdentifier.hints.tooltip}"
+                                    id="it19">
+                        <f:validator binding="#{bindings.UniqueRemittanceIdentifier.validator}"/>
+                      </af:inputText>
+                    </af:panelFormLayout>
+                            </af:showDetailItem>
+                            <af:showDetailItem text="#{viewcontrollerBundle.HEADER_TAB_OTHERS}" id="sdi3">
+                              <af:panelFormLayout id="pfl3" maxColumns="2"
+                                                  rows="3">
+                                <f:facet name="footer"/>
+                      <af:inputText value="#{bindings.VoucherNum.inputValue}"
+                                    label="#{bindings.VoucherNum.hints.label}"
+                                    required="#{bindings.VoucherNum.hints.mandatory}"
+                                    columns="40"
+                                    maximumLength="#{bindings.VoucherNum.hints.precision}"
+                                    shortDesc="#{bindings.VoucherNum.hints.tooltip}"
+                                    id="it34">
+                        <f:validator binding="#{bindings.VoucherNum.validator}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.Source.inputValue}"
+                                    label="#{bindings.Source.hints.label}"
+                                    required="#{bindings.Source.hints.mandatory}"
+                                    columns="40"
+                                    maximumLength="#{bindings.Source.hints.precision}"
+                                    shortDesc="#{bindings.Source.hints.tooltip}"
+                                    id="it35">
+                        <f:validator binding="#{bindings.Source.validator}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.ExchangeRate.inputValue}"
+                                    label="#{bindings.ExchangeRate.hints.label}"
+                                    required="#{bindings.ExchangeRate.hints.mandatory}"
+                                    columns="40"
+                                    maximumLength="#{bindings.ExchangeRate.hints.precision}"
+                                    shortDesc="#{bindings.ExchangeRate.hints.tooltip}"
+                                    id="it17">
+                        <f:validator binding="#{bindings.ExchangeRate.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.ExchangeRate.format}"/>
+                      </af:inputText>
+                      
+                      <af:inputText value="#{bindings.ExchangeRateType.inputValue}"
+                                    label="#{bindings.ExchangeRateType.hints.label}"
+                                    required="#{bindings.ExchangeRateType.hints.mandatory}"
+                                    columns="40"
+                                    maximumLength="#{bindings.ExchangeRateType.hints.precision}"
+                                    shortDesc="#{bindings.ExchangeRateType.hints.tooltip}"
+                                    id="it18" rows="1">
+                        <f:validator binding="#{bindings.ExchangeRateType.validator}"/>
+                      </af:inputText>
+                      <af:inputDate value="#{bindings.ExchangeDate.inputValue}"
+                                    label="#{bindings.ExchangeDate.hints.label}"
+                                    required="#{bindings.ExchangeDate.hints.mandatory}"
+                                    shortDesc="#{bindings.ExchangeDate.hints.tooltip}"
+                                    id="id2" columns="40">
+                        <f:validator binding="#{bindings.ExchangeDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.ExchangeDate.format}"/>
+                      </af:inputDate>
+                      <af:inputText value="#{bindings.GroupId.inputValue}"
+                                    label="#{bindings.GroupId.hints.label}"
+                                    required="#{bindings.GroupId.hints.mandatory}"
+                                    columns="40"
+                                    maximumLength="#{bindings.GroupId.hints.precision}"
+                                    shortDesc="#{bindings.GroupId.hints.tooltip}"
+                                    id="it36">
+                        <f:validator binding="#{bindings.GroupId.validator}"/>
+                      </af:inputText>
+                    </af:panelFormLayout>
+                            </af:showDetailItem>
+                          </af:panelTabbed>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="second">
+                        <af:panelHeader text="#{viewcontrollerBundle.LBL_LINE_TAB_NAME}" id="ph2">
+                          <f:facet name="context"/>
+                          <f:facet name="menuBar"/>
+                          <f:facet name="toolbar">
+                            <af:toolbar id="t3"/>
+                          </f:facet>
+                          <f:facet name="legend"/>
+                          <f:facet name="info"/>
+                          <af:panelTabbed id="pt2">
+                            <af:showDetailItem text="#{viewcontrollerBundle.LINE_TAB_ACCOUNTING}" id="sdi4"
+                                               disclosed="true">
+                              <af:table value="#{bindings.ApInvoicesChildLinesVO.collectionModel}"
+                                        var="row"
+                                        rows="#{bindings.ApInvoicesChildLinesVO.rangeSize}"
+                                        emptyText="#{bindings.ApInvoicesChildLinesVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                        fetchSize="#{bindings.ApInvoicesChildLinesVO.rangeSize}"
+                                        rowBandingInterval="0"
+                                        selectionListener="#{bindings.ApInvoicesChildLinesVO.collectionModel.makeCurrent}"
+                                        rowSelection="multiple" id="t1"
+                                        styleClass="AFStretchWidth"
+                                        columnStretching="column:c3">
+                                <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.name}"
+                                           sortable="false"
+                                           headerText="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.label}"
+                                           id="c2" width="30">
+                                  <af:outputText value="#{row.LineNumber}"
+                                                 id="ot9">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.format}"/>
+                                  </af:outputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.name}"
+                                           sortable="false"
+                                           headerText="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.label}"
+                                           id="c1">
+                        <af:selectOneChoice value="#{row.bindings.LineTypeLookupCode.inputValue}"
+                                            label="#{row.bindings.LineTypeLookupCode.label}"
+                                            required="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.mandatory}"
+                                            shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.tooltip}"
+                                            id="soc3">
+                          <f:selectItems value="#{row.bindings.LineTypeLookupCode.items}"
+                                         id="si1"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                                <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.Description.name}"
+                                           sortable="false"
+                                           headerText="#{bindings.ApInvoicesChildLinesVO.hints.Description.label}"
+                                           id="c3">
+                                  <af:outputText value="#{row.Description}"
+                                                 id="ot5"/>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.name}"
+                                           sortable="false"
+                                           headerText="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.label}"
+                                           id="c5">
+                                  <af:outputText value="#{row.QuantityInvoiced}"
+                                                 id="ot10">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.format}"/>
+                                  </af:outputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.Amount.name}"
+                                           sortable="false"
+                                           headerText="#{bindings.ApInvoicesChildLinesVO.hints.Amount.label}"
+                                           id="c9">
+                                  <af:outputText value="#{row.Amount}" id="ot6">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.ApInvoicesChildLinesVO.hints.Amount.format}"/>
+                                  </af:outputText>
+                                </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.DistCodeCombinationId.label}"
+                                 id="c4">
+                        <af:outputText value="#{row.DistCodeCombinationId}"
+                                       id="ot2">
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.DistCodeCombinationId.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.TaxCode.label}"
+                                 id="c6">
+                        <af:selectOneChoice value="#{row.bindings.TaxCode.inputValue}"
+                                            label="#{row.bindings.TaxCode.label}"
+                                            required="#{bindings.ApInvoicesChildLinesVO.hints.TaxCode.mandatory}"
+                                            shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.TaxCode.tooltip}"
+                                            id="soc11">
+                          <f:selectItems value="#{row.bindings.TaxCode.items}"
+                                         id="si11"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.AccountingDate.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.ApInvoicesChildLinesVO.hints.AccountingDate.label}"
+                                 id="c8">
+                        <af:outputText value="#{row.AccountingDate}" id="ot3">
+                          <af:convertDateTime pattern="#{bindings.ApInvoicesChildLinesVO.hints.AccountingDate.format}"/>
+                        </af:outputText>
+                      </af:column>
+                    </af:table>
+                            </af:showDetailItem>
+                            <af:showDetailItem text="#{viewcontrollerBundle.LINE_TAB_PROJECTS}" id="sdi5">
+                              <af:table value="#{bindings.ApInvoicesChildLinesVO.collectionModel}"
+                                        var="row"
+                                        rows="#{bindings.ApInvoicesChildLinesVO.rangeSize}"
+                                        emptyText="#{bindings.ApInvoicesChildLinesVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                        fetchSize="#{bindings.ApInvoicesChildLinesVO.rangeSize}"
+                                        rowBandingInterval="1"
+                                        selectionListener="#{bindings.ApInvoicesChildLinesVO.collectionModel.makeCurrent}"
+                                        rowSelection="multiple" id="table1"
+                                        styleClass="AFStretchWidth"
+                                        columnStretching="column:column3"
+                                        partialTriggers="::cb4 ::cb2 ::cb3 ::cb5"
+                                        columnBandingInterval="0">
+                                <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.name}"
+                                           sortable="false"
+                                           headerText="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.label}"
+                                           id="column1" width="30">
+                                  <af:outputText value="#{row.LineNumber}"
+                                                 id="outputText1">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.format}"/>
+                                  </af:outputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.name}"
+                                           sortable="false"
+                                           headerText="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.label}"
+                                           id="column2">
+                        <af:selectOneChoice value="#{row.bindings.LineTypeLookupCode.inputValue}"
+                                            label="#{row.bindings.LineTypeLookupCode.label}"
+                                            required="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.mandatory}"
+                                            shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.tooltip}"
+                                            id="soc4">
+                          <f:selectItems value="#{row.bindings.LineTypeLookupCode.items}"
+                                         id="si2"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                                <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.Description.name}"
+                                           sortable="false"
+                                           headerText="#{bindings.ApInvoicesChildLinesVO.hints.Description.label}"
+                                           id="column3">
+                                  <af:outputText value="#{row.Description}"
+                                                 id="outputText3"/>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.name}"
+                                           sortable="false"
+                                           headerText="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.label}"
+                                           id="column4">
+                                  <af:outputText value="#{row.QuantityInvoiced}"
+                                                 id="outputText4">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.format}"/>
+                                  </af:outputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.Amount.name}"
+                                           sortable="false"
+                                           headerText="#{bindings.ApInvoicesChildLinesVO.hints.Amount.label}"
+                                           id="column6">
+                                  <af:outputText value="#{row.Amount}"
+                                                 id="outputText6">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.ApInvoicesChildLinesVO.hints.Amount.format}"/>
+                                  </af:outputText>
+                                </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.DistCodeCombinationId.label}"
+                                 id="c7">
+                        <af:outputText value="#{row.DistCodeCombinationId}"
+                                       id="ot7">
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.DistCodeCombinationId.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.TaxCode.label}"
+                                 id="c12">
+                        <af:selectOneChoice value="#{row.bindings.TaxCode.inputValue}"
+                                            label="#{row.bindings.TaxCode.label}"
+                                            required="#{bindings.ApInvoicesChildLinesVO.hints.TaxCode.mandatory}"
+                                            shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.TaxCode.tooltip}"
+                                            id="soc10">
+                          <f:selectItems value="#{row.bindings.TaxCode.items}"
+                                         id="si10"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.AccountingDate.label}"
+                                 id="c18">
+                        <af:outputText value="#{row.AccountingDate}" id="ot14">
+                          <af:convertDateTime pattern="#{bindings.ApInvoicesChildLinesVO.hints.AccountingDate.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.ProjectId.label}"
+                                 id="c10">
+                                 
+                                 <af:inputListOfValues id="transProjectNameLookupId"
+                                            popupTitle="Search and Select: Project"
+                                            value="#{row.bindings.TransProjectNameLookup.inputValue}"
+                                            label="#{bindings.TransProjectNameLookup.hints.label}"
+                                            model="#{bindings.TransProjectNameLookup.listOfValuesModel}"
+                                            required="#{bindings.TransProjectNameLookup.hints.mandatory}"
+                                            columns="#{bindings.TransProjectNameLookup.hints.displayWidth}"
+                                            shortDesc="#{bindings.TransProjectNameLookup.hints.tooltip}">
+                          <f:validator binding="#{bindings.TransProjectNameLookup.validator}"/>
+                          <af:autoSuggestBehavior suggestedItems="#{bindings.TransProjectNameLookup.suggestedItems}"
+                                                  maxSuggestedItems="-1"/>
+                        </af:inputListOfValues>
+                        
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.TaskId.label}"
+                                 id="c19">
+                       
+                        <af:inputListOfValues id="transTaskIntendedNameLookupId"
+                                            popupTitle="Search and Select: Task"
+                                            value="#{row.bindings.TransTaskIntendedNameLookup.inputValue}"
+                                            label="#{bindings.TransTaskIntendedNameLookup.hints.label}"
+                                            model="#{bindings.TransTaskIntendedNameLookup.listOfValuesModel}"
+                                            required="#{bindings.TransTaskIntendedNameLookup.hints.mandatory}"
+                                            columns="#{bindings.TransTaskIntendedNameLookup.hints.displayWidth}"
+                                            shortDesc="#{bindings.TransTaskIntendedNameLookup.hints.tooltip}">
+                        <f:validator binding="#{bindings.TransTaskIntendedNameLookup.validator}"/>
+                      </af:inputListOfValues>
+                      </af:column>                      
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.ExpenditureType.label}"
+                                 id="c11">
+                                 
+                        <af:inputListOfValues id="expenditureTypeId"
+                                            popupTitle="Search and Select: ExpenditureType"
+                                            value="#{row.bindings.ExpenditureType.inputValue}"
+                                            label="#{bindings.ExpenditureType.hints.label}"
+                                            model="#{bindings.ExpenditureType.listOfValuesModel}"
+                                            required="#{bindings.ExpenditureType.hints.mandatory}"
+                                            columns="#{bindings.ExpenditureType.hints.displayWidth}"
+                                            shortDesc="#{bindings.ExpenditureType.hints.tooltip}">
+                        <f:validator binding="#{bindings.ExpenditureType.validator}"/>
+                        </af:inputListOfValues>
+                       </af:column>          
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.ExpenditureOrganizationId.label}"
+                                 id="c20">
+                        <af:selectOneChoice value="#{row.bindings.ExpenditureOrganizationId.inputValue}"
+                                            label="#{row.bindings.ExpenditureOrganizationId.label}"
+                                            required="#{bindings.ApInvoicesChildLinesVO.hints.ExpenditureOrganizationId.mandatory}"
+                                            shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.ExpenditureOrganizationId.tooltip}"
+                                            id="soc9">
+                          <f:selectItems value="#{row.bindings.ExpenditureOrganizationId.items}"
+                                         id="si9"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.ExpenditureItemDate.label}"
+                                 id="c21">
+                        <af:outputText value="#{row.ExpenditureItemDate}"
+                                       id="ot17">
+                          <af:convertDateTime pattern="#{bindings.ApInvoicesChildLinesVO.hints.ExpenditureItemDate.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.PaQuantity.label}"
+                                 id="c22">
+                        <af:inputText value="#{row.bindings.PaQuantity.inputValue}"
+                                      label="#{bindings.ApInvoicesChildLinesVO.hints.PaQuantity.label}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.PaQuantity.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.PaQuantity.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.PaQuantity.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.PaQuantity.tooltip}"
+                                      id="it22">
+                          <f:validator binding="#{row.bindings.PaQuantity.validator}"/>
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.PaQuantity.format}"/>
+                        </af:inputText>
+                      </af:column>
+                    </af:table>
+                            </af:showDetailItem>
+                            <af:showDetailItem text="#{viewcontrollerBundle.LINE_TAB_PURCHASE}" id="sdi6">
+                    <af:table value="#{bindings.ApInvoicesChildLinesVO.collectionModel}"
+                              var="row"
+                              rows="#{bindings.ApInvoicesChildLinesVO.rangeSize}"
+                              emptyText="#{bindings.ApInvoicesChildLinesVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.ApInvoicesChildLinesVO.rangeSize}"
+                              rowBandingInterval="0"
+                              selectionListener="#{bindings.ApInvoicesChildLinesVO.collectionModel.makeCurrent}"
+                              rowSelection="multiple" id="table4"
+                              styleClass="AFStretchWidth"
+                              columnStretching="column:column16">
+                      <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.label}"
+                                 id="column14" width="30">
+                        <af:outputText value="#{row.LineNumber}"
+                                       id="outputText14">
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.label}"
+                                 id="column15">
+                        <af:selectOneChoice value="#{row.bindings.LineTypeLookupCode.inputValue}"
+                                            label="#{row.bindings.LineTypeLookupCode.label}"
+                                            required="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.mandatory}"
+                                            shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.tooltip}"
+                                            id="soc5">
+                          <f:selectItems value="#{row.bindings.LineTypeLookupCode.items}"
+                                         id="si5"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.Description.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.ApInvoicesChildLinesVO.hints.Description.label}"
+                                 id="column16">
+                        <af:outputText value="#{row.Description}"
+                                       id="outputText16"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.label}"
+                                 id="column17">
+                        <af:outputText value="#{row.QuantityInvoiced}"
+                                       id="outputText17">
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.Amount.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.ApInvoicesChildLinesVO.hints.Amount.label}"
+                                 id="column23">
+                        <af:outputText value="#{row.Amount}" id="outputText23">
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.Amount.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.PoNumber.label}"
+                                 id="c23">
+                        <af:inputListOfValues id="poNumberId"
+                                            popupTitle="Search and Select: PoNumber"
+                                            value="#{row.bindings.PoNumber.inputValue}"
+                                            label="#{bindings.PoNumber.hints.label}"
+                                            model="#{bindings.PoNumber.listOfValuesModel}"
+                                            required="#{bindings.PoNumber.hints.mandatory}"
+                                            columns="#{bindings.PoNumber.hints.displayWidth}"
+                                            shortDesc="#{bindings.PoNumber.hints.tooltip}">
+                        <f:validator binding="#{bindings.PoNumber.validator}"/>
+                      </af:inputListOfValues>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.PoLineNumber.label}"
+                                 id="c24">
+                        <af:selectOneChoice value="#{row.bindings.PoLineNumber.inputValue}"
+                                            label="#{row.bindings.PoLineNumber.label}"
+                                            required="#{bindings.ApInvoicesChildLinesVO.hints.PoLineNumber.mandatory}"
+                                            shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.PoLineNumber.tooltip}"
+                                            id="soc7">
+                          <f:selectItems value="#{row.bindings.PoLineNumber.items}"
+                                         id="si7"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.PoDistributionNum.label}"
+                                 id="c25">
+                        <af:selectOneChoice value="#{row.bindings.PoDistributionNum.inputValue}"
+                                            label="#{row.bindings.PoDistributionNum.label}"
+                                            required="#{bindings.ApInvoicesChildLinesVO.hints.PoDistributionNum.mandatory}"
+                                            shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.PoDistributionNum.tooltip}"
+                                            id="soc8">
+                          <f:selectItems value="#{row.bindings.PoDistributionNum.items}"
+                                         id="si8"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.ItemDescription.label}"
+                                 id="c26">
+                        <af:inputText value="#{row.bindings.ItemDescription.inputValue}"
+                                      label="#{bindings.ApInvoicesChildLinesVO.hints.ItemDescription.label}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.ItemDescription.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.ItemDescription.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.ItemDescription.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.ItemDescription.tooltip}"
+                                      id="it23">
+                          <f:validator binding="#{row.bindings.ItemDescription.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.VendorItemNum.label}"
+                                 id="c27">
+                        <af:inputText value="#{row.bindings.VendorItemNum.inputValue}"
+                                      label="#{bindings.ApInvoicesChildLinesVO.hints.VendorItemNum.label}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.VendorItemNum.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.VendorItemNum.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.VendorItemNum.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.VendorItemNum.tooltip}"
+                                      id="it24">
+                          <f:validator binding="#{row.bindings.VendorItemNum.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.UnitPrice.label}"
+                                 id="c28">
+                        <af:inputText value="#{row.bindings.UnitPrice.inputValue}"
+                                      label="#{bindings.ApInvoicesChildLinesVO.hints.UnitPrice.label}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.UnitPrice.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.UnitPrice.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.UnitPrice.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.UnitPrice.tooltip}"
+                                      id="it25">
+                          <f:validator binding="#{row.bindings.UnitPrice.validator}"/>
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.UnitPrice.format}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.ShipToLocationId.label}"
+                                 id="c29">
+                        <af:selectOneChoice value="#{row.bindings.ShipToLocationId.inputValue}"
+                                            label="#{row.bindings.ShipToLocationId.label}"
+                                            required="#{bindings.ApInvoicesChildLinesVO.hints.ShipToLocationId.mandatory}"
+                                            shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.ShipToLocationId.tooltip}"
+                                            id="soc6">
+                          <f:selectItems value="#{row.bindings.ShipToLocationId.items}"
+                                         id="si6"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                    </af:table>
+                  </af:showDetailItem>
+                            <af:showDetailItem text="#{viewcontrollerBundle.LINE_TAB_INSTALLATION}" id="sdi7">
+                    <af:table value="#{bindings.ApInvoicesChildLinesVO.collectionModel}"
+                              var="row"
+                              rows="#{bindings.ApInvoicesChildLinesVO.rangeSize}"
+                              emptyText="#{bindings.ApInvoicesChildLinesVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.ApInvoicesChildLinesVO.rangeSize}"
+                              rowBandingInterval="0"
+                              selectionListener="#{bindings.ApInvoicesChildLinesVO.collectionModel.makeCurrent}"
+                              rowSelection="multiple" id="table3"
+                              styleClass="AFStretchWidth"
+                              columnStretching="column:column20">
+                      <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.label}"
+                                 id="column18" width="30">
+                        <af:outputText value="#{row.LineNumber}"
+                                       id="outputText18">
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.label}"
+                                 id="column19">
+                        <af:selectOneChoice value="#{row.bindings.LineTypeLookupCode.inputValue}"
+                                            label="#{row.bindings.LineTypeLookupCode.label}"
+                                            required="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.mandatory}"
+                                            shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.tooltip}"
+                                            id="soc12">
+                          <f:selectItems value="#{row.bindings.LineTypeLookupCode.items}"
+                                         id="si12"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.Description.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.ApInvoicesChildLinesVO.hints.Description.label}"
+                                 id="column20">
+                        <af:outputText value="#{row.Description}"
+                                       id="outputText20"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.label}"
+                                 id="column21">
+                        <af:outputText value="#{row.QuantityInvoiced}"
+                                       id="outputText21">
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.Amount.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.ApInvoicesChildLinesVO.hints.Amount.label}"
+                                 id="column22">
+                        <af:outputText value="#{row.Amount}" id="outputText22">
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.Amount.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.AssetsTrackingFlag.label}"
+                                 id="c30">
+                        <af:inputText value="#{row.bindings.AssetsTrackingFlag.inputValue}"
+                                      label="#{bindings.ApInvoicesChildLinesVO.hints.AssetsTrackingFlag.label}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.AssetsTrackingFlag.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.AssetsTrackingFlag.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.AssetsTrackingFlag.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.AssetsTrackingFlag.tooltip}"
+                                      id="it27">
+                          <f:validator binding="#{row.bindings.AssetsTrackingFlag.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.SerialNumber.label}"
+                                 id="c31">
+                        <af:inputText value="#{row.bindings.SerialNumber.inputValue}"
+                                      label="#{bindings.ApInvoicesChildLinesVO.hints.SerialNumber.label}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.SerialNumber.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.SerialNumber.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.SerialNumber.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.SerialNumber.tooltip}"
+                                      id="it28">
+                          <f:validator binding="#{row.bindings.SerialNumber.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.Manufacturer.label}"
+                                 id="c32">
+                        <af:inputText value="#{row.bindings.Manufacturer.inputValue}"
+                                      label="#{bindings.ApInvoicesChildLinesVO.hints.Manufacturer.label}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.Manufacturer.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.Manufacturer.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.Manufacturer.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.Manufacturer.tooltip}"
+                                      id="it29">
+                          <f:validator binding="#{row.bindings.Manufacturer.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.ModelNumber.label}"
+                                 id="c33">
+                        <af:inputText value="#{row.bindings.ModelNumber.inputValue}"
+                                      label="#{bindings.ApInvoicesChildLinesVO.hints.ModelNumber.label}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.ModelNumber.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.ModelNumber.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.ModelNumber.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.ModelNumber.tooltip}"
+                                      id="it30">
+                          <f:validator binding="#{row.bindings.ModelNumber.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.WarrantyNumber.label}"
+                                 id="c34">
+                        <af:inputText value="#{row.bindings.WarrantyNumber.inputValue}"
+                                      label="#{bindings.ApInvoicesChildLinesVO.hints.WarrantyNumber.label}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.WarrantyNumber.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.WarrantyNumber.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.WarrantyNumber.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.WarrantyNumber.tooltip}"
+                                      id="it31">
+                          <f:validator binding="#{row.bindings.WarrantyNumber.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.AssetBookTypeCode.label}"
+                                 id="c35">
+                        <af:inputText value="#{row.bindings.AssetBookTypeCode.inputValue}"
+                                      label="#{bindings.ApInvoicesChildLinesVO.hints.AssetBookTypeCode.label}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.AssetBookTypeCode.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.AssetBookTypeCode.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.AssetBookTypeCode.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.AssetBookTypeCode.tooltip}"
+                                      id="it32">
+                          <f:validator binding="#{row.bindings.AssetBookTypeCode.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.AssetCategoryId.label}"
+                                 id="c36">
+                        <af:inputText value="#{row.bindings.AssetCategoryId.inputValue}"
+                                      label="#{bindings.ApInvoicesChildLinesVO.hints.AssetCategoryId.label}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.AssetCategoryId.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.AssetCategoryId.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.AssetCategoryId.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.AssetCategoryId.tooltip}"
+                                      id="it33">
+                          <f:validator binding="#{row.bindings.AssetCategoryId.validator}"/>
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.AssetCategoryId.format}"/>
+                        </af:inputText>
+                      </af:column>
+                    </af:table>
+                  </af:showDetailItem>
+                            <af:showDetailItem text="#{viewcontrollerBundle.LINE_TAB_TAX}" id="sdi8">
+                    <af:table value="#{bindings.ApInvoicesChildLinesVO.collectionModel}"
+                              var="row"
+                              rows="#{bindings.ApInvoicesChildLinesVO.rangeSize}"
+                              emptyText="#{bindings.ApInvoicesChildLinesVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.ApInvoicesChildLinesVO.rangeSize}"
+                              rowBandingInterval="0"
+                              selectionListener="#{bindings.ApInvoicesChildLinesVO.collectionModel.makeCurrent}"
+                              rowSelection="multiple" id="table2"
+                              styleClass="AFStretchWidth"
+                              columnStretching="column:column11">
+                      <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.label}"
+                                 id="column9" width="30">
+                        <af:outputText value="#{row.LineNumber}"
+                                       id="outputText9">
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.label}"
+                                 id="column10">
+                        <af:selectOneChoice value="#{row.bindings.LineTypeLookupCode.inputValue}"
+                                            label="#{row.bindings.LineTypeLookupCode.label}"
+                                            required="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.mandatory}"
+                                            shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.tooltip}"
+                                            id="soc13">
+                          <f:selectItems value="#{row.bindings.LineTypeLookupCode.items}"
+                                         id="si13"/>
+                        </af:selectOneChoice>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.Description.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.ApInvoicesChildLinesVO.hints.Description.label}"
+                                 id="column11">
+                        <af:outputText value="#{row.Description}"
+                                       id="outputText11"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.label}"
+                                 id="column12">
+                        <af:outputText value="#{row.QuantityInvoiced}"
+                                       id="outputText12">
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.Amount.name}"
+                                 sortable="false"
+                                 headerText="#{bindings.ApInvoicesChildLinesVO.hints.Amount.label}"
+                                 id="column13">
+                        <af:outputText value="#{row.Amount}" id="outputText13">
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.Amount.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.PrimaryIntendedUse.label}"
+                                 id="c37">
+                        <af:outputText value="#{row.PrimaryIntendedUse}"
+                                       id="ot26"/>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.UserDefinedFiscClass.label}"
+                                 id="c38">
+                        <af:outputText value="#{row.UserDefinedFiscClass}"
+                                       id="ot27"/>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.ProductType.label}"
+                                 id="c39">
+                        <af:outputText value="#{row.ProductType}" id="ot28"/>
+                      </af:column>
+                      <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.TrxBusinessCategory.label}"
+                                 id="c40">
+                        <af:outputText value="#{row.TrxBusinessCategory}"
+                                       id="ot29"/>
+                      </af:column>
+                    </af:table>
+                  </af:showDetailItem>
+                          </af:panelTabbed>
+                        </af:panelHeader>
+                      </f:facet>
+                    </af:panelSplitter>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelSplitter id="ps3" orientation="vertical"
+                                      firstBorder="none" secondBorder="none"
+                                      disabled="true" dimensionsFrom="children">
+                      <f:facet name="first">
+                        <af:panelHeader text="#{viewcontrollerBundle.LBL_ATTACHMENTS_TAB_NAME}" id="ph3">
+                          <f:facet name="context"/>
+                          <f:facet name="menuBar"/>
+                          <f:facet name="toolbar"/>
+                          <f:facet name="legend"/>
+                          <f:facet name="info"/>
+                          <af:table value="#{bindings.InvoiceAttachmentsListVO.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.InvoiceAttachmentsListVO.rangeSize}"
+                                    emptyText="#{bindings.InvoiceAttachmentsListVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.InvoiceAttachmentsListVO.rangeSize}"
+                                    rowBandingInterval="0" id="t4"
+                                    width="AFStretchWidth"
+                                    columnStretching="last">
+                            <af:column sortProperty="#{bindings.InvoiceAttachmentsListVO.hints.DatatypeNavn.name}"
+                                       sortable="false"
+                                       headerText="#{bindings.InvoiceAttachmentsListVO.hints.DatatypeNavn.label}"
+                                       id="c16">
+                              <af:outputText value="#{row.DatatypeNavn}"
+                                             id="ot20"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.InvoiceAttachmentsListVO.hints.KategoriNavn.name}"
+                                       sortable="false"
+                                       headerText="#{bindings.InvoiceAttachmentsListVO.hints.KategoriNavn.label}"
+                                       id="c14">
+                              <af:outputText value="#{row.KategoriNavn}"
+                                             id="ot18"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.InvoiceAttachmentsListVO.hints.Filnavn.name}"
+                                       sortable="false"
+                                       headerText="#{bindings.InvoiceAttachmentsListVO.hints.Filnavn.label}"
+                                       id="c17">
+                              <af:outputText value="#{row.Filnavn}" id="ot19"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.InvoiceAttachmentsListVO.hints.Beskrivelse.name}"
+                                       sortable="false"
+                                       headerText="#{bindings.InvoiceAttachmentsListVO.hints.Beskrivelse.label}"
+                                       id="c15">
+                              <af:outputText value="#{row.Beskrivelse}"
+                                             id="ot22"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.InvoiceAttachmentsListVO.hints.FunctionName.name}"
+                                       sortable="false"
+                                       headerText="#{bindings.InvoiceAttachmentsListVO.hints.FunctionName.label}"
+                                       id="c13">
+                              <af:outputText value="#{row.FunctionName}"
+                                             id="ot21"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelHeader>
+                      </f:facet>
+                      <f:facet name="second">
+                        <af:panelHeader text="Tiff/HTML" id="ph4">
+                          <f:facet name="context"/>
+                          <f:facet name="menuBar"/>
+                          <f:facet name="toolbar"/>
+                          <f:facet name="legend"/>
+                          <f:facet name="info"/>
+                          <af:panelGroupLayout id="pgl7" layout="scroll"
+                                               styleClass="AFStretchWidth"
+                                               inlineStyle="border-color:Black; border-style:solid; border-width:thin; padding:4.0px;">
+                            <af:inlineFrame source="/invoiceimageservlet?invoiceId=#{backingBeanScope.InvoiceImageBackingBean.invoiceId}" id="i1"
+                                            styleClass="AFStretchWidth"
+                                            inlineStyle="height:600.0px;"
+                                            sizing="preferred"/>
+                          </af:panelGroupLayout>
+                        </af:panelHeader>
+                      </f:facet>
+                    </af:panelSplitter>
+                  </f:facet>
+                </af:panelSplitter>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top">
+                <af:toolbox id="t2"
+                            inlineStyle="border-color:Black; border-style:solid; border-width:thin; padding:4.0px;">
+                  <af:panelGroupLayout id="pgl8" layout="vertical">
+                    <af:panelGroupLayout id="pgl6" layout="horizontal"
+                                         styleClass="AFStretchWidth">
+                      <af:outputText value="#{viewcontrollerBundle.LBL_INVOICE_GATEWAY_II}" id="ot1"
+                                     inlineStyle="width:200px; font-size:medium; font-weight:bold;"
+                                     noWrap="true"/>
+                      <af:spacer width="10" height="10" id="s1"/>
+                      <af:panelGroupLayout id="pgl5" layout="horizontal"
+                                           halign="end"
+                                           styleClass="AFStretchWidth">
+                        <f:facet name="separator">
+                          <af:spacer width="10" height="10" id="s2"/>
+                        </f:facet>
+                        <af:commandButton text="#{viewcontrollerBundle.ACTION_TAB_SAVE}" id="cb7"/>
+                        <af:commandButton text="#{viewcontrollerBundle.ACTION_TAB_SAVE_AND_CLOSE}"
+                                          id="commandButton1"/>
+                        <af:commandButton text="#{viewcontrollerBundle.ACTION_CANCEL}" id="commandButton2"/>
+                        <af:commandButton text="#{viewcontrollerBundle.ACTION_TAB_SEARCH}" id="commandButton3"/>
+                      </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                    <af:spacer width="10" height="10" id="spacer1"/>
+                  </af:panelGroupLayout>
+                  <af:panelGroupLayout id="pgl4" layout="vertical">
+                    <af:spacer width="10" height="10" id="s3"/>
+                    <af:selectOneChoice label="#{viewcontrollerBundle.LBL_USER_TAB_NAME}" id="soc1"
+                                        contentStyle="width:100px;"
+                                        value="#{bindings.UserAccessibleGroupsLOV.inputValue}"
+                                        shortDesc="#{bindings.UserAccessibleGroupsLOV.hints.tooltip}"
+                                        required="#{bindings.UserAccessibleGroupsLOV.hints.mandatory}">
+                      <f:selectItems value="#{bindings.UserAccessibleGroupsLOV.items}"
+                                     id="si4"/>
+                    </af:selectOneChoice>
+                  </af:panelGroupLayout>
+                </af:toolbox>
+              </f:facet>
+            </af:panelStretchLayout>
+</jsp:root>

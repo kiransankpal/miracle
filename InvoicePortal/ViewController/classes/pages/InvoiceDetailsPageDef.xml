@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="InvoiceDetailsPageDef"
+                Package="pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="ApInvoicesInterfaceVVOIterator" Binds="ApInvoicesInterfaceVVO"
+              DataControl="CommonAppModuleDataControl" RangeSize="25"
+              ChangeEventPolicy="ppr"/>
+    <iterator Binds="ApInvoicesChildLinesVO" RangeSize="25"
+              DataControl="CommonAppModuleDataControl"
+              id="ApInvoicesChildLinesVOIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="UserAccessibleGroupsLOV" RangeSize="25"
+              DataControl="CommonAppModuleDataControl"
+              id="UserAccessibleGroupsLOVIterator"/>
+    <iterator Binds="InvoiceAttachmentsListVO" RangeSize="25"
+              DataControl="CommonAppModuleDataControl"
+              id="InvoiceAttachmentsListVOIterator" ChangeEventPolicy="ppr"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="DocCategoryCode">
+      <AttrNames>
+        <Item Value="DocCategoryCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="ExchangeDate">
+      <AttrNames>
+        <Item Value="ExchangeDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="ExchangeRate">
+      <AttrNames>
+        <Item Value="ExchangeRate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="ExchangeRateType">
+      <AttrNames>
+        <Item Value="ExchangeRateType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="InvoiceAmount">
+      <AttrNames>
+        <Item Value="InvoiceAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="InvoiceCurrencyCode">
+      <AttrNames>
+        <Item Value="InvoiceCurrencyCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="InvoiceDate">
+      <AttrNames>
+        <Item Value="InvoiceDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="InvoiceNum">
+      <AttrNames>
+        <Item Value="InvoiceNum"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="InvoiceTypeLookupCode">
+      <AttrNames>
+        <Item Value="InvoiceTypeLookupCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator" id="GroupId">
+      <AttrNames>
+        <Item Value="GroupId"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="ApInvoicesInterfaceVVOIterator" id="First"
+            RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="ApInvoicesInterfaceVVOIterator" id="Previous"
+            RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="ApInvoicesInterfaceVVOIterator" id="Next"
+            RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="ApInvoicesInterfaceVVOIterator" id="Last"
+            RequiresUpdateModel="true" Action="last"/>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="VendorNumber">
+      <AttrNames>
+        <Item Value="VendorNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false"
+                  IterBinding="ApInvoicesInterfaceVVOIterator"
+                  id="VendorNameLOV" Uses="LOV_VendorName"/>
+    <list IterBinding="ApInvoicesInterfaceVVOIterator" id="VendorSiteCodeLOV"
+          DTSupportsMRU="true" Uses="LOV_VendorSiteCode" StaticList="false"/>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator" id="GlDate">
+      <AttrNames>
+        <Item Value="GlDate"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ApInvoicesChildLinesVOIterator"
+          id="ApInvoicesChildLinesVO">
+      <nodeDefinition DefName="model.view.ApInvoicesLinesVO"
+                      Name="ApInvoicesChildLinesVO0">
+        <AttrNames>
+          <Item Value="LineNumber"/>
+          <Item Value="LineTypeLookupCode"/>
+          <Item Value="Description"/>
+          <Item Value="QuantityInvoiced"/>
+          <Item Value="UnitOfMeasLookupCode"/>
+          <Item Value="Amount"/>
+          <Item Value="AccountSegment"/>
+          <Item Value="TaxClassificationCode"/>
+          <Item Value="AccountingDate"/>
+          <Item Value="ProjectId" Binds="ProjectId"/>
+          <Item Value="ExpenditureType"/>
+          <Item Value="PoNumber"/>
+          <Item Value="DistCodeCombinationId"/>
+          <Item Value="TaxCode" Binds="TaxCode1"/>
+          <Item Value="TaskId" Binds="TaskId"/>
+          <Item Value="ExpenditureOrganizationId"
+                Binds="ExpenditureOrganizationId"/>
+          <Item Value="ExpenditureItemDate"/>
+          <Item Value="PaQuantity"/>
+          <Item Value="PoLineNumber" Binds="PoLineNumber"/>
+          <Item Value="PoDistributionNum" Binds="PoDistributionNum"/>
+          <Item Value="ItemDescription"/>
+          <Item Value="VendorItemNum"/>
+          <Item Value="UnitPrice"/>
+          <Item Value="ShipToLocationId" Binds="ShipToLocationId"/>
+          <Item Value="AssetsTrackingFlag"/>
+          <Item Value="SerialNumber"/>
+          <Item Value="Manufacturer"/>
+          <Item Value="ModelNumber"/>
+          <Item Value="WarrantyNumber"/>
+          <Item Value="AssetBookTypeCode"/>
+          <Item Value="AssetCategoryId"/>
+          <Item Value="PrimaryIntendedUse"/>
+          <Item Value="UserDefinedFiscClass"/>
+          <Item Value="ProductType"/>
+          <Item Value="TrxBusinessCategory"/>
+          <Item Value="TransProjectNameLookup" Binds="TransProjectNameLookup"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="UserAccessibleGroupsLOVIterator"
+          ListOperMode="navigation" ListIter="UserAccessibleGroupsLOVIterator"
+          id="UserAccessibleGroupsLOV" DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="GroupId"/>
+      </AttrNames>
+    </list>
+    <tree IterBinding="InvoiceAttachmentsListVOIterator"
+          id="InvoiceAttachmentsListVO">
+      <nodeDefinition DefName="model.view.AttachmentsListVO"
+                      Name="InvoiceAttachmentsListVO0">
+        <AttrNames>
+          <Item Value="DatatypeNavn"/>
+          <Item Value="KategoriNavn"/>
+          <Item Value="Filnavn"/>
+          <Item Value="Beskrivelse"/>
+          <Item Value="FunctionName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="PayGroupLookupCode">
+      <AttrNames>
+        <Item Value="PayGroupLookupCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="PaymentMethodCode">
+      <AttrNames>
+        <Item Value="PaymentMethodCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="TermsDate">
+      <AttrNames>
+        <Item Value="TermsDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator" id="TermsId">
+      <AttrNames>
+        <Item Value="TermsId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="PaymentCurrencyCode">
+      <AttrNames>
+        <Item Value="PaymentCurrencyCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="ExternalBankAccountId">
+      <AttrNames>
+        <Item Value="ExternalBankAccountId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="RemittanceMessage1">
+      <AttrNames>
+        <Item Value="RemittanceMessage1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="RemittanceMessage2">
+      <AttrNames>
+        <Item Value="RemittanceMessage2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="RemittanceMessage3">
+      <AttrNames>
+        <Item Value="RemittanceMessage3"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="UniqueRemittanceIdentifier">
+      <AttrNames>
+        <Item Value="UniqueRemittanceIdentifier"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="VoucherNum">
+      <AttrNames>
+        <Item Value="VoucherNum"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator" id="Source">
+      <AttrNames>
+        <Item Value="Source"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ApInvoicesChildLinesVOIterator" id="TaskId"
+          DTSupportsMRU="true" Uses="LOV_TaskId" StaticList="false"/>
+    <list IterBinding="ApInvoicesChildLinesVOIterator" id="ProjectId"
+          DTSupportsMRU="true" Uses="LOV_ProjectId" StaticList="false"/>
+    <list IterBinding="ApInvoicesChildLinesVOIterator" id="ShipToLocationId"
+          DTSupportsMRU="true" Uses="LOV_ShipToLocationId" StaticList="false"/>
+    <list IterBinding="ApInvoicesChildLinesVOIterator" id="PoLineNumber"
+          DTSupportsMRU="true" Uses="LOV_PoLineNumber" StaticList="false"/>
+    <list IterBinding="ApInvoicesChildLinesVOIterator" id="PoDistributionNum"
+          DTSupportsMRU="true" Uses="LOV_PoDistributionNum" StaticList="false"/>
+    <list IterBinding="ApInvoicesChildLinesVOIterator"
+          id="ExpenditureOrganizationId" DTSupportsMRU="true"
+          Uses="LOV_ExpenditureOrganizationId" StaticList="false"/>
+    <list IterBinding="ApInvoicesChildLinesVOIterator" id="TaxCode"
+          DTSupportsMRU="true" Uses="LOV_TaxCode" StaticList="false"/>
+    <list IterBinding="ApInvoicesChildLinesVOIterator" id="TaxCode1"
+          DTSupportsMRU="true" Uses="LOV_TaxCode" StaticList="false"/>
+    <listOfValues StaticList="false"
+                  IterBinding="ApInvoicesChildLinesVOIterator"
+                  Uses="LOV_TransProjectNameLookup"
+                  id="TransProjectNameLookup"/>
+    <listOfValues StaticList="false"
+                  IterBinding="ApInvoicesChildLinesVOIterator"
+                  Uses="LOV_TransTaskIntendedNameLookup"
+                  id="TransTaskIntendedNameLookup"/>
+    <listOfValues StaticList="false"
+                  IterBinding="ApInvoicesChildLinesVOIterator"
+                  Uses="LOV_ExpenditureType" id="ExpenditureType"/>
+    <listOfValues StaticList="false"
+                  IterBinding="ApInvoicesChildLinesVOIterator"
+                  Uses="LOV_PoNumber" id="PoNumber"/>
+    <attributeValues IterBinding="ApInvoicesInterfaceVVOIterator"
+                     id="InvoiceId">
+      <AttrNames>
+        <Item Value="InvoiceId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

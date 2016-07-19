@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="InvoicesSearchPageDef"
+                Package="pages">
+<parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="vendorName" Type="java.lang.String"/>
+      <variable Name="vendorNumber" Type="java.lang.String"/>
+       <variable Name="currencyCode" Type="java.lang.String"/>
+    </variableIterator>
+    <iterator Binds="SupplierNameLOV" RangeSize="-1"
+              DataControl="CommonAppModuleDataControl"
+              id="SupplierNameLOVIterator"/>
+    <iterator id="InvoiceCurrencyCodeLOVIterator" Binds="InvoiceCurrencyCodeLOV"
+              DataControl="CommonAppModuleDataControl" RangeSize="-1"/>
+    <iterator id="SupplierNumberLOVIterator" Binds="SupplierNumberLOV"
+              DataControl="CommonAppModuleDataControl" RangeSize="-1"/>
+    <iterator id="ApInvoiceSearchVVOIterator" Binds="ApInvoiceSearchVVO"
+              DataControl="CommonAppModuleDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+  <tree IterBinding="ApInvoiceSearchVVOIterator"
+          id="ApInvoicesSearchInterfaceVVO">
+      <nodeDefinition DefName="model.view.ApInvoiceSearchVVO"
+                      Name="ApInvoicesSearchInterfaceVVOs0">
+   <AttrNames>
+          <Item Value="VendorName"/>
+          <Item Value="VendorNumber"/>
+          <Item Value="InvoiceNum"/>
+          <Item Value="InvoiceCurrencyCode"/>
+          <Item Value="InvoiceType"/>
+          <Item Value="Status"/>
+          <Item Value="InvoiceDate"/>
+          <Item Value="InvoiceAmount"/>
+          <Item Value="GroupId"/>
+          <Item Value="TermsName"/>
+          <Item Value="TermsDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  
+    <attributeValues IterBinding="variables" id="attrVendorName">
+      <AttrNames>
+        <Item Value="vendorName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="attrVendorNumber">
+      <AttrNames>
+        <Item Value="vendorNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="attrCurrencyCode">
+      <AttrNames>
+        <Item Value="currencyCode"/>
+      </AttrNames>
+    </attributeValues>
+    <list StaticList="false" IterBinding="variables"
+          ListIter="SupplierNameLOVIterator"
+          NullValueId=""
+          NullValueFlag="start" id="vendorNameList">
+      <AttrNames>
+        <Item Value="vendorName"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="VendorName"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="VendorName"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list StaticList="false" IterBinding="variables"
+          ListIter="SupplierNumberLOVIterator" id="vendorNumberList">
+      <AttrNames>
+        <Item Value="vendorNumber"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="VendorNumber"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="VendorNumber"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list StaticList="false" IterBinding="variables"
+          ListIter="InvoiceCurrencyCodeLOVIterator"
+          NullValueId=""
+          NullValueFlag="start" id="currencyCodeList">
+      <AttrNames>
+        <Item Value="currencyCode"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="InvoiceCurrencyCode"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="InvoiceCurrencyCode"/>
+      </ListDisplayAttrNames>
+    </list>
+    <listOfValues StaticList="false" IterBinding="ApInvoiceSearchVVOIterator"
+                  Uses="LOV_VendorName" id="VendorName"/>
+    <listOfValues StaticList="false" IterBinding="ApInvoiceSearchVVOIterator"
+                  Uses="LOV_VendorNumber" id="VendorNumber"/>
+    <methodAction id="searchInvoice" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="searchInvoice"
+                  IsViewObjectMethod="true"
+                  DataControl="CommonAppModuleDataControl"
+                  InstanceName="CommonAppModuleDataControl.ApInvoiceSearchVVO">
+      <NamedData NDName="vendorName" NDType="java.lang.String"/>
+      <NamedData NDName="vendorNumber" NDType="java.lang.Integer"/>
+      <NamedData NDName="currencyCode" NDType="java.lang.String"/>
+      <NamedData NDName="maturityStartDate" NDType="java.lang.String"/>
+      <NamedData NDName="maturityEndDate" NDType="java.lang.String"/>
+      <NamedData NDName="invoiceStartDate" NDType="java.lang.String"/>
+      <NamedData NDName="invoiceEndDate" NDType="java.lang.String"/>
+      <NamedData NDName="invoiceNumber" NDType="java.lang.Long"/>
+      <NamedData NDName="invoiceType" NDType="java.lang.String"/>
+      <NamedData NDName="invoiceFromAmount" NDType="java.lang.Float"/>
+      <NamedData NDName="invoiceToAmount" NDType="java.lang.Float"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>
+

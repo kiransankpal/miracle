@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xliff version="1.1" xmlns="urn:oasis:names:tc:xliff:document:1.1">
+  <file source-language="en" original="model.CommonModelBundle"
+        datatype="x-oracle-adf">
+    <body>
+      
+      <trans-unit id="LBL_VENDOR_NAME">
+        <source>Leverandørnavn</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_VENDOR_NR">
+        <source>Leverandørnr</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_LOKATION">
+        <source>Lokation</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_INVOICE_CURRENCY">
+        <source>Fakturavaluta</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_INVOICE_DATE">
+        <source>Fakturadato</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_INVOICE_NUM">
+        <source>Fakturanummer</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_INVOICE_AMT">
+        <source>Fakturabeløb</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_SOURCE">
+        <source>Kilde</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_EXCHG_RATE">
+        <source>Valutakurs</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_EXCHG_RATE_TYPE">
+        <source>Valutakurstype</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_EXCHG_DATE">
+        <source>Valutakursdato</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.lov.SupplierLookupLOV_LABEL">
+        <source>Supplier Lookup Lov</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.lov.LocationsLOV_LABEL">
+        <source>Locations Lov</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="SEARCH_FOR_SUPPLIER">
+        <source>Search for Supplier</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.InvoiceCopyPrintVO_LABEL">
+        <source>Invoice Copy Print Vo</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_GLDATE">
+        <source>Dato i Finans</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.ApInvoicesLinesVO_LABEL">
+        <source>Ap Invoices Lines Vo</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.link.ApInvoiceLinesVL_LABEL">
+        <source>Ap Invoice Lines Vl</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_LINE_ITEM_QUANTITY_INVOICED">
+        <source>Kvantum</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="UNIT">
+        <source>Unit</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.lov.UserAccessibleGroupsLOV_LABEL">
+        <source>User Accessible Groups Lov</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.AttachmentsListVO_LABEL">
+        <source>Attachments List Vo</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.link.InvoiceAttachmentsVL_LABEL">
+        <source>Invoice Attachments Vl</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_PAY_GRP_LKP_CODE">
+        <source>Betalingsgruppe</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_PAYMENT_METHOD_CODE">
+        <source>Betalingsmåde</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_TERMS_DT">
+        <source>Betingelsesdato</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_TERMS_ID">
+        <source>Betalingsbetingelser</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_PAYMENT_CURRENCY_CODE">
+        <source>Betalingsvaluta</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_EXTERNAL_BANK_ACCOUNT_ID">
+        <source>Overfør til bankkonto</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_REMITTANCE_MESSAGE1">
+        <source>Bankoverførselsmedde-lelse 1</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_REMITTANCE_MESSAGE2">
+        <source>Bankoverførselsmedde-lelse 2</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_REMITTANCE_MESSAGE3">
+        <source>Bankoverførselsmedde-lelse 3</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_UNIQUE_REMITTANCE_IDENTIFIER">
+        <source>Betaleridentifikation</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_LINE_NUMBER">
+        <source>Linjenummer</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_LINE_TYPE_LOOKUP_CODE">
+        <source>Type</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_DESCRIPTION">
+        <source>Beskrivelse</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_AMOUNT">
+        <source>Beløb</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_DIST_CODE_COMBINATION_ID">
+        <source>Konto</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_TAX_CODE">
+        <source>Afgiftsklassificeringskode</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_ACCOUNTING_DATE">
+        <source>Dato i Finans</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_PROJECT_ID">
+        <source>Projekt</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_TASK_ID">
+        <source>Opgave</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_EXPENDITURE_TYPE">
+        <source>Udgiftstype</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_EXPENDITURE_ORGANIZATION_ID">
+        <source>Udgiftsorganisation</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_EXPENDITURE_ITEM_DATE">
+        <source>Udgiftspostdato</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_PA_QUANTITY">
+        <source>Projektmængde</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_PO_NUMBER">
+        <source>Indkøbsordrenr</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_PO_LINE_NUMBER">
+        <source>Indkøbsordrelinjenr</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="PO_DISTRIBUTION_NUM">
+        <source>Indkøbsordrekonteringsnr</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_ITEM_DESCRIPTION">
+        <source>Indkøbsordrevarebeskrivelse</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_VENDOR_ITEM_NUM">
+        <source>Leverandør varenummer</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_UNIT_PRICE">
+        <source>Enhedspris</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_SHIP_TO_LOCATION_ID">
+        <source>Forsendelsesadresse</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_PRIMARY_INTENDED_USE">
+        <source>Primær påtænkt brug</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_USER_DEFINED_FISC_CLASS">
+        <source>Skattemæssig klassificering</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_PRODUCT_TYPE">
+        <source>Produkttype</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_TRX_BUSINESS_CATEGORY">
+        <source>Forretningskategori</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_ASSETS_TRACKING_FLAG">
+        <source>Registrér som aktiv</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_SERIAL_NUMBER">
+        <source>Serienr</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_MANUFACTURER">
+        <source>Producent</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_MODEL_NUMBER">
+        <source>Modelnr</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_WARRANTY_NUMBER">
+        <source>Garantinr</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_ASSET_BOOK_TYPE_CODE">
+        <source>Aktivbog</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_ASSET_CATEGORY_ID">
+        <source>Aktivkategori</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_VOUCHER_NUM">
+        <source>Bilagsnr</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_GROUP_ID">
+        <source>Bruger</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.lov.LineTypeLOV_LABEL">
+        <source>Line Type Lov</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.lov.TaxClassificationCodeLOV_LABEL">
+        <source>Tax Classification Code Lov</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.lov.ProjectLOV_LABEL">
+        <source>Project Lov</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.lov.AssignmentLOV_LABEL">
+        <source>Assignment Lov</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.lov.ExpenditureTypeLOV_LABEL">
+        <source>Expenditure Type Lov</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.lov.CostOrganizationLOV_LABEL">
+        <source>Cost Organization Lov</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_DATA_TYPE_NAME">
+        <source>DatatypeNavn</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_KATEGORI_NAVN">
+        <source>KategoriNavn</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_FILNAVN">
+        <source>Filnavn</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_BESKRIVELSE">
+        <source>Beskrivelse</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_FUNCTION_NAME">
+        <source>FunctionName</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.lov.SupplierNameLOV_LABEL">
+        <source>Search Suplier Name Lov</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.lov.SupplierNumberLOV_LABEL">
+        <source>Suplier Number Lov</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.lov.InvoiceCurrencyCodeLOV_LABEL">
+        <source>Invoice Currency Code Lov</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.ApInvoiceSearchVVO_LABEL">
+        <source>Ap Invoice Search Vvo</source>
+        <target/>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

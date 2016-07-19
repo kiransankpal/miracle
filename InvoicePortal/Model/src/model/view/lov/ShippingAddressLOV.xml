@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ShippingAddressLOV"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  FetchMode="FETCH_AS_NEEDED"
+  FetchSize="50">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.view.lov.ShippingAddressLOVLOV_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="bind_org_id"
+    Kind="where"
+    Type="oracle.jbo.domain.Number"/>
+  <SQLQuery>
+    <![CDATA[select 
+	lot.location_code,
+	loc.location_id ,
+	lot.description 
+from 
+	hr_locations_all loc, 
+	hr_locations_all_tl lot
+where 
+	sysdate < nvl(loc.inactive_date, sysdate+1)
+and 
+	loc.location_id = lot.location_id
+and 
+	lot.language = userenv('LANG')
+and 
+	(
+		nvl(loc.business_group_id, nvl(hr_general.get_business_group_id,-99)) = nvl(hr_general.get_business_group_id, -99))
+	and 
+		loc.ship_to_site_flag = 'Y' 
+	and 
+		(
+			loc.inventory_organization_id in 
+			( 
+				select 
+					inventory_organization_id 
+				from
+					financials_system_params_all fsp 
+				where 
+					fsp.org_id = :bind_org_id
+			) 
+		or 
+			loc.inventory_organization_id is null 
+		)
+order by 
+	lot.location_code]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="LocationCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="LOCATION_CODE"
+    Expression="LOCATION_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LocationId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="15"
+    Scale="0"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="LOCATION_ID"
+    Expression="LOCATION_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="16"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Description"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DESCRIPTION"
+    Expression="DESCRIPTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ResourceBundle>
+    <XliffBundle
+      id="model.CommonModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xliff version="1.1" xmlns="urn:oasis:names:tc:xliff:document:1.1">
+  <file source-language="en" original="view.ViewControllerBundle"
+        datatype="x-oracle-adf">
+    <body>
+      <trans-unit id="keyValue">
+        <source/>
+        <target/>
+      </trans-unit>
+      <trans-unit id="HEADER_TAB_PAYMENT">
+        <source>Betaling</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="HEADER_TAB_GENERAL">
+        <source>Generelt</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="HEADER_TAB_OTHERS">
+        <source>Øvrige</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_LINE_TAB_NAME">
+        <source>Linjer</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LINE_TAB_ACCOUNTING">
+        <source>Kontering</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LINE_TAB_PROJECTS">
+        <source>Projects</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LINE_TAB_PURCHASE">
+        <source>Indkøb</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LINE_TAB_INSTALLATION">
+        <source>Anlæg</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LINE_TAB_TAX">
+        <source>Moms</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_USER_TAB_NAME">
+        <source>Bruger</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_INVOICE_GATEWAY_II">
+        <source>Faktura Gateway II</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="ACTION_TAB_SAVE">
+        <source>Gem</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="ACTION_TAB_SAVE_AND_CLOSE">
+        <source>Gem og luk</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="ACTION_CANCEL">
+        <source>Annuller</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="ACTION_TAB_SEARCH">
+        <source>Søg</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LBL_ATTACHMENTS_TAB_NAME">
+        <source>Vedhæftninger</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LEVERANDORNAVN">
+        <source>Leverandørnavn</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="LEVERAND_U00F8RNUMMER">
+        <source>Leverandørnummer</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="FAKTURANUMMER">
+        <source>Fakturanummer</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="VALUTA">
+        <source>Valuta</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="STATUS">
+        <source>Status</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="TYPE">
+        <source>Type</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="EANNUMMER">
+        <source>EAN-Nummer</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="INSTITUTNUMMER">
+        <source>Institutnummer</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="FAKTURADATO">
+        <source>Fakturadato</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="BEL_U00F8B">
+        <source>Beløb</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="FORFALDSDATO">
+        <source>Forfaldsdato</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="BRUGER">
+        <source>Bruger</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="INDL_U00E6SNINGSDATO">
+        <source>Indlæsningsdato</source>
+        <target/>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

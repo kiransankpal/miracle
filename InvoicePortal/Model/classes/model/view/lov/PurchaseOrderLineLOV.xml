@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PurchaseOrderLineLOV"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  FetchMode="FETCH_AS_NEEDED"
+  FetchSize="50">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.view.lov.PurchaseOrderLineLOV_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="bind_po_header_id"
+    Kind="where"
+    Type="oracle.jbo.domain.Number"/>
+  <Variable
+    Name="bind_inventory_organization_id"
+    Kind="where"
+    Type="oracle.jbo.domain.Number"/>
+  <Variable
+    Name="bind_invoice_type_lookup_code"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="bind_invoice_amount"
+    Kind="where"
+    Type="oracle.jbo.domain.Number"/>
+  <SQLQuery>
+    <![CDATA[select 
+	nvl(pol.line_num_display,to_char(pol.line_num)) line_num, /*for bug9503239*/
+	pol.item_description,
+	substr(msi.segment1,1,40) item_number, 
+	pol.quantity,
+	sum(decode(pll.shipment_type,
+	   'STANDARD', decode(pll.matching_basis,'QUANTITY',
+	   decode(sign(pll.quantity - nvl(pll.quantity_billed,0)-nvl(pll.quantity_cancelled,0)),
+				1,(pll.quantity - nvl(pll.quantity_billed,0)-nvl(pll.quantity_cancelled,0)),
+		 0)),
+	   'PREPAYMENT',decode(pll.matching_basis,'QUANTITY',
+	  decode(sign(pll.quantity -nvl(pll.quantity_financed,0)-nvl(pll.quantity_cancelled,0)), 
+			   1,(pll.quantity -nvl(pll.quantity_financed,0)-nvl(pll.quantity_cancelled,0)),
+		 0))
+	  ) ) unbilled_quantity, 
+	pol.unit_meas_lookup_code,
+	pol.unit_price, 
+	pol.amount,
+	sum(decode(pll.shipment_type,
+	   'STANDARD', decode(pll.matching_basis,'AMOUNT',
+		decode(sign(pll.amount - nvl(pll.amount_billed,0)- nvl(pll.amount_cancelled,0)),
+				 1,(pll.amount - nvl(pll.amount_billed,0)- nvl(pll.amount_cancelled,0)),
+		 0)),
+	   'PREPAYMENT',decode(pll.matching_basis,'AMOUNT',
+		decode(sign(pll.amount - nvl(pll.amount_financed,0)-nvl(pll.amount_cancelled,0)), 
+				 1,(pll.amount - nvl(pll.amount_financed,0)-nvl(pll.amount_cancelled,0)),
+		 0))
+	  ) ) unbilled_amount,
+	pol.vendor_product_num,
+	pol.note_to_vendor,
+	pol.category_id purchasing_category_id,
+	pol.po_line_id,
+	pol.po_header_id,
+	pol.item_id
+from 
+	po_lines_trx_v pol/* for bug 9503239*/, po_line_locations pll,mtl_system_items msi 
+where 
+	pol.po_header_id = :bind_po_header_id 
+and 
+	pol.po_line_id = pll.po_line_id
+and 
+	msi.inventory_item_id(+) = pol.item_id 
+and 
+	nvl(msi.organization_id, :bind_inventory_organization_id) = 
+	:bind_inventory_organization_id 
+and (
+     (nvl(:bind_invoice_type_lookup_code,decode(sign(:bind_invoice_amount),-1,'CREDIT','STANDARD')) <> 'PREPAYMENT'
+      and exists (select 'po line with shipments other than prepayment type'
+                  from po_line_locations pll3
+                  where pll3.po_line_id = pol.po_line_id
+                  and pll3.shipment_type <> 'PREPAYMENT')
+     ) OR
+     (nvl(:bind_invoice_type_lookup_code,decode(sign(:bind_invoice_amount),-1,'CREDIT','STANDARD')) = 'PREPAYMENT' and
+       ( (exists (select 'complex work po line with prepayment shipments'
+                 from po_line_locations pll1
+                 where pll1.po_line_id = pol.po_line_id
+                 and pll1.payment_type IS NOT NULL
+                 and pll1.shipment_type = 'PREPAYMENT')
+         ) or
+         (exists (select 'non-complex work po line with any shipment type'
+                  from po_line_locations pll2
+                  where pll2.po_line_id = pol.po_line_id
+                  and pll2.payment_type IS NULL)
+         )
+       )
+     )
+    )
+group by 
+	nvl(pol.line_num_display,to_char(pol.line_num)), 
+	pol.item_description, 
+	pol.item_id, 
+	substr(msi.segment1,1,40),
+	pol.quantity, 
+	pol.unit_meas_lookup_code, 
+	pol.unit_price, 
+	pol.amount, 
+	pol.po_header_id,
+	pol.vendor_product_num, 
+	pol.note_to_vendor, 
+	pol.category_id, 
+	pol.po_line_id
+order by 
+	nvl(pol.line_num_display,to_char(pol.line_num))]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="LineNum"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="LINE_NUM"
+    Expression="LINE_NUM"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ItemDescription"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ITEM_DESCRIPTION"
+    Expression="ITEM_DESCRIPTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ItemNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="40"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ITEM_NUMBER"
+    Expression="ITEM_NUMBER"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="40"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Quantity"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="QUANTITY"
+    Expression="QUANTITY"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnbilledQuantity"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="UNBILLED_QUANTITY"
+    Expression="UNBILLED_QUANTITY"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitMeasLookupCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="UNIT_MEAS_LOOKUP_CODE"
+    Expression="UNIT_MEAS_LOOKUP_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitPrice"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="UNIT_PRICE"
+    Expression="UNIT_PRICE"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Amount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="AMOUNT"
+    Expression="AMOUNT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnbilledAmount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="UNBILLED_AMOUNT"
+    Expression="UNBILLED_AMOUNT"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="VendorProductNum"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VENDOR_PRODUCT_NUM"
+    Expression="VENDOR_PRODUCT_NUM"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="NoteToVendor"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="480"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="NOTE_TO_VENDOR"
+    Expression="NOTE_TO_VENDOR"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="480"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PurchasingCategoryId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PURCHASING_CATEGORY_ID"
+    Expression="PURCHASING_CATEGORY_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PoLineId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PO_LINE_ID"
+    Expression="PO_LINE_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PoHeaderId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PO_HEADER_ID"
+    Expression="PO_HEADER_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ItemId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="ITEM_ID"
+    Expression="ITEM_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ResourceBundle>
+    <XliffBundle
+      id="model.CommonModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xliff version="1.1" xmlns="urn:oasis:names:tc:xliff:document:1.1">
+  <file source-language="en" original="view.ViewControllerBundle_en"
+        datatype="x-oracle-adf">
+    <body>
+       <trans-unit id="HEADER_TAB_PAYMENT">
+        <source>Betaling</source>
+        <target>Payment</target>
+      </trans-unit>
+       <trans-unit id="HEADER_TAB_GENERAL">
+        <source>Generelt</source>
+         <target>General</target>
+      </trans-unit>
+      <trans-unit id="HEADER_TAB_OTHERS">
+        <source>Øvrige</source>
+        <target>Others</target>
+      </trans-unit>
+      <trans-unit id="LBL_LINE_TAB_NAME">
+        <source>Linjer</source>
+        <target>Lines</target>
+      </trans-unit>
+      <trans-unit id="LINE_TAB_ACCOUNTING">
+        <source>Kontering</source>
+        <target>Accounting</target>
+      </trans-unit>
+      <trans-unit id="LINE_TAB_PROJECTS">
+        <source>Projects</source>
+        <target>Projects</target>
+      </trans-unit>
+      <trans-unit id="LINE_TAB_PURCHASE">
+        <source>Indkøb</source>
+        <target>Purchase</target>
+      </trans-unit>
+      <trans-unit id="LINE_TAB_INSTALLATION">
+        <source>Anlæg</source>
+        <target>Installation</target>
+      </trans-unit>
+      <trans-unit id="LINE_TAB_TAX">
+        <source>Moms</source>
+        <target>Tax</target>
+      </trans-unit>
+      <trans-unit id="LBL_USER_TAB_NAME">
+        <source>Bruger</source>
+        <target>User</target>
+      </trans-unit>
+      <trans-unit id="LBL_INVOICE_GATEWAY_II">
+        <source>Faktura Gateway II</source>
+        <target>Invoice Gateway II</target>
+      </trans-unit>
+      <trans-unit id="ACTION_TAB_SAVE">
+        <source>Gem</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id="ACTION_TAB_SAVE_AND_CLOSE">
+        <source>Gem og luk</source>
+        <target>Save and Close</target>
+      </trans-unit>
+      <trans-unit id="ACTION_CANCEL">
+        <source>Annuller</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="ACTION_TAB_SEARCH">
+        <source>Søg</source>
+        <target>Search</target>
+      </trans-unit>
+      <trans-unit id="LBL_ATTACHMENTS_TAB_NAME">
+        <source>Vedhæftninger</source>
+        <target>Attachments</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

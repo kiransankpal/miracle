@@ -1,0 +1,232 @@
+/**ADFFaces_Skin_File / DO NOT REMOVE**/
+@namespace af "http://xmlns.oracle.com/adf/faces/rich";
+
+@namespace dvt "http://xmlns.oracle.com/dss/adf/faces";
+
+body {
+    background-color: White;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: navy;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    font-weight: bolder;
+    text-transform: capitalize;
+}
+
+h2 {
+    color: navy;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    font-weight: bolder;
+    text-transform: capitalize;
+}
+
+h3 {
+    color: navy;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    font-weight: lighter;
+    text-transform: capitalize;
+}
+
+.AFBrandingBarLogo {
+    width: 155px;
+    background-image: url("../images/Oracle_Logo.gif");
+}
+
+.AFBrandingBar {
+    background-image: url("../images/background2.PNG");
+}
+
+.AFFooterBar {
+    background-image: url("../images/background3.PNG");
+    background-color: rgb(27, 108, 173);
+}
+
+af|panelFormLayout::label-cell {
+    text-align: left;
+}
+/* 
+af|panelFormLayout::label-stacked-cell { width: 100px; }
+
+af|panelFormLayout::content-cell {
+    padding-top: 20px;  down from 8px 
+}
+af|panelFormLayout::separator{}
+
+.AFRequiredIconStyle {
+float:right;
+margin-right:-6px;
+}*/
+.XTargetLineBoxHeight:alias {
+    height: 28px;
+}
+/* The target line-height in pixel for the default font-size (12px) is 18px 
+ * (leaving 10px for the top and bottom paddings), thus set line-height here
+ * to unitless value of 1.5 (18/12 = 1.5). 
+ */
+.XDefaultLineHeight:alias {
+    line-height: 1.5;
+}
+/* margin box height = border box height + margin-top + margin-bottom */
+.XDefaultFormControlHeightMarginBox:alias {
+    -tr-rule-ref: selector(".XTargetLineBoxHeight:alias");
+}
+
+.XDefaultFormControlHeightBorderBox:alias {
+    -tr-rule-ref: selector(".XTargetLineBoxHeight:alias");
+}
+
+.XFormControlVerticalMargins:alias {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+/* TODO: revisit this setting */
+.XFormCellVerticalPaddings:alias {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+/* in panelFormLayout, use consistent line-height for better vertical
+ * alignment and vertical distribution. 
+ */
+af|panelFormLayout {
+    -tr-rule-ref: selector(".XDefaultLineHeight:alias");
+}
+/* use the same padding for the top and bottom of the form cell to simplify
+ * the logic of vertical spacing between cells.
+ */
+.AFPanelFormLayoutContentCell, af|panelFormLayout::content-cell, af|panelFormLayout::label-cell, af|panelLabelAndMessage::content-cell.AFPanelFormLayoutContentCell {
+    -tr-rule-ref: selector(".XFormCellVerticalPaddings:alias");
+}
+/* make label an fixed-height inline-block element, so that it aligns with
+ * other components easier, either for start or top labelAlignment, or 
+ * for top, middle or bottom vertical-align.
+ */
+.XLabel:alias {
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 5px 0;
+    -tr-rule-ref: selector(".XDefaultLineHeight:alias");
+    -tr-rule-ref: selector(".XTargetLineBoxHeight:alias");
+}
+
+af|panelFormLayout label {
+    -tr-rule-ref: selector(".XLabel:alias");
+}
+/* basic styling of inputText */
+.XInputText:alias {
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    padding: 4px 6px;
+    border-width: 1px;
+    -tr-rule-ref: selector(".XDefaultLineHeight:alias");
+    -tr-rule-ref: selector(".XTargetLineBoxHeight:alias");
+}
+
+af|inputText::content {
+    -tr-rule-ref: selector(".XInputText:alias");
+}
+
+af|inputText::label {
+    -tr-inhibit: padding-top;
+}
+
+af|inputText::label:rtl {
+    -tr-inhibit: padding-top;
+}
+
+af|inputDate::content {
+    -tr-rule-ref: selector(".XInputText:alias");
+}
+
+af|inputDate::label {
+    -tr-inhibit: padding-top;
+}
+
+af|inputDate::label:rtl {
+    -tr-inhibit: padding-top;
+}
+/* reset native radio and checkbox input elements, so that they line up 
+ * with their labels properly. 
+ */
+.XSelectOneRadioNativeInput:alias {
+    position: static;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+}
+
+af|selectBooleanRadio::native-input, af|selectOneRadio::native-input, af|selectBooleanCheckbox::native-input, af|selectManyCheckbox::native-input, af|selectBooleanRadio::native-input:rtl, af|selectOneRadio::native-input:rtl, af|selectBooleanCheckbox::native-input:rtl, af|selectManyCheckbox::native-input:rtl {
+    -tr-rule-ref: selector(".XSelectOneRadioNativeInput:alias");
+}
+@agent webkit,gecko,ie{
+  af|selectOneRadio::native-input,
+  af|selectBooleanRadio::native-input,
+  af|selectBooleanCheckbox::native-input,
+  af|selectManyCheckbox::native-input,
+  af|selectOneRadio::native-input:rtl,
+  af|selectBooleanRadio::native-input:rtl,
+  af|selectBooleanCheckbox::native-input:rtl,
+  af|selectManyCheckbox::native-input:rtl{
+    -tr-rule-ref: selector(".XSelectOneRadioNativeInput:alias");
+  }
+}
+
+af|selectOneChoice::content {
+    -tr-rule-ref: selector(".XInputText:alias");
+}
+
+af|inputListOfValues::content {
+    -tr-rule-ref: selector(".XInputText:alias");
+}
+/*af|inputListOfValues{
+    -tr-dialog-number-of-rows:5;
+    -tr-stretch-search-dialog:true;
+}*/
+af|inputListOfValues::dialog {
+    width: 500px;
+}
+
+
+af|table af|column::column-header-cell{
+   
+    background-color: #3f5c9a;
+    
+}
+
+af|column::column-header-cell-content {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    background-color: #3f5c9a;
+    padding: 3px;
+}
+
+af|column::data-cell {
+    color: black;
+    background-color: #aad8ef;
+    font-size: 12px;
+    font-family: 'OpenSans-Regular';
+    height: 30px;
+    vertical-align: middle;
+    text-align: left;
+}
+
+
+
+af|table::data-table-VH-lines af|column::banded-data-cell{ 
+background-color:#F0E5CC; 
+color: #7F4614;
+font-size:12px;   
+font-family:'OpenSans-Regular';  
+height:30px;   
+vertical-align: middle;
+text-align: left; 
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee">
+  <application>
+    <default-render-kit-id>oracle.adf.rich</default-render-kit-id>
+    <resource-bundle>
+      <base-name>model.CommonModelbundle</base-name>
+      <var>modelBundle</var>
+    </resource-bundle>
+    <locale-config>
+      <default-locale>da</default-locale>
+      <supported-locale>en</supported-locale>
+    </locale-config>
+  </application>
+</faces-config>
