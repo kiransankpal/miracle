@@ -133,8 +133,8 @@ public class GlobalPhaseListener implements PagePhaseListener {
                     Lifecycle.getPhaseName(pagePhaseEvent.getPhaseId()));
         if (pagePhaseEvent.getPhaseId() == Lifecycle.INIT_CONTEXT_ID) {
             logger.info("Checking for EBS Session in afterPhase");
-            //  Session ebsSession = checkEBSSession();
-             // setEBSLocale(ebsSession);
+             Session ebsSession = checkEBSSession();
+             setEBSLocale(ebsSession);
         }
     }
 
