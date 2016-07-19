@@ -17,6 +17,10 @@ import javax.faces.event.ValueChangeEvent;
 
 import oracle.adf.model.BindingContext;
 
+import oracle.adf.view.rich.component.rich.input.RichInputText;
+import oracle.adf.view.rich.component.rich.input.RichSelectOneChoice;
+import oracle.adf.view.rich.context.AdfFacesContext;
+
 import oracle.binding.BindingContainer;
 import oracle.binding.OperationBinding;
 
@@ -29,7 +33,7 @@ public class InvoiceSearchBean {
     Integer vendorNumber;
     Long invoiceNumber;
     String invoiceCurrencyCode;
-    String invoiceType;
+    String invoiceType="Standard";
     Date maturityStartDate;
     Date maturityEndDate;
     Date invoiceStartDate;
@@ -37,6 +41,8 @@ public class InvoiceSearchBean {
     String invoiceStatus;
     Long invoiceFormAmount;
     Long invoiceToAmount;
+    private RichSelectOneChoice invoiceCurrencyCodeComponent;
+    private RichSelectOneChoice invoiceStatusComponent;
 
 
     public InvoiceSearchBean() {
@@ -105,7 +111,7 @@ public class InvoiceSearchBean {
         vendorName = null;
         invoiceNumber = null;
         invoiceCurrencyCode = null;
-        invoiceType = null;
+        invoiceType = "Standard";
         maturityEndDate = null;
         maturityStartDate = null;
         invoiceEndDate = null;
@@ -113,6 +119,9 @@ public class InvoiceSearchBean {
         invoiceStatus=null;
         invoiceFormAmount=null;
         invoiceToAmount=null;
+        onReset(invoiceCurrencyCodeComponent);
+        onReset(invoiceStatusComponent);
+
         return null;
     }
 
@@ -193,5 +202,38 @@ public class InvoiceSearchBean {
 
     public Long getInvoiceToAmount() {
         return invoiceToAmount;
+    }
+    
+    
+    public void onReset(RichSelectOneChoice component) {
+    component.resetValue();
+    component.setValue(0);
+    AdfFacesContext adfFacesContext = AdfFacesContext.getCurrentInstance();
+    adfFacesContext.addPartialTarget(component);
+    }
+
+    public void setInvoiceCurrencyCodeComponent(RichSelectOneChoice invoiceCurrencyCodeComponent) {
+        this.invoiceCurrencyCodeComponent = invoiceCurrencyCodeComponent;
+    }
+
+    public RichSelectOneChoice getInvoiceCurrencyCodeComponent() {
+        return invoiceCurrencyCodeComponent;
+    }
+
+
+    public void setInvoiceStatusComponent(RichSelectOneChoice invoiceStatusComponent) {
+        this.invoiceStatusComponent = invoiceStatusComponent;
+    }
+
+    public RichSelectOneChoice getInvoiceStatusComponent() {
+        return invoiceStatusComponent;
+    }
+
+    public void setInvoiceType(String invoiceType) {
+        this.invoiceType = invoiceType;
+    }
+
+    public String getInvoiceType() {
+        return invoiceType;
     }
 }

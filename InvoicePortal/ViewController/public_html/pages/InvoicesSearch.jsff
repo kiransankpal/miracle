@@ -54,7 +54,8 @@
                                   value="#{bindings.statusList.inputValue}"
                                   contentStyle="width:250.0px;"
                                   valueChangeListener="#{pageFlowScope.InvoiceSearchBean.invoiceStatusValueChange}"
-                                  autoSubmit="true">
+                                  autoSubmit="true"
+                                  binding="#{pageFlowScope.InvoiceSearchBean.invoiceStatusComponent}">
                 <f:selectItems value="#{bindings.statusList.items}"
                                id="selectItems2"/>
               </af:selectOneChoice>
@@ -157,7 +158,8 @@
                                   value="#{bindings.currencyCodeList.inputValue}"
                                   contentStyle="width:250.0px;"
                                   valueChangeListener="#{pageFlowScope.InvoiceSearchBean.invoiceCurrencyCodeValueChange}"
-                                  autoSubmit="true">
+                                  autoSubmit="true"
+                                  binding="#{pageFlowScope.InvoiceSearchBean.invoiceCurrencyCodeComponent}">
                 <f:selectItems value="#{bindings.currencyCodeList.items}"
                                id="selectItems6"/>
               </af:selectOneChoice>
@@ -191,9 +193,10 @@
                               id="outputLabel9"/>
             </af:gridCell>
             <af:gridCell marginStart="5px" width="22%" id="gc27">
-              <af:selectOneRadio value="Standard" layout="horizontal"
+              <af:selectOneRadio layout="horizontal"
                                  valueChangeListener="#{pageFlowScope.InvoiceSearchBean.invoiceTypeValueChange}"
-                                 autoSubmit="true">
+                                 autoSubmit="true"
+                                 value="#{pageFlowScope.InvoiceSearchBean.invoiceType}">
                 <f:selectItem itemValue="Standard" itemLabel="Standard "/>
                 <f:selectItem itemLabel="Credit Memo" itemValue="Credit Memo"/>
               </af:selectOneRadio>
