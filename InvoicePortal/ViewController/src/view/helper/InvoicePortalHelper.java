@@ -14,7 +14,9 @@ public class InvoicePortalHelper {
         FacesContext context = FacesContext.getCurrentInstance();
         Map<String, String> params = context.getExternalContext().getRequestParameterMap();
         String pageID = params.get("pageID");
-        System.out.println("pageID::"+pageID);
+        if(pageID.contains("?")){
+            pageID= (pageID.split("\\?"))[0];
+        }
         if(pageID!=null)
             AdfFacesContext.getCurrentInstance().getPageFlowScope().put("pageID",pageID);
     }
