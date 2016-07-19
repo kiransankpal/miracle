@@ -21,9 +21,10 @@
   </Properties>
   <SQLQuery>
     <![CDATA[SELECT DISTINCT
-       FIRST_VALUE (invoice_id) OVER(PARTITION BY vendor_name) as invoice_id
-      ,vendor_name
+       FIRST_VALUE (invoice_id) OVER(PARTITION BY vendor_name) as invoice_id,vendor_name
 FROM   ap_invoices_interface_v
+where WORKFLOW_FLAG ='V' 
+AND SOURCE IN ('OIOXML','INVOICE GATEWAY')
 ORDER BY vendor_name ASC]]>
   </SQLQuery>
   <ViewAttribute

@@ -19,6 +19,7 @@ public class ApInvoiceSearchVVORowImpl extends ViewRowImpl {
      */
     public enum AttributesEnum {
         RowId1,
+        GlobalAttribute4,
         GlobalAttributeCategory,
         AwtGroupId,
         CreatedBy,
@@ -150,7 +151,10 @@ public class ApInvoiceSearchVVORowImpl extends ViewRowImpl {
             return vals;
         }
     }
+
+
     public static final int ROWID1 = AttributesEnum.RowId1.index();
+    public static final int GLOBALATTRIBUTE4 = AttributesEnum.GlobalAttribute4.index();
     public static final int GLOBALATTRIBUTECATEGORY = AttributesEnum.GlobalAttributeCategory.index();
     public static final int AWTGROUPID = AttributesEnum.AwtGroupId.index();
     public static final int CREATEDBY = AttributesEnum.CreatedBy.index();
@@ -281,6 +285,22 @@ public class ApInvoiceSearchVVORowImpl extends ViewRowImpl {
      */
     public void setRowId1(String value) {
         setAttributeInternal(ROWID1, value);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute GlobalAttribute4.
+     * @return the GlobalAttribute4
+     */
+    public String getGlobalAttribute4() {
+        return (String) getAttributeInternal(GLOBALATTRIBUTE4);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for the calculated attribute GlobalAttribute4.
+     * @param value value to set the  GlobalAttribute4
+     */
+    public void setGlobalAttribute4(String value) {
+        setAttributeInternal(GLOBALATTRIBUTE4, value);
     }
 
     /**

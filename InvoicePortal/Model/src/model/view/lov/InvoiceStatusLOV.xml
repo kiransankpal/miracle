@@ -3,7 +3,7 @@
 <!---->
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="SupplierNameLOV"
+  Name="InvoiceStatusLOV"
   Version="11.1.1.64.93"
   InheritPersonalization="true"
   BindingStyle="OracleName"
@@ -16,46 +16,44 @@
   <Properties>
     <SchemaBasedProperties>
       <LABEL
-        ResId="model.view.lov.SuplierNameLOV"/>
+        ResId="model.view.lov.InvoiceStatusLOV_LABEL"/>
     </SchemaBasedProperties>
   </Properties>
   <SQLQuery>
     <![CDATA[SELECT DISTINCT
-       FIRST_VALUE (invoice_id) OVER(PARTITION BY vendor_name) as invoice_id,vendor_name
-FROM   ap_invoices_interface_v
+       FIRST_VALUE (invoice_id) OVER(PARTITION BY status) as invoice_id
+      , status
+FROM  ap_invoices_interface_v
 where WORKFLOW_FLAG ='V' 
 AND SOURCE IN ('OIOXML','INVOICE GATEWAY')
-ORDER BY vendor_name ASC]]>
+AND status is not null]]>
   </SQLQuery>
   <ViewAttribute
     Name="InvoiceId"
     IsUpdateable="false"
     IsPersistent="false"
-    IsNotNull="true"
     PrecisionRule="true"
-    Precision="15"
-    Scale="0"
     Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
+    ColumnType="BIGINT"
     AliasName="INVOICE_ID"
     Expression="INVOICE_ID"
     SQLType="NUMERIC">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="16"/>
+      <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
   </ViewAttribute>
   <ViewAttribute
-    Name="VendorName"
+    Name="Status"
     IsPersistent="false"
     PrecisionRule="true"
-    Precision="240"
+    Precision="25"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    AliasName="VENDOR_NAME"
-    Expression="VENDOR_NAME"
+    AliasName="STATUS"
+    Expression="STATUS"
     SQLType="VARCHAR">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="240"/>
+      <Attr Name="_DisplaySize" Value="25"/>
     </DesignTime>
   </ViewAttribute>
   <AttrArray Name="KeyAttributes">

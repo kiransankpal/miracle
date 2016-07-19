@@ -41,6 +41,9 @@
   <ViewUsage
     Name="InvoiceCurrencyCodeLOV"
     ViewObjectName="model.view.lov.InvoiceCurrencyCodeLOV"/>
+  <ViewUsage
+    Name="InvoiceStatusLOV"
+    ViewObjectName="model.view.lov.InvoiceStatusLOV"/>
   <ViewLinkUsage
     Name="ApInvoiceLinesVL1"
     ViewLinkObjectName="model.view.link.ApInvoiceLinesVL"

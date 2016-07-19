@@ -328,6 +328,26 @@
         <source>Ap Invoice Search Vvo</source>
         <target/>
       </trans-unit>
+      <trans-unit id="model.view.ApInvoiceSearchVVO.InvoiceDate_FMT_FORMATTER">
+        <source>oracle.jbo.format.DefaultDateFormatter</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.ApInvoiceSearchVVO.InvoiceDate_FMT_FORMAT">
+        <source>dd-MM-yy</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.ApInvoiceSearchVVO.TermsDate_FMT_FORMATTER">
+        <source>oracle.jbo.format.DefaultDateFormatter</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.ApInvoiceSearchVVO.TermsDate_FMT_FORMAT">
+        <source>dd-MM-yy</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.lov.InvoiceStatusLOV_LABEL">
+        <source>Invoice Status Lov</source>
+        <target/>
+      </trans-unit>
     </body>
   </file>
 </xliff>

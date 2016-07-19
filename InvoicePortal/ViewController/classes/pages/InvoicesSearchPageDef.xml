@@ -5,9 +5,10 @@
 <parameters/>
   <executables>
     <variableIterator id="variables">
-      <variable Name="vendorName" Type="java.lang.String"/>
-      <variable Name="vendorNumber" Type="java.lang.String"/>
+       <variable Name="vendorName"   Type="java.lang.String"/>
+       <variable Name="vendorNumber" Type="java.lang.String"/>
        <variable Name="currencyCode" Type="java.lang.String"/>
+       <variable Name="status"       Type="java.lang.String"/>
     </variableIterator>
     <iterator Binds="SupplierNameLOV" RangeSize="-1"
               DataControl="CommonAppModuleDataControl"
@@ -18,6 +19,9 @@
               DataControl="CommonAppModuleDataControl" RangeSize="-1"/>
     <iterator id="ApInvoiceSearchVVOIterator" Binds="ApInvoiceSearchVVO"
               DataControl="CommonAppModuleDataControl" RangeSize="25"/>
+    <iterator Binds="InvoiceStatusLOV" RangeSize="-1"
+              DataControl="CommonAppModuleDataControl"
+              id="InvoiceStatusLOVIterator"/>
   </executables>
   <bindings>
   <tree IterBinding="ApInvoiceSearchVVOIterator"
@@ -53,6 +57,11 @@
     <attributeValues IterBinding="variables" id="attrCurrencyCode">
       <AttrNames>
         <Item Value="currencyCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="attrStatus">
+      <AttrNames>
+        <Item Value="status"/>
       </AttrNames>
     </attributeValues>
     <list StaticList="false" IterBinding="variables"
@@ -95,13 +104,27 @@
         <Item Value="InvoiceCurrencyCode"/>
       </ListDisplayAttrNames>
     </list>
+    <list StaticList="false" IterBinding="variables"
+          ListIter="InvoiceStatusLOVIterator"
+          NullValueId=""
+          NullValueFlag="start" id="statusList">
+      <AttrNames>
+        <Item Value="status"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="Status"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Status"/>
+      </ListDisplayAttrNames>
+    </list>
     <listOfValues StaticList="false" IterBinding="ApInvoiceSearchVVOIterator"
                   Uses="LOV_VendorName" id="VendorName"/>
     <listOfValues StaticList="false" IterBinding="ApInvoiceSearchVVOIterator"
                   Uses="LOV_VendorNumber" id="VendorNumber"/>
-    <methodAction id="searchInvoice" RequiresUpdateModel="true"
-                  Action="invokeMethod" MethodName="searchInvoice"
-                  IsViewObjectMethod="true"
+    <methodAction IterBinding="ApInvoiceSearchVVOIterator" id="searchInvoice"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="searchInvoice" IsViewObjectMethod="true"
                   DataControl="CommonAppModuleDataControl"
                   InstanceName="CommonAppModuleDataControl.ApInvoiceSearchVVO">
       <NamedData NDName="vendorName" NDType="java.lang.String"/>
@@ -113,8 +136,9 @@
       <NamedData NDName="invoiceEndDate" NDType="java.lang.String"/>
       <NamedData NDName="invoiceNumber" NDType="java.lang.Long"/>
       <NamedData NDName="invoiceType" NDType="java.lang.String"/>
-      <NamedData NDName="invoiceFromAmount" NDType="java.lang.Float"/>
-      <NamedData NDName="invoiceToAmount" NDType="java.lang.Float"/>
+      <NamedData NDName="invoiceFromAmount" NDType="java.lang.Long"/>
+      <NamedData NDName="invoiceToAmount" NDType="java.lang.Long"/>
+      <NamedData NDName="invoiceStatus" NDType="java.lang.String"/>
     </methodAction>
   </bindings>
 </pageDefinition>

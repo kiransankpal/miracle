@@ -20,6 +20,9 @@ import oracle.adf.model.BindingContext;
 import oracle.binding.BindingContainer;
 import oracle.binding.OperationBinding;
 
+import view.utils.ADFUtils;
+import view.utils.JSFUtils;
+
 
 public class InvoiceSearchBean {
     String vendorName;
@@ -31,6 +34,9 @@ public class InvoiceSearchBean {
     Date maturityEndDate;
     Date invoiceStartDate;
     Date invoiceEndDate;
+    String invoiceStatus;
+    Long invoiceFormAmount;
+    Long invoiceToAmount;
 
 
     public InvoiceSearchBean() {
@@ -46,31 +52,6 @@ public class InvoiceSearchBean {
         if (valueChangeEvent.getNewValue() != null) {
             vendorNumber = (Integer)valueChangeEvent.getNewValue();
         }
-        System.out.println("Vendor Number" + vendorNumber);
-    }
-
-    /**
-     * Method for taking a reference to a JSF binding expression and returning
-     * the matching object (or creating it).
-     * @param expression EL expression
-     * @return Managed object
-     */
-    public static Object resolveExpression(String expression) {
-        FacesContext facesContext = getFacesContext();
-        Application app = facesContext.getApplication();
-        ExpressionFactory elFactory = app.getExpressionFactory();
-        ELContext elContext = facesContext.getELContext();
-        ValueExpression valueExp =
-            elFactory.createValueExpression(elContext, expression,
-                                            Object.class);
-        return valueExp.getValue(elContext);
-    }
-
-    /** Get FacesContext.
-     * @return FacesContext
-     */
-    public static FacesContext getFacesContext() {
-        return FacesContext.getCurrentInstance();
     }
 
     public BindingContainer getBindings() {
@@ -78,12 +59,11 @@ public class InvoiceSearchBean {
     }
 
     public String searchInvoice() {
-        DateFormat formatter = new SimpleDateFormat("dd-MMM-yy");
+        DateFormat formatter = new SimpleDateFormat("dd-MM-yy");
         BindingContainer bindings = getBindings();
         OperationBinding operationBinding =
             bindings.getOperationBinding("searchInvoice");
         Map operMap = operationBinding.getParamsMap();
-
         operMap.put("vendorName", vendorName);
         operMap.put("vendorNumber", vendorNumber);
         operMap.put("invoiceNumber", invoiceNumber);
@@ -110,6 +90,9 @@ public class InvoiceSearchBean {
             operMap.put("invoiceEndDate",
                         formatter.format(invoiceEndDate).toString());
         }
+        operMap.put("invoiceFromAmount", invoiceFormAmount);
+        operMap.put("invoiceToAmount", invoiceToAmount);
+        operMap.put("invoiceStatus", invoiceStatus);
         operationBinding.execute();
         if (!operationBinding.getErrors().isEmpty()) {
             return null;
@@ -127,6 +110,9 @@ public class InvoiceSearchBean {
         maturityStartDate = null;
         invoiceEndDate = null;
         invoiceStartDate = null;
+        invoiceStatus=null;
+        invoiceFormAmount=null;
+        invoiceToAmount=null;
         return null;
     }
 
@@ -167,9 +153,17 @@ public class InvoiceSearchBean {
         UIComponent uiComponent = valueChangeEvent.getComponent();
         uiComponent.processUpdates(FacesContext.getCurrentInstance());
         invoiceCurrencyCode =
-                (String)resolveExpression("#{bindings.attrCurrencyCode.inputValue}");
+                (String)JSFUtils.resolveExpression("#{bindings.attrCurrencyCode.inputValue}");
     }
-
+    
+    public void invoiceStatusValueChange(ValueChangeEvent valueChangeEvent) {
+        UIComponent uiComponent = valueChangeEvent.getComponent();
+        uiComponent.processUpdates(FacesContext.getCurrentInstance());
+        invoiceStatus =
+                (String)JSFUtils.resolveExpression("#{bindings.attrStatus.inputValue}");
+    }
+    
+    
     public void invoiceTypeValueChange(ValueChangeEvent valueChangeEvent) {
         if (valueChangeEvent.getNewValue() != null) {
             invoiceType = (String)valueChangeEvent.getNewValue();
@@ -182,5 +176,22 @@ public class InvoiceSearchBean {
 
     public Long getInvoiceNumber() {
         return invoiceNumber;
+    }
+
+
+    public void setInvoiceFormAmount(Long invoiceFormAmount) {
+        this.invoiceFormAmount = invoiceFormAmount;
+    }
+
+    public Long getInvoiceFormAmount() {
+        return invoiceFormAmount;
+    }
+
+    public void setInvoiceToAmount(Long invoiceToAmount) {
+        this.invoiceToAmount = invoiceToAmount;
+    }
+
+    public Long getInvoiceToAmount() {
+        return invoiceToAmount;
     }
 }

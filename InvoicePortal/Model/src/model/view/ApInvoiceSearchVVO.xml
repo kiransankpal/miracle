@@ -64,11 +64,15 @@
   <Variable
     Name="p_InvoiceToAmount"
     Kind="viewcriteria"
-    Type="java.lang.Float"/>
+    Type="java.lang.Long"/>
   <Variable
     Name="p_InvoiceFromAmount"
     Kind="viewcriteria"
-    Type="java.lang.Float"/>
+    Type="java.lang.Long"/>
+  <Variable
+    Name="p_InvoiceStatus"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
   <ViewAccessor
     Name="SupplierNameLOV"
     ViewObjectName="model.view.lov.SupplierNameLOV"
@@ -116,7 +120,8 @@
       Hint="showAndExecute"/>
   </ListBinding>
   <SQLQuery>
-    <![CDATA[SELECT ApInvoicesInterfaceV.ROW_ID, 
+    <![CDATA[SELECT ApInvoicesInterfaceV.ROW_ID,
+       ApInvoicesInterfaceV.GLOBAL_ATTRIBUTE4,
        ApInvoicesInterfaceV.GLOBAL_ATTRIBUTE_CATEGORY, 
        ApInvoicesInterfaceV.AWT_GROUP_ID, 
        ApInvoicesInterfaceV.CREATED_BY, 
@@ -238,9 +243,24 @@ AND SOURCE IN ('OIOXML','INVOICE GATEWAY')]]>
     ColumnType="CHAR"
     AliasName="ROW_ID"
     Expression="ROW_ID"
-    SQLType="ROWID">
+    SQLType="VARCHAR">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="GlobalAttribute4"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="150"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="GLOBAL_ATTRIBUTE4"
+    Expression="GLOBAL_ATTRIBUTE4"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
     </DesignTime>
   </ViewAttribute>
   <ViewAttribute
@@ -299,7 +319,7 @@ AND SOURCE IN ('OIOXML','INVOICE GATEWAY')]]>
     ColumnType="DATE"
     AliasName="CREATION_DATE"
     Expression="CREATION_DATE"
-    SQLType="TIMESTAMP">
+    SQLType="DATE">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="7"/>
     </DesignTime>
@@ -343,7 +363,7 @@ AND SOURCE IN ('OIOXML','INVOICE GATEWAY')]]>
     ColumnType="DATE"
     AliasName="EXCHANGE_DATE"
     Expression="EXCHANGE_DATE"
-    SQLType="TIMESTAMP">
+    SQLType="DATE">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="7"/>
     </DesignTime>
@@ -401,7 +421,7 @@ AND SOURCE IN ('OIOXML','INVOICE GATEWAY')]]>
     ColumnType="DATE"
     AliasName="GOODS_RECEIVED_DATE"
     Expression="GOODS_RECEIVED_DATE"
-    SQLType="TIMESTAMP">
+    SQLType="DATE">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="7"/>
     </DesignTime>
@@ -444,7 +464,7 @@ AND SOURCE IN ('OIOXML','INVOICE GATEWAY')]]>
     ColumnType="DATE"
     AliasName="INVOICE_DATE"
     Expression="INVOICE_DATE"
-    SQLType="TIMESTAMP">
+    SQLType="DATE">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="7"/>
     </DesignTime>
@@ -498,7 +518,7 @@ AND SOURCE IN ('OIOXML','INVOICE GATEWAY')]]>
     ColumnType="DATE"
     AliasName="INVOICE_RECEIVED_DATE"
     Expression="INVOICE_RECEIVED_DATE"
-    SQLType="TIMESTAMP">
+    SQLType="DATE">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="7"/>
     </DesignTime>
@@ -543,7 +563,7 @@ AND SOURCE IN ('OIOXML','INVOICE GATEWAY')]]>
     ColumnType="DATE"
     AliasName="LAST_UPDATE_DATE"
     Expression="LAST_UPDATE_DATE"
-    SQLType="TIMESTAMP">
+    SQLType="DATE">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="7"/>
     </DesignTime>
@@ -755,7 +775,7 @@ AND SOURCE IN ('OIOXML','INVOICE GATEWAY')]]>
     ColumnType="DATE"
     AliasName="GL_DATE"
     Expression="GL_DATE"
-    SQLType="TIMESTAMP">
+    SQLType="DATE">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="7"/>
     </DesignTime>
@@ -1007,7 +1027,7 @@ AND SOURCE IN ('OIOXML','INVOICE GATEWAY')]]>
     ColumnType="DATE"
     AliasName="PAYMENT_CROSS_RATE_DATE"
     Expression="PAYMENT_CROSS_RATE_DATE"
-    SQLType="TIMESTAMP">
+    SQLType="DATE">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="7"/>
     </DesignTime>
@@ -1079,7 +1099,7 @@ AND SOURCE IN ('OIOXML','INVOICE GATEWAY')]]>
     ColumnType="DATE"
     AliasName="PREPAY_GL_DATE"
     Expression="PREPAY_GL_DATE"
-    SQLType="TIMESTAMP">
+    SQLType="DATE">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="7"/>
     </DesignTime>
@@ -1122,7 +1142,7 @@ AND SOURCE IN ('OIOXML','INVOICE GATEWAY')]]>
     ColumnType="DATE"
     AliasName="TERMS_DATE"
     Expression="TERMS_DATE"
-    SQLType="TIMESTAMP">
+    SQLType="DATE">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="7"/>
     </DesignTime>
@@ -1355,7 +1375,7 @@ AND SOURCE IN ('OIOXML','INVOICE GATEWAY')]]>
     ColumnType="DATE"
     AliasName="SUPPLIER_TAX_INVOICE_DATE"
     Expression="SUPPLIER_TAX_INVOICE_DATE"
-    SQLType="TIMESTAMP">
+    SQLType="DATE">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="7"/>
     </DesignTime>
@@ -1383,7 +1403,7 @@ AND SOURCE IN ('OIOXML','INVOICE GATEWAY')]]>
     ColumnType="DATE"
     AliasName="TAX_INVOICE_RECORDING_DATE"
     Expression="TAX_INVOICE_RECORDING_DATE"
-    SQLType="TIMESTAMP">
+    SQLType="DATE">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="7"/>
     </DesignTime>
@@ -1953,6 +1973,14 @@ AND SOURCE IN ('OIOXML','INVOICE GATEWAY')]]>
           IsBindVarValue="true"
           Required="Optional"/>
         <ViewCriteriaItem
+          Name="Status"
+          ViewAttribute="Status"
+          Operator="STARTSWITH"
+          Conjunction="AND"
+          Value=":p_InvoiceStatus"
+          IsBindVarValue="true"
+          Required="Optional"/>
+        <ViewCriteriaItem
           Name="InvoiceType"
           ViewAttribute="InvoiceType"
           Operator="STARTSWITH"
@@ -2084,50 +2112,13 @@ AND SOURCE IN ('OIOXML','INVOICE GATEWAY')]]>
         Type="java.lang.String"/>
       <Parameter
         Name="invoiceFromAmount"
-        Type="java.lang.Float"/>
-      <Parameter
-        Name="invoiceToAmount"
-        Type="java.lang.Float"/>
-    </Method>
-  </ClientInterface>
-  <ClientInterface>
-    <Method
-      Name="searchInvoice">
-      <Return
-        Type="void"/>
-      <Parameter
-        Name="vendorName"
-        Type="java.lang.String"/>
-      <Parameter
-        Name="vendorNumber"
-        Type="java.lang.Integer"/>
-      <Parameter
-        Name="currencyCode"
-        Type="java.lang.String"/>
-      <Parameter
-        Name="maturityStartDate"
-        Type="java.lang.String"/>
-      <Parameter
-        Name="maturityEndDate"
-        Type="java.lang.String"/>
-      <Parameter
-        Name="invoiceStartDate"
-        Type="java.lang.String"/>
-      <Parameter
-        Name="invoiceEndDate"
-        Type="java.lang.String"/>
-      <Parameter
-        Name="invoiceNumber"
         Type="java.lang.Long"/>
       <Parameter
-        Name="invoiceType"
-        Type="java.lang.String"/>
-      <Parameter
-        Name="invoiceFromAmount"
-        Type="java.lang.Float"/>
-      <Parameter
         Name="invoiceToAmount"
-        Type="java.lang.Float"/>
+        Type="java.lang.Long"/>
+      <Parameter
+        Name="invoiceStatus"
+        Type="java.lang.String"/>
     </Method>
   </ClientInterface>
 </ViewObject>

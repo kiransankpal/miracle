@@ -24,7 +24,9 @@
        FIRST_VALUE (invoice_id) OVER(PARTITION BY invoice_currency_code) as invoice_id
       ,invoice_currency_code
 FROM   ap_invoices_interface_v
-where invoice_currency_code IS NOT NULL]]>
+where invoice_currency_code IS NOT NULL
+AND WORKFLOW_FLAG ='V' 
+AND SOURCE IN ('OIOXML','INVOICE GATEWAY')]]>
   </SQLQuery>
   <ViewAttribute
     Name="InvoiceId"

@@ -51,8 +51,12 @@
             <af:gridCell marginStart="5px" marginEnd="5px" width="21%"
                          id="gc26">
               <af:selectOneChoice id="selectOneChoice2"
-                                  contentStyle="width:250.0px;">
-                <f:selectItems value="" id="selectItems2"/>
+                                  value="#{bindings.statusList.inputValue}"
+                                  contentStyle="width:250.0px;"
+                                  valueChangeListener="#{pageFlowScope.InvoiceSearchBean.invoiceStatusValueChange}"
+                                  autoSubmit="true">
+                <f:selectItems value="#{bindings.statusList.items}"
+                               id="selectItems2"/>
               </af:selectOneChoice>
             </af:gridCell>
           </af:gridRow>
@@ -113,19 +117,19 @@
             <af:gridCell marginStart="5px" width="22%" id="gc15">
               <af:panelGroupLayout id="panelGroupLayout2" layout="horizontal"
                                    inlineStyle="width:250.0px;">
-                <af:inputDate id="inputDate6" contentStyle="width:80.0px;"
+                <af:inputDate id="inputDate6" contentStyle="width:106.0px;"
                               autoSubmit="true"
                               value="#{pageFlowScope.InvoiceSearchBean.invoiceStartDate}">
-                  <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                  <af:convertDateTime pattern="dd-MM-yy"/>
                 </af:inputDate>
                 <af:outputText value="To" id="outputText2"/>
-                <af:inputDate id="inputDate7" contentStyle="width:80.0px;"
+                <af:inputDate id="inputDate7" contentStyle="width:106.0px;"
                               autoSubmit="true"
                               value="#{pageFlowScope.InvoiceSearchBean.invoiceEndDate}"
                               minValue="#{pageFlowScope.InvoiceSearchBean.invoiceStartDate}"
                               partialTriggers="inputDate6"
                               disabled="#{pageFlowScope.InvoiceSearchBean.invoiceStartDate eq null ? true : false}">
-                  <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                  <af:convertDateTime pattern="dd-MM-yy"/>
                 </af:inputDate>
               </af:panelGroupLayout>
             </af:gridCell>
@@ -137,9 +141,9 @@
                          id="gc18">
               <af:panelGroupLayout id="panelGroupLayout4" layout="horizontal"
                                    inlineStyle="width:250.0px;">
-                <af:inputDate id="inputDate4" contentStyle="width:80.0px;"/>
+                <af:inputDate id="inputDate4" contentStyle="width:106.0px;"/>
                 <af:outputText value="To" id="outputText3"/>
-                <af:inputDate id="inputDate5" contentStyle="width:80.0px;"/>
+                <af:inputDate id="inputDate5" contentStyle="width:106.0px;"/>
               </af:panelGroupLayout>
             </af:gridCell>
           </af:gridRow>
@@ -165,9 +169,16 @@
             <af:gridCell marginStart="5px" width="22%" id="gc30">
               <af:panelGroupLayout id="pgl6" layout="horizontal"
                                    inlineStyle="width:250.0px;">
-                <af:inputText id="it2" contentStyle="width:100.0px;"/>
-                <af:outputText value="To" id="ot9"/>
-                <af:inputText id="it3" contentStyle="width:100.0px;"/>
+                <af:inputText id="it2"
+                              contentStyle="width:106.0px;text-align:left;"
+                              value="#{pageFlowScope.InvoiceSearchBean.invoiceFormAmount}"
+                              autoSubmit="true"/>
+                <af:outputText value="To" id="ot9"
+                               inlineStyle="padding-left: 20px;"/>
+                <af:inputText id="it3"
+                              contentStyle="width:106.0px;text-align:left;"
+                              value="#{pageFlowScope.InvoiceSearchBean.invoiceToAmount}"
+                              autoSubmit="true"/>
               </af:panelGroupLayout>
             </af:gridCell>
             <af:gridCell marginStart="5px" width="11%" id="gc25"/>
@@ -194,19 +205,19 @@
             <af:gridCell marginStart="5px" width="22%" id="gc7">
               <af:panelGroupLayout id="panelGroupLayout3" layout="horizontal"
                                    inlineStyle="width:250.0px;">
-                <af:inputDate id="inputDate2" contentStyle="width:80.0px;"
+                <af:inputDate id="inputDate2" contentStyle="width:106.0px;"
                               autoSubmit="true"
                               value="#{pageFlowScope.InvoiceSearchBean.maturityStartDate}">
-                  <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                  <af:convertDateTime pattern="dd-MM-yy"/>
                 </af:inputDate>
                 <af:outputText value="To" id="outputText4"/>
-                <af:inputDate id="inputDate3" contentStyle="width:80.0px;"
+                <af:inputDate id="inputDate3" contentStyle="width:106.0px;"
                               autoSubmit="true"
                               value="#{pageFlowScope.InvoiceSearchBean.maturityEndDate}"
                               minValue="#{pageFlowScope.InvoiceSearchBean.maturityStartDate}"
                               partialTriggers="inputDate2"
                               disabled="#{pageFlowScope.InvoiceSearchBean.maturityStartDate eq null ? true : false}">
-                  <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                  <af:convertDateTime pattern="dd-MM-yy"/>
                 </af:inputDate>
               </af:panelGroupLayout>
             </af:gridCell>

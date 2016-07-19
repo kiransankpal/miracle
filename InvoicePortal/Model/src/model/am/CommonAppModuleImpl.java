@@ -251,4 +251,12 @@ public class CommonAppModuleImpl extends ApplicationModuleImpl implements Common
     public ViewObjectImpl getInvoiceCurrencyCodeLOV() {
         return (ViewObjectImpl)findViewObject("InvoiceCurrencyCodeLOV");
     }
+
+    /**
+     * Container's getter for InvoiceStatusLOV.
+     * @return InvoiceStatusLOV
+     */
+    public ViewObjectImpl getInvoiceStatusLOV() {
+        return (ViewObjectImpl)findViewObject("InvoiceStatusLOV");
+    }
 }
