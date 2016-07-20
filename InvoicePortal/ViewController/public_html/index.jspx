@@ -45,6 +45,15 @@
                              id="ot17"
                              inlineStyle="font-size:small; font-weight:bold;"/>
               <af:spacer width="10" height="10" id="s7"/>
+              
+              <af:goLink text="HOME" id="gl2"
+                         destination="http://rpcoss3applu.oess.dk:8000/OA_HTML/OA.jsp?OAFunc=OAHOMEPAGE#"
+                         targetFrame="_self" inlineStyle="font-weight:bold;"/>
+              <af:spacer width="10" height="10" id="spacer1"/>
+              <af:outputText value="| "
+                             id="ot1"
+                             inlineStyle="font-size:small; font-weight:bold;"/>
+              <af:spacer width="10" height="10" id="s1"/>
               <af:commandLink text="LOGOUT" id="cl2"
                               action="#{backingBeanScope.InvoiceImageBackingBean.logOutSession}"
                               inlineStyle="font-weight:bold;"

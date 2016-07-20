@@ -246,7 +246,7 @@
     </af:panelGroupLayout>
     <af:spacer width="10" height="10" id="s1"/>
     <af:spacer width="10" height="20" id="s2"/>
-    <af:panelGroupLayout id="pgl3">
+    <af:panelGroupLayout id="pgl3" layout="scroll">
       <af:panelCollection id="pc1" styleClass="AFStretchWidth">
         <f:facet name="menus"/>
         <f:facet name="toolbar"/>
@@ -276,7 +276,7 @@
           <af:column sortProperty="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceNum.name}"
                      sortable="false"
                      headerText="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceNum.label}"
-                     id="c6" width="100">
+                     id="c6" width="100" inlineStyle="text-align:right;">
             <af:outputText value="#{row.InvoiceNum}" id="ot3"/>
           </af:column>
           <af:column sortProperty="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceDate.name}"

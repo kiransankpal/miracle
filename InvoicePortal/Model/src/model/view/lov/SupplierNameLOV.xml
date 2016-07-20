@@ -57,6 +57,12 @@ ORDER BY vendor_name ASC]]>
     <DesignTime>
       <Attr Name="_DisplaySize" Value="240"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
   </ViewAttribute>
   <AttrArray Name="KeyAttributes">
     <Item Value="InvoiceId"/>

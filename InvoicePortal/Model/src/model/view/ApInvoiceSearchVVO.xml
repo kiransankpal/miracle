@@ -13,7 +13,9 @@
   ComponentClass="model.view.ApInvoiceSearchVVOImpl"
   RowClass="model.view.ApInvoiceSearchVVORowImpl"
   ComponentInterface="model.view.common.ApInvoiceSearchVVO"
-  ClientProxyName="model.view.client.ApInvoiceSearchVVOClient">
+  ClientProxyName="model.view.client.ApInvoiceSearchVVOClient"
+  FetchMode="FETCH_AS_NEEDED"
+  FetchSize="26">
   <DesignTime>
     <Attr Name="_isExpertMode" Value="true"/>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
@@ -904,6 +906,8 @@ AND SOURCE IN ('OIOXML','INVOICE GATEWAY')]]>
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="input_text_lov"/>
+        <DISPLAYWIDTH
+          Value="30"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
