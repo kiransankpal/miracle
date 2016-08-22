@@ -9,19 +9,18 @@
   </definitionFactories>
   <pageMap>
     <page path="/index.jspx" usageId="view_indexPageDef"/>
-    <page path="/LaunchInvoiceGateway.jspx"
-          usageId="view_LaunchInvoiceGatewayPageDef"/>
     <page path="/pages/InvoiceDetails.jsff"
           usageId="view_InvoiceDetailsPageDef"/>
     <page path="/pages/InvoicesSearch.jsff"
           usageId="view_InvoicesSearchPageDef"/>
+    <page path="/pages/configurations.jsff"
+          usageId="view_configurationsPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="view_indexPageDef" path="view.pageDefs.indexPageDef"/>
-    <page id="view_LaunchInvoiceGatewayPageDef"
-          path="view.pageDefs.LaunchInvoiceGatewayPageDef"/>
     <page id="view_InvoiceDetailsPageDef" path="pages.InvoiceDetailsPageDef"/>
     <page id="view_InvoicesSearchPageDef" path="pages.InvoicesSearchPageDef"/>
+    <page id="view_configurationsPageDef" path="pages.configurationsPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="CommonAppModuleDataControl" Package="model.am"

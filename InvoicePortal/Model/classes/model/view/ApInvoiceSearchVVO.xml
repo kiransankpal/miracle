@@ -83,6 +83,10 @@
     Name="SupplierNumberLOV"
     ViewObjectName="model.view.lov.SupplierNumberLOV"
     RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="InvoiceStatusLOV"
+    ViewObjectName="model.view.lov.InvoiceStatusLOV"
+    RowLevelBinds="true"/>
   <ListBinding
     Name="LOV_VendorName"
     ListVOName="SupplierNameLOV"

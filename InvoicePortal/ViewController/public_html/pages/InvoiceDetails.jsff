@@ -3,6 +3,8 @@
 xmlns:f="http://java.sun.com/jsf/core"
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="commonModelBundle"
+         value="#{adfBundle['model.CommonModelBundle']}"/>
   <c:set var="viewcontrollerBundle"
          value="#{adfBundle['view.ViewControllerBundle']}"/>
   <af:panelStretchLayout id="psl1" topHeight="80px"
@@ -24,8 +26,9 @@ xmlns:f="http://java.sun.com/jsf/core"
                                              inlineStyle="padding:5px;">
                           <af:panelTabbed id="panelTabbed1"
                                           dimensionsFrom="disclosedChild">
-                            <af:showDetailItem text="#{viewcontrollerBundle.HEADER_TAB_GENERAL}"
-                                               id="sdi1" disclosed="true">
+                            <af:showDetailItem
+                                               id="sdi1" disclosed="true"
+                                               text="#{viewcontrollerBundle.HEADER_TAB_GENERAL}">
                               <af:panelFormLayout id="pfl1" maxColumns="2"
                                                   rows="7" fieldWidth="70%"
                                                   labelWidth="30%"
@@ -39,7 +42,8 @@ xmlns:f="http://java.sun.com/jsf/core"
                                                       columns="40"
                                                       shortDesc="#{bindings.VendorNameLOV.hints.tooltip}"
                                                       resultsTableColumnStretching="none"
-                                                      searchDesc="Search Suppliers">
+                                                      searchDesc="Search Suppliers"
+                                                      disabled="true">
                                   <f:validator binding="#{bindings.VendorNameLOV.validator}"/>
                                 </af:inputListOfValues>
                       <af:inputText value="#{bindings.VendorNumber.inputValue}"
@@ -57,7 +61,8 @@ xmlns:f="http://java.sun.com/jsf/core"
                                                     shortDesc="#{bindings.VendorSiteCodeLOV.hints.tooltip}"
                                                     id="soc2"
                                                     partialTriggers="vendorNameLOVId"
-                                                    contentStyle="width:230px">
+                                                    contentStyle="width:230px"
+                                                    disabled="true">
                                   <f:selectItems value="#{bindings.VendorSiteCodeLOV.items}"
                                                  id="si3"/>
                                 </af:selectOneChoice>
@@ -76,7 +81,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                                               columns="40"
                                               maximumLength="#{bindings.InvoiceCurrencyCode.hints.precision}"
                                               shortDesc="#{bindings.InvoiceCurrencyCode.hints.tooltip}"
-                                              id="it20">
+                                              id="it20" disabled="true">
                                   <f:validator binding="#{bindings.InvoiceCurrencyCode.validator}"/>
                                 </af:inputText>
                                 <af:inputText value="#{bindings.DocCategoryCode.inputValue}"
@@ -85,7 +90,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                                               columns="40"
                                               maximumLength="#{bindings.DocCategoryCode.hints.precision}"
                                               shortDesc="#{bindings.DocCategoryCode.hints.tooltip}"
-                                              id="it6">
+                                              id="it6" disabled="true">
                                   <f:validator binding="#{bindings.DocCategoryCode.validator}"/>
                                 </af:inputText>
                                 <af:inputText value="#{bindings.GroupId.inputValue}"
@@ -94,7 +99,8 @@ xmlns:f="http://java.sun.com/jsf/core"
                                               columns="40"
                                               maximumLength="#{bindings.GroupId.hints.precision}"
                                               shortDesc="#{bindings.GroupId.hints.tooltip}"
-                                              id="it16" rows="1">
+                                              id="it16" rows="1"
+                                              disabled="true">
                                   <f:validator binding="#{bindings.GroupId.validator}"/>
                                 </af:inputText>
                                 <!-- Second Column -->
@@ -104,7 +110,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                                               columns="40"
                                               maximumLength="#{bindings.InvoiceNum.hints.precision}"
                                               shortDesc="#{bindings.InvoiceNum.hints.tooltip}"
-                                              id="it14">
+                                              id="it14" disabled="true">
                                   <f:validator binding="#{bindings.InvoiceNum.validator}"/>
                                 </af:inputText>
                       <af:inputText value="#{bindings.InvoiceTypeLookupCode.inputValue}"
@@ -113,14 +119,15 @@ xmlns:f="http://java.sun.com/jsf/core"
                                               columns="40"
                                               maximumLength="#{bindings.InvoiceTypeLookupCode.hints.precision}"
                                               shortDesc="#{bindings.InvoiceTypeLookupCode.hints.tooltip}"
-                                              id="it11">
+                                              id="it11" disabled="true">
                                   <f:validator binding="#{bindings.InvoiceTypeLookupCode.validator}"/>
                                 </af:inputText>
                                 <af:inputDate value="#{bindings.InvoiceDate.inputValue}"
                                               label="#{bindings.InvoiceDate.hints.label}"
                                               required="#{bindings.InvoiceDate.hints.mandatory}"
                                               shortDesc="#{bindings.InvoiceDate.hints.tooltip}"
-                                              id="id5" columns="40">
+                                              id="id5" columns="40"
+                                              disabled="true">
                                   <f:validator binding="#{bindings.InvoiceDate.validator}"/>
                                   <af:convertDateTime pattern="#{bindings.InvoiceDate.format}"/>
                                 </af:inputDate>
@@ -130,7 +137,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                                               columns="40"
                                               maximumLength="#{bindings.InvoiceAmount.hints.precision}"
                                               shortDesc="#{bindings.InvoiceAmount.hints.tooltip}"
-                                              id="it13">
+                                              id="it13" disabled="true">
                                   <f:validator binding="#{bindings.InvoiceAmount.validator}"/>
                                   <af:convertNumber groupingUsed="false"
                                                     pattern="#{bindings.InvoiceAmount.format}"/>
@@ -141,7 +148,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                                               columns="40"
                                               maximumLength="#{bindings.InvoiceAmount.hints.precision}"
                                               shortDesc="#{bindings.InvoiceAmount.hints.tooltip}"
-                                              id="inputText1">
+                                              id="inputText1" disabled="true">
                                   <f:validator binding="#{bindings.InvoiceAmount.validator}"/>
                                   <af:convertNumber groupingUsed="false"
                                                     pattern="#{bindings.InvoiceAmount.format}"/>
@@ -160,7 +167,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                                               columns="40"
                                               maximumLength="#{bindings.Status.hints.precision}"
                                               shortDesc="#{bindings.Status.hints.tooltip}"
-                                              id="it1" rows="1">
+                                              id="it1" rows="1" disabled="true">
                                   <f:validator binding="#{bindings.Status.validator}"/>
                                 </af:inputText>
                                 <f:facet name="footer">
@@ -209,7 +216,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                                     columns="40"
                                     maximumLength="#{bindings.PayGroupLookupCode.hints.precision}"
                                     shortDesc="#{bindings.PayGroupLookupCode.hints.tooltip}"
-                                    id="it3">
+                                    id="it3" disabled="true">
                         <f:validator binding="#{bindings.PayGroupLookupCode.validator}"/>
                       </af:inputText>
                       <af:inputText value="#{bindings.PaymentMethodCode.inputValue}"
@@ -227,7 +234,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                                     columns="40"
                                     maximumLength="#{bindings.TermsDate.hints.precision}"
                                     shortDesc="#{bindings.TermsDate.hints.tooltip}"
-                                    id="it4">
+                                    id="it4" disabled="true">
                         <f:validator binding="#{bindings.TermsDate.validator}"/>
                         <af:convertDateTime pattern="#{bindings.TermsDate.format}"/>
                       </af:inputText>
@@ -248,7 +255,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                                     columns="40"
                                     maximumLength="#{bindings.PaymentCurrencyCode.hints.precision}"
                                     shortDesc="#{bindings.PaymentCurrencyCode.hints.tooltip}"
-                                    id="it7">
+                                    id="it7" disabled="true">
                         <f:validator binding="#{bindings.PaymentCurrencyCode.validator}"/>
                       </af:inputText>
                       <af:inputText value="#{bindings.ExternalBankAccountId.inputValue}"
@@ -257,7 +264,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                                     columns="40"
                                     maximumLength="#{bindings.ExternalBankAccountId.hints.precision}"
                                     shortDesc="#{bindings.ExternalBankAccountId.hints.tooltip}"
-                                    id="it8">
+                                    id="it8" disabled="true">
                         <f:validator binding="#{bindings.ExternalBankAccountId.validator}"/>
                         <af:convertNumber groupingUsed="false"
                                           pattern="#{bindings.ExternalBankAccountId.format}"/>
@@ -268,7 +275,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                                     columns="40"
                                     maximumLength="#{bindings.RemittanceMessage1.hints.precision}"
                                     shortDesc="#{bindings.RemittanceMessage1.hints.tooltip}"
-                                    id="it9">
+                                    id="it9" disabled="true">
                         <f:validator binding="#{bindings.RemittanceMessage1.validator}"/>
                       </af:inputText>
                       <af:inputText value="#{bindings.RemittanceMessage2.inputValue}"
@@ -277,7 +284,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                                     columns="40"
                                     maximumLength="#{bindings.RemittanceMessage2.hints.precision}"
                                     shortDesc="#{bindings.RemittanceMessage2.hints.tooltip}"
-                                    id="it12">
+                                    id="it12" disabled="true">
                         <f:validator binding="#{bindings.RemittanceMessage2.validator}"/>
                       </af:inputText>
                       <af:inputText value="#{bindings.RemittanceMessage3.inputValue}"
@@ -286,7 +293,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                                     columns="40"
                                     maximumLength="#{bindings.RemittanceMessage3.hints.precision}"
                                     shortDesc="#{bindings.RemittanceMessage3.hints.tooltip}"
-                                    id="it15">
+                                    id="it15" disabled="true">
                         <f:validator binding="#{bindings.RemittanceMessage3.validator}"/>
                       </af:inputText>
                       <af:inputText value="#{bindings.UniqueRemittanceIdentifier.inputValue}"
@@ -295,7 +302,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                                     columns="40"
                                     maximumLength="#{bindings.UniqueRemittanceIdentifier.hints.precision}"
                                     shortDesc="#{bindings.UniqueRemittanceIdentifier.hints.tooltip}"
-                                    id="it19">
+                                    id="it19" disabled="true">
                         <f:validator binding="#{bindings.UniqueRemittanceIdentifier.validator}"/>
                       </af:inputText>
                     </af:panelFormLayout>
@@ -310,7 +317,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                                     columns="40"
                                     maximumLength="#{bindings.VoucherNum.hints.precision}"
                                     shortDesc="#{bindings.VoucherNum.hints.tooltip}"
-                                    id="it34">
+                                    id="it34" disabled="true">
                         <f:validator binding="#{bindings.VoucherNum.validator}"/>
                       </af:inputText>
                       <af:inputText value="#{bindings.Source.inputValue}"
@@ -319,7 +326,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                                     columns="40"
                                     maximumLength="#{bindings.Source.hints.precision}"
                                     shortDesc="#{bindings.Source.hints.tooltip}"
-                                    id="it35">
+                                    id="it35" disabled="true">
                         <f:validator binding="#{bindings.Source.validator}"/>
                       </af:inputText>
                       <af:inputText value="#{bindings.ExchangeRate.inputValue}"
@@ -328,7 +335,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                                     columns="40"
                                     maximumLength="#{bindings.ExchangeRate.hints.precision}"
                                     shortDesc="#{bindings.ExchangeRate.hints.tooltip}"
-                                    id="it17">
+                                    id="it17" disabled="true">
                         <f:validator binding="#{bindings.ExchangeRate.validator}"/>
                         <af:convertNumber groupingUsed="false"
                                           pattern="#{bindings.ExchangeRate.format}"/>
@@ -340,14 +347,14 @@ xmlns:f="http://java.sun.com/jsf/core"
                                     columns="40"
                                     maximumLength="#{bindings.ExchangeRateType.hints.precision}"
                                     shortDesc="#{bindings.ExchangeRateType.hints.tooltip}"
-                                    id="it18" rows="1">
+                                    id="it18" rows="1" disabled="true">
                         <f:validator binding="#{bindings.ExchangeRateType.validator}"/>
                       </af:inputText>
                       <af:inputDate value="#{bindings.ExchangeDate.inputValue}"
                                     label="#{bindings.ExchangeDate.hints.label}"
                                     required="#{bindings.ExchangeDate.hints.mandatory}"
                                     shortDesc="#{bindings.ExchangeDate.hints.tooltip}"
-                                    id="id2" columns="40">
+                                    id="id2" columns="40" disabled="true">
                         <f:validator binding="#{bindings.ExchangeDate.validator}"/>
                         <af:convertDateTime pattern="#{bindings.ExchangeDate.format}"/>
                       </af:inputDate>
@@ -357,7 +364,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                                     columns="40"
                                     maximumLength="#{bindings.GroupId.hints.precision}"
                                     shortDesc="#{bindings.GroupId.hints.tooltip}"
-                                    id="it36">
+                                    id="it36" disabled="true">
                         <f:validator binding="#{bindings.GroupId.validator}"/>
                       </af:inputText>
                     </af:panelFormLayout>
@@ -391,12 +398,17 @@ xmlns:f="http://java.sun.com/jsf/core"
                                            sortable="false"
                                            headerText="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.label}"
                                            id="c2" width="30">
-                                  <af:outputText value="#{row.LineNumber}"
-                                                 id="ot9">
-                                    <af:convertNumber groupingUsed="false"
-                                                      pattern="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.format}"/>
-                                  </af:outputText>
-                                </af:column>
+                        <af:inputText value="#{row.bindings.LineNumber.inputValue}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.tooltip}"
+                                      id="it26">
+                          <f:validator binding="#{row.bindings.LineNumber.validator}"/>
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.format}"/>
+                        </af:inputText>
+                      </af:column>
                                 <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.name}"
                                            sortable="false"
                                            headerText="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.label}"
@@ -414,35 +426,63 @@ xmlns:f="http://java.sun.com/jsf/core"
                                            sortable="false"
                                            headerText="#{bindings.ApInvoicesChildLinesVO.hints.Description.label}"
                                            id="c3">
-                                  <af:outputText value="#{row.Description}"
-                                                 id="ot5"/>
-                                </af:column>
+                        <af:inputText value="#{row.bindings.Description.inputValue}"
+                                      simple="true"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.Description.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.Description.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.Description.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.Description.tooltip}"
+                                      id="it41">
+                          <f:validator binding="#{row.bindings.Description.validator}"/>
+                        </af:inputText>
+                      </af:column>
                                 <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.name}"
                                            sortable="false"
                                            headerText="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.label}"
                                            id="c5">
-                                  <af:outputText value="#{row.QuantityInvoiced}"
-                                                 id="ot10">
-                                    <af:convertNumber groupingUsed="false"
-                                                      pattern="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.format}"/>
-                                  </af:outputText>
+                        <af:panelGroupLayout id="pgl11" halign="end"
+                                             layout="vertical">
+                          <af:inputText value="#{row.bindings.QuantityInvoiced.inputValue}"
+                                        required="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.mandatory}"
+                                        columns="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.displayWidth}"
+                                        maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.precision}"
+                                        shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.tooltip}"
+                                        id="it46">
+                            <f:validator binding="#{row.bindings.QuantityInvoiced.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.format}"/>
+                          </af:inputText>
+                        </af:panelGroupLayout>
                                 </af:column>
                                 <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.Amount.name}"
-                                           sortable="false"
                                            headerText="#{bindings.ApInvoicesChildLinesVO.hints.Amount.label}"
-                                           id="c9">
-                                  <af:outputText value="#{row.Amount}" id="ot6">
-                                    <af:convertNumber groupingUsed="false"
-                                                      pattern="#{bindings.ApInvoicesChildLinesVO.hints.Amount.format}"/>
-                                  </af:outputText>
-                                </af:column>
+                                           id="c9" align="end">
+                        <af:panelGroupLayout id="pgl12" halign="end"
+                                             layout="vertical">
+                          <af:inputText value="#{row.bindings.Amount.inputValue}"
+                                        required="#{bindings.ApInvoicesChildLinesVO.hints.Amount.mandatory}"
+                                        columns="#{bindings.ApInvoicesChildLinesVO.hints.Amount.displayWidth}"
+                                        maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.Amount.precision}"
+                                        shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.Amount.tooltip}"
+                                        id="it51">
+                            <f:validator binding="#{row.bindings.Amount.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{commonModelBundle.NUMBER_FORMAT}"/>
+                          </af:inputText>
+                        </af:panelGroupLayout>
+                      </af:column>
                       <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.DistCodeCombinationId.label}"
                                  id="c4">
-                        <af:outputText value="#{row.DistCodeCombinationId}"
-                                       id="ot2">
+                        <af:inputText value="#{row.bindings.DistCodeCombinationId.inputValue}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.DistCodeCombinationId.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.DistCodeCombinationId.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.DistCodeCombinationId.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.DistCodeCombinationId.tooltip}"
+                                      id="it56">
+                          <f:validator binding="#{row.bindings.DistCodeCombinationId.validator}"/>
                           <af:convertNumber groupingUsed="false"
                                             pattern="#{bindings.ApInvoicesChildLinesVO.hints.DistCodeCombinationId.format}"/>
-                        </af:outputText>
+                        </af:inputText>
                       </af:column>
                       <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.TaxCode.label}"
                                  id="c6">
@@ -459,9 +499,15 @@ xmlns:f="http://java.sun.com/jsf/core"
                                  sortable="false"
                                  headerText="#{bindings.ApInvoicesChildLinesVO.hints.AccountingDate.label}"
                                  id="c8">
-                        <af:outputText value="#{row.AccountingDate}" id="ot3">
+                        <af:inputText value="#{row.bindings.AccountingDate.inputValue}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.AccountingDate.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.AccountingDate.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.AccountingDate.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.AccountingDate.tooltip}"
+                                      id="it58">
+                          <f:validator binding="#{row.bindings.AccountingDate.validator}"/>
                           <af:convertDateTime pattern="#{bindings.ApInvoicesChildLinesVO.hints.AccountingDate.format}"/>
-                        </af:outputText>
+                        </af:inputText>
                       </af:column>
                     </af:table>
                             </af:showDetailItem>
@@ -482,12 +528,17 @@ xmlns:f="http://java.sun.com/jsf/core"
                                            sortable="false"
                                            headerText="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.label}"
                                            id="column1" width="30">
-                                  <af:outputText value="#{row.LineNumber}"
-                                                 id="outputText1">
-                                    <af:convertNumber groupingUsed="false"
-                                                      pattern="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.format}"/>
-                                  </af:outputText>
-                                </af:column>
+                        <af:inputText value="#{row.bindings.LineNumber.inputValue}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.tooltip}"
+                                      id="it37">
+                          <f:validator binding="#{row.bindings.LineNumber.validator}"/>
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.format}"/>
+                        </af:inputText>
+                      </af:column>
                                 <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.name}"
                                            sortable="false"
                                            headerText="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.label}"
@@ -505,36 +556,64 @@ xmlns:f="http://java.sun.com/jsf/core"
                                            sortable="false"
                                            headerText="#{bindings.ApInvoicesChildLinesVO.hints.Description.label}"
                                            id="column3">
-                                  <af:outputText value="#{row.Description}"
-                                                 id="outputText3"/>
-                                </af:column>
+                        <af:inputText value="#{row.bindings.Description.inputValue}"
+                                      simple="true"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.Description.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.Description.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.Description.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.Description.tooltip}"
+                                      id="it42">
+                          <f:validator binding="#{row.bindings.Description.validator}"/>
+                        </af:inputText>
+                      </af:column>
                                 <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.name}"
                                            sortable="false"
                                            headerText="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.label}"
                                            id="column4">
-                                  <af:outputText value="#{row.QuantityInvoiced}"
-                                                 id="outputText4">
-                                    <af:convertNumber groupingUsed="false"
-                                                      pattern="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.format}"/>
-                                  </af:outputText>
-                                </af:column>
+                        <af:panelGroupLayout id="pgl9" halign="end"
+                                             layout="vertical">
+                          <af:inputText value="#{row.bindings.QuantityInvoiced.inputValue}"
+                                        required="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.mandatory}"
+                                        columns="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.displayWidth}"
+                                        maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.precision}"
+                                        shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.tooltip}"
+                                        id="it47">
+                            <f:validator binding="#{row.bindings.QuantityInvoiced.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.format}"/>
+                          </af:inputText>
+                        </af:panelGroupLayout>
+                      </af:column>
                                 <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.Amount.name}"
                                            sortable="false"
                                            headerText="#{bindings.ApInvoicesChildLinesVO.hints.Amount.label}"
-                                           id="column6">
-                                  <af:outputText value="#{row.Amount}"
-                                                 id="outputText6">
-                                    <af:convertNumber groupingUsed="false"
-                                                      pattern="#{bindings.ApInvoicesChildLinesVO.hints.Amount.format}"/>
-                                  </af:outputText>
-                                </af:column>
+                                           id="column6" align="end">
+                        <af:panelGroupLayout id="pgl10" halign="end"
+                                             layout="vertical">
+                          <af:inputText value="#{row.bindings.Amount.inputValue}"
+                                        required="#{bindings.ApInvoicesChildLinesVO.hints.Amount.mandatory}"
+                                        columns="#{bindings.ApInvoicesChildLinesVO.hints.Amount.displayWidth}"
+                                        maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.Amount.precision}"
+                                        shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.Amount.tooltip}"
+                                        id="it52">
+                            <f:validator binding="#{row.bindings.Amount.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{commonModelBundle.NUMBER_FORMAT}"/>
+                          </af:inputText>
+                        </af:panelGroupLayout>
+                      </af:column>
                       <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.DistCodeCombinationId.label}"
                                  id="c7">
-                        <af:outputText value="#{row.DistCodeCombinationId}"
-                                       id="ot7">
+                        <af:inputText value="#{row.bindings.DistCodeCombinationId.inputValue}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.DistCodeCombinationId.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.DistCodeCombinationId.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.DistCodeCombinationId.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.DistCodeCombinationId.tooltip}"
+                                      id="it57">
+                          <f:validator binding="#{row.bindings.DistCodeCombinationId.validator}"/>
                           <af:convertNumber groupingUsed="false"
                                             pattern="#{bindings.ApInvoicesChildLinesVO.hints.DistCodeCombinationId.format}"/>
-                        </af:outputText>
+                        </af:inputText>
                       </af:column>
                       <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.TaxCode.label}"
                                  id="c12">
@@ -549,9 +628,15 @@ xmlns:f="http://java.sun.com/jsf/core"
                       </af:column>
                       <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.AccountingDate.label}"
                                  id="c18">
-                        <af:outputText value="#{row.AccountingDate}" id="ot14">
+                        <af:inputText value="#{row.bindings.AccountingDate.inputValue}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.AccountingDate.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.AccountingDate.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.AccountingDate.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.AccountingDate.tooltip}"
+                                      id="it59">
+                          <f:validator binding="#{row.bindings.AccountingDate.validator}"/>
                           <af:convertDateTime pattern="#{bindings.ApInvoicesChildLinesVO.hints.AccountingDate.format}"/>
-                        </af:outputText>
+                        </af:inputText>
                       </af:column>
                       <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.ProjectId.label}"
                                  id="c10">
@@ -611,10 +696,15 @@ xmlns:f="http://java.sun.com/jsf/core"
                       </af:column>
                       <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.ExpenditureItemDate.label}"
                                  id="c21">
-                        <af:outputText value="#{row.ExpenditureItemDate}"
-                                       id="ot17">
+                        <af:inputText value="#{row.bindings.ExpenditureItemDate.inputValue}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.ExpenditureItemDate.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.ExpenditureItemDate.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.ExpenditureItemDate.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.ExpenditureItemDate.tooltip}"
+                                      id="it60">
+                          <f:validator binding="#{row.bindings.ExpenditureItemDate.validator}"/>
                           <af:convertDateTime pattern="#{bindings.ApInvoicesChildLinesVO.hints.ExpenditureItemDate.format}"/>
-                        </af:outputText>
+                        </af:inputText>
                       </af:column>
                       <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.PaQuantity.label}"
                                  id="c22">
@@ -647,11 +737,16 @@ xmlns:f="http://java.sun.com/jsf/core"
                                  sortable="false"
                                  headerText="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.label}"
                                  id="column14" width="30">
-                        <af:outputText value="#{row.LineNumber}"
-                                       id="outputText14">
+                        <af:inputText value="#{row.bindings.LineNumber.inputValue}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.tooltip}"
+                                      id="it38">
+                          <f:validator binding="#{row.bindings.LineNumber.validator}"/>
                           <af:convertNumber groupingUsed="false"
                                             pattern="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.format}"/>
-                        </af:outputText>
+                        </af:inputText>
                       </af:column>
                       <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.name}"
                                  sortable="false"
@@ -670,27 +765,51 @@ xmlns:f="http://java.sun.com/jsf/core"
                                  sortable="false"
                                  headerText="#{bindings.ApInvoicesChildLinesVO.hints.Description.label}"
                                  id="column16">
-                        <af:outputText value="#{row.Description}"
-                                       id="outputText16"/>
+                        <af:inputText value="#{row.bindings.Description.inputValue}"
+                                      simple="true"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.Description.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.Description.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.Description.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.Description.tooltip}"
+                                      id="it43">
+                          <f:validator binding="#{row.bindings.Description.validator}"/>
+                        </af:inputText>
                       </af:column>
                       <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.name}"
                                  sortable="false"
                                  headerText="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.label}"
                                  id="column17">
-                        <af:outputText value="#{row.QuantityInvoiced}"
-                                       id="outputText17">
-                          <af:convertNumber groupingUsed="false"
-                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.format}"/>
-                        </af:outputText>
+                        <af:panelGroupLayout id="pgl16" halign="end"
+                                             layout="vertical">
+                          <af:inputText value="#{row.bindings.QuantityInvoiced.inputValue}"
+                                        required="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.mandatory}"
+                                        columns="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.displayWidth}"
+                                        maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.precision}"
+                                        shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.tooltip}"
+                                        id="it48">
+                            <f:validator binding="#{row.bindings.QuantityInvoiced.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.format}"/>
+                          </af:inputText>
+                        </af:panelGroupLayout>
                       </af:column>
                       <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.Amount.name}"
                                  sortable="false"
                                  headerText="#{bindings.ApInvoicesChildLinesVO.hints.Amount.label}"
                                  id="column23">
-                        <af:outputText value="#{row.Amount}" id="outputText23">
-                          <af:convertNumber groupingUsed="false"
-                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.Amount.format}"/>
-                        </af:outputText>
+                        <af:panelGroupLayout id="pgl15" halign="end"
+                                             layout="vertical">
+                          <af:inputText value="#{row.bindings.Amount.inputValue}"
+                                        required="#{bindings.ApInvoicesChildLinesVO.hints.Amount.mandatory}"
+                                        columns="#{bindings.ApInvoicesChildLinesVO.hints.Amount.displayWidth}"
+                                        maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.Amount.precision}"
+                                        shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.Amount.tooltip}"
+                                        id="it53">
+                            <f:validator binding="#{row.bindings.Amount.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{commonModelBundle.NUMBER_FORMAT}"/>
+                          </af:inputText>
+                        </af:panelGroupLayout>
                       </af:column>
                       <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.PoNumber.label}"
                                  id="c23">
@@ -793,11 +912,16 @@ xmlns:f="http://java.sun.com/jsf/core"
                                  sortable="false"
                                  headerText="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.label}"
                                  id="column18" width="30">
-                        <af:outputText value="#{row.LineNumber}"
-                                       id="outputText18">
+                        <af:inputText value="#{row.bindings.LineNumber.inputValue}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.tooltip}"
+                                      id="it39">
+                          <f:validator binding="#{row.bindings.LineNumber.validator}"/>
                           <af:convertNumber groupingUsed="false"
                                             pattern="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.format}"/>
-                        </af:outputText>
+                        </af:inputText>
                       </af:column>
                       <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.name}"
                                  sortable="false"
@@ -816,27 +940,51 @@ xmlns:f="http://java.sun.com/jsf/core"
                                  sortable="false"
                                  headerText="#{bindings.ApInvoicesChildLinesVO.hints.Description.label}"
                                  id="column20">
-                        <af:outputText value="#{row.Description}"
-                                       id="outputText20"/>
+                        <af:inputText value="#{row.bindings.Description.inputValue}"
+                                      simple="true"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.Description.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.Description.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.Description.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.Description.tooltip}"
+                                      id="it44">
+                          <f:validator binding="#{row.bindings.Description.validator}"/>
+                        </af:inputText>
                       </af:column>
                       <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.name}"
                                  sortable="false"
                                  headerText="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.label}"
                                  id="column21">
-                        <af:outputText value="#{row.QuantityInvoiced}"
-                                       id="outputText21">
-                          <af:convertNumber groupingUsed="false"
-                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.format}"/>
-                        </af:outputText>
+                        <af:panelGroupLayout id="pgl17" halign="end"
+                                             layout="vertical">
+                          <af:inputText value="#{row.bindings.QuantityInvoiced.inputValue}"
+                                        required="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.mandatory}"
+                                        columns="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.displayWidth}"
+                                        maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.precision}"
+                                        shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.tooltip}"
+                                        id="it49">
+                            <f:validator binding="#{row.bindings.QuantityInvoiced.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.format}"/>
+                          </af:inputText>
+                        </af:panelGroupLayout>
                       </af:column>
                       <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.Amount.name}"
                                  sortable="false"
                                  headerText="#{bindings.ApInvoicesChildLinesVO.hints.Amount.label}"
                                  id="column22">
-                        <af:outputText value="#{row.Amount}" id="outputText22">
-                          <af:convertNumber groupingUsed="false"
-                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.Amount.format}"/>
-                        </af:outputText>
+                        <af:panelGroupLayout id="pgl14" halign="end"
+                                             layout="vertical">
+                          <af:inputText value="#{row.bindings.Amount.inputValue}"
+                                        required="#{bindings.ApInvoicesChildLinesVO.hints.Amount.mandatory}"
+                                        columns="#{bindings.ApInvoicesChildLinesVO.hints.Amount.displayWidth}"
+                                        maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.Amount.precision}"
+                                        shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.Amount.tooltip}"
+                                        id="it54">
+                            <f:validator binding="#{row.bindings.Amount.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{commonModelBundle.NUMBER_FORMAT}"/>
+                          </af:inputText>
+                        </af:panelGroupLayout>
                       </af:column>
                       <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.AssetsTrackingFlag.label}"
                                  id="c30">
@@ -941,11 +1089,16 @@ xmlns:f="http://java.sun.com/jsf/core"
                                  sortable="false"
                                  headerText="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.label}"
                                  id="column9" width="30">
-                        <af:outputText value="#{row.LineNumber}"
-                                       id="outputText9">
+                        <af:inputText value="#{row.bindings.LineNumber.inputValue}"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.tooltip}"
+                                      id="it40">
+                          <f:validator binding="#{row.bindings.LineNumber.validator}"/>
                           <af:convertNumber groupingUsed="false"
                                             pattern="#{bindings.ApInvoicesChildLinesVO.hints.LineNumber.format}"/>
-                        </af:outputText>
+                        </af:inputText>
                       </af:column>
                       <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.LineTypeLookupCode.name}"
                                  sortable="false"
@@ -964,46 +1117,99 @@ xmlns:f="http://java.sun.com/jsf/core"
                                  sortable="false"
                                  headerText="#{bindings.ApInvoicesChildLinesVO.hints.Description.label}"
                                  id="column11">
-                        <af:outputText value="#{row.Description}"
-                                       id="outputText11"/>
+                        <af:inputText value="#{row.bindings.Description.inputValue}"
+                                      simple="true"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.Description.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.Description.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.Description.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.Description.tooltip}"
+                                      id="it45">
+                          <f:validator binding="#{row.bindings.Description.validator}"/>
+                        </af:inputText>
                       </af:column>
                       <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.name}"
                                  sortable="false"
                                  headerText="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.label}"
                                  id="column12">
-                        <af:outputText value="#{row.QuantityInvoiced}"
-                                       id="outputText12">
-                          <af:convertNumber groupingUsed="false"
-                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.format}"/>
-                        </af:outputText>
+                        <af:panelGroupLayout id="pgl18" halign="end"
+                                             layout="vertical">
+                          <af:inputText value="#{row.bindings.QuantityInvoiced.inputValue}"
+                                        required="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.mandatory}"
+                                        columns="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.displayWidth}"
+                                        maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.precision}"
+                                        shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.tooltip}"
+                                        id="it50">
+                            <f:validator binding="#{row.bindings.QuantityInvoiced.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ApInvoicesChildLinesVO.hints.QuantityInvoiced.format}"/>
+                          </af:inputText>
+                        </af:panelGroupLayout>
                       </af:column>
                       <af:column sortProperty="#{bindings.ApInvoicesChildLinesVO.hints.Amount.name}"
                                  sortable="false"
                                  headerText="#{bindings.ApInvoicesChildLinesVO.hints.Amount.label}"
                                  id="column13">
-                        <af:outputText value="#{row.Amount}" id="outputText13">
-                          <af:convertNumber groupingUsed="false"
-                                            pattern="#{bindings.ApInvoicesChildLinesVO.hints.Amount.format}"/>
-                        </af:outputText>
+                        <af:panelGroupLayout id="pgl13" halign="end"
+                                             layout="vertical">
+                          <af:inputText value="#{row.bindings.Amount.inputValue}"
+                                        required="#{bindings.ApInvoicesChildLinesVO.hints.Amount.mandatory}"
+                                        columns="#{bindings.ApInvoicesChildLinesVO.hints.Amount.displayWidth}"
+                                        maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.Amount.precision}"
+                                        shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.Amount.tooltip}"
+                                        id="it55">
+                            <f:validator binding="#{row.bindings.Amount.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{commonModelBundle.NUMBER_FORMAT}"/>
+                          </af:inputText>
+                        </af:panelGroupLayout>
                       </af:column>
                       <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.PrimaryIntendedUse.label}"
                                  id="c37">
-                        <af:outputText value="#{row.PrimaryIntendedUse}"
-                                       id="ot26"/>
+                        <af:inputText value="#{row.bindings.PrimaryIntendedUse.inputValue}"
+                                      simple="true"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.PrimaryIntendedUse.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.PrimaryIntendedUse.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.PrimaryIntendedUse.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.PrimaryIntendedUse.tooltip}"
+                                      id="it61">
+                          <f:validator binding="#{row.bindings.PrimaryIntendedUse.validator}"/>
+                        </af:inputText>
                       </af:column>
                       <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.UserDefinedFiscClass.label}"
                                  id="c38">
-                        <af:outputText value="#{row.UserDefinedFiscClass}"
-                                       id="ot27"/>
+                        <af:inputText value="#{row.bindings.UserDefinedFiscClass.inputValue}"
+                                      simple="true"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.UserDefinedFiscClass.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.UserDefinedFiscClass.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.UserDefinedFiscClass.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.UserDefinedFiscClass.tooltip}"
+                                      id="it64">
+                          <f:validator binding="#{row.bindings.UserDefinedFiscClass.validator}"/>
+                        </af:inputText>
                       </af:column>
                       <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.ProductType.label}"
                                  id="c39">
-                        <af:outputText value="#{row.ProductType}" id="ot28"/>
+                        <af:inputText value="#{row.bindings.ProductType.inputValue}"
+                                      simple="true"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.ProductType.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.ProductType.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.ProductType.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.ProductType.tooltip}"
+                                      id="it62">
+                          <f:validator binding="#{row.bindings.ProductType.validator}"/>
+                        </af:inputText>
                       </af:column>
                       <af:column headerText="#{bindings.ApInvoicesChildLinesVO.hints.TrxBusinessCategory.label}"
                                  id="c40">
-                        <af:outputText value="#{row.TrxBusinessCategory}"
-                                       id="ot29"/>
+                        <af:inputText value="#{row.bindings.TrxBusinessCategory.inputValue}"
+                                      simple="true"
+                                      required="#{bindings.ApInvoicesChildLinesVO.hints.TrxBusinessCategory.mandatory}"
+                                      columns="#{bindings.ApInvoicesChildLinesVO.hints.TrxBusinessCategory.displayWidth}"
+                                      maximumLength="#{bindings.ApInvoicesChildLinesVO.hints.TrxBusinessCategory.precision}"
+                                      shortDesc="#{bindings.ApInvoicesChildLinesVO.hints.TrxBusinessCategory.tooltip}"
+                                      id="it63">
+                          <f:validator binding="#{row.bindings.TrxBusinessCategory.validator}"/>
+                        </af:inputText>
                       </af:column>
                     </af:table>
                   </af:showDetailItem>
@@ -1015,7 +1221,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                   <f:facet name="second">
                     <af:panelSplitter id="ps3" orientation="vertical"
                                       firstBorder="none" secondBorder="none"
-                                      disabled="true" dimensionsFrom="children">
+                                      disabled="true">
                       <f:facet name="first">
                         <af:panelHeader text="#{viewcontrollerBundle.LBL_ATTACHMENTS_TAB_NAME}" id="ph3">
                           <f:facet name="context"/>
@@ -1030,7 +1236,7 @@ xmlns:f="http://java.sun.com/jsf/core"
                                     fetchSize="#{bindings.InvoiceAttachmentsListVO.rangeSize}"
                                     rowBandingInterval="0" id="t4"
                                     width="AFStretchWidth"
-                                    columnStretching="last">
+                                    columnStretching="last" autoHeightRows="5">
                             <af:column sortProperty="#{bindings.InvoiceAttachmentsListVO.hints.DatatypeNavn.name}"
                                        sortable="false"
                                        headerText="#{bindings.InvoiceAttachmentsListVO.hints.DatatypeNavn.label}"
@@ -1071,19 +1277,40 @@ xmlns:f="http://java.sun.com/jsf/core"
                       <f:facet name="second">
                         <af:panelHeader text="Tiff/HTML" id="ph4">
                           <f:facet name="context"/>
-                          <f:facet name="menuBar"/>
-                          <f:facet name="toolbar"/>
+                          <f:facet name="menuBar">
+                  <af:popup id="tiffDialog">
+                    <af:panelWindow id="pw1" resize="on" contentHeight="800"
+                                    contentWidth="800" stretchChildren="first">
+                      <af:inlineFrame source="/invoiceimageservlet?invoiceId=#{backingBeanScope.InvoiceImageBackingBean.invoiceId}"
+                                      id="inlineFrame1"
+                                      styleClass="AFStretchWidth"
+                                      
+                                      sizing="preferred">
+                        <af:clientListener method="resizeIframe" type="onLoad"/>
+                      </af:inlineFrame>
+                    </af:panelWindow>
+                    <af:clientListener method="resizeIframe"
+                                       type="popupOpened"/>
+                  </af:popup>
+                </f:facet>
+                          <f:facet name="toolbar">
+                  <af:commandButton text="Detach" id="cb6" useWindow="true">
+                    <af:showPopupBehavior popupId="tiffDialog"
+                                          triggerType="action"/>
+                  </af:commandButton>
+                </f:facet>
                           <f:facet name="legend"/>
                           <f:facet name="info"/>
-                          <af:panelGroupLayout id="pgl7" layout="scroll"
+                          <af:panelGroupLayout id="pgl7"
                                                styleClass="AFStretchWidth"
-                                               inlineStyle="border-color:Black; border-style:solid; border-width:thin; padding:4.0px;">
+                                               inlineStyle="border-color:Black; border-style:solid; border-width:thin; padding:4.0px;"
+                                               layout="scroll">
                             <af:inlineFrame source="/invoiceimageservlet?invoiceId=#{backingBeanScope.InvoiceImageBackingBean.invoiceId}" id="i1"
                                             styleClass="AFStretchWidth"
                                             inlineStyle="height:600.0px;"
                                             sizing="preferred"/>
                           </af:panelGroupLayout>
-                        </af:panelHeader>
+              </af:panelHeader>
                       </f:facet>
                     </af:panelSplitter>
                   </f:facet>
@@ -1107,12 +1334,16 @@ xmlns:f="http://java.sun.com/jsf/core"
                         <f:facet name="separator">
                           <af:spacer width="10" height="10" id="s2"/>
                         </f:facet>
-                        <af:commandButton text="#{viewcontrollerBundle.ACTION_TAB_SAVE}" id="cb7"/>
+                        <af:commandButton text="#{viewcontrollerBundle.ACTION_TAB_SAVE}" id="cb7"
+                                          actionListener="#{bindings.Commit.execute}"
+                                          disabled="#{!bindings.Commit.enabled}"/>
                         <af:commandButton text="#{viewcontrollerBundle.ACTION_TAB_SAVE_AND_CLOSE}"
                                           id="commandButton1"/>
                         <af:commandButton text="#{viewcontrollerBundle.ACTION_CANCEL}" id="commandButton2"/>
                         <af:commandButton text="#{viewcontrollerBundle.ACTION_TAB_SEARCH}" id="commandButton3"/>
-                      </af:panelGroupLayout>
+              <af:commandButton text="Configuration" id="cb1"
+                                action="configAction" rendered="true"/>
+            </af:panelGroupLayout>
                     </af:panelGroupLayout>
                     <af:spacer width="10" height="10" id="spacer1"/>
                   </af:panelGroupLayout>

@@ -26,7 +26,7 @@
     Kind="where"
     Type="oracle.jbo.domain.Number"/>
   <SQLQuery>
-    <![CDATA[select encodeddocument, invoice_interface_id 
+    <![CDATA[select encodeddocument, invoice_interface_id , invoice_html
  from sf_ap_oio_headers_all a
 where  a.invoice_interface_id = :bind_invoice_id]]>
   </SQLQuery>
@@ -55,7 +55,18 @@ where  a.invoice_interface_id = :bind_invoice_id]]>
       <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
   </ViewAttribute>
-  <ResourceBundle>
+  <ViewAttribute
+    Name="InvoiceHtml"
+    IsUpdateable="false"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Clob"
+    ColumnType="CLOB"
+    AliasName="INVOICE_HTML"
+    Expression="INVOICE_HTML"
+    SQLType="CLOB"/>
+<ResourceBundle>
     <XliffBundle
       id="model.CommonModelBundle"/>
   </ResourceBundle>

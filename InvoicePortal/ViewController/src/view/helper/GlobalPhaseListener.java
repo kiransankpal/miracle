@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.am.CommonAppModuleImpl;
 
+import model.am.util.FndUserBean;
+
 import oracle.adf.controller.v2.lifecycle.Lifecycle;
 import oracle.adf.controller.v2.lifecycle.PagePhaseEvent;
 import oracle.adf.controller.v2.lifecycle.PagePhaseListener;
@@ -133,8 +135,25 @@ public class GlobalPhaseListener implements PagePhaseListener {
                     Lifecycle.getPhaseName(pagePhaseEvent.getPhaseId()));
         if (pagePhaseEvent.getPhaseId() == Lifecycle.INIT_CONTEXT_ID) {
             logger.info("Checking for EBS Session in afterPhase");
-             Session ebsSession = checkEBSSession();
-             setEBSLocale(ebsSession);
+             /* Session ebsSession = checkEBSSession();
+             setEBSLocale(ebsSession);   */
+            setLocalUserSession();
+        }
+    }
+    
+    private void setLocalUserSession() {
+        
+        Map sessionScope = ADFContext.getCurrent().getSessionScope();
+        FndUserBean fndUser =
+            (FndUserBean)sessionScope.get("fndUserBean");
+        if (fndUser == null) {
+            fndUser = new FndUserBean();
+            fndUser.setUserName("MIRACLE");
+            fndUser.setUserId(Integer.parseInt("1013080"));
+            fndUser.setRespId(20420);
+            fndUser.setRespApplId(1);
+            logger.info("fndUserBean is put into session bean");
+            sessionScope.put("fndUserBean", fndUser);
         }
     }
 

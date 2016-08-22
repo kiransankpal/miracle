@@ -6,327 +6,344 @@
   <c:set var="viewcontrollerBundle"
          value="#{adfBundle['view.ViewControllerBundle']}"/>
   <af:panelGroupLayout id="pgl2">
-    <af:panelGroupLayout id="pgl1">
-      <af:panelBox text="Search" id="pb1">
-        <f:facet name="toolbar"/>
-        <af:panelGridLayout id="pgl4">
-          <af:gridRow marginTop="5px" height="auto" id="gr4">
-            <af:gridCell marginStart="5px" width="12%" id="gc1">
-              <af:outputLabel value="#{viewcontrollerBundle.LEVERANDORNAVN}"
-                              id="ol1"/>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="22%" id="gc9">
-              <af:inputListOfValues id="vendorNameId"
-                                    contentStyle="width:250.0px;"
-                                    popupTitle="Search and Select: #{bindings.VendorName.hints.label}"
-                                    model="#{bindings.VendorName.listOfValuesModel}"
-                                    columns="#{bindings.VendorName.hints.displayWidth}"
-                                    shortDesc="#{bindings.VendorName.hints.tooltip}"
-                                    valueChangeListener="#{pageFlowScope.InvoiceSearchBean.invoiceVendorNameValueChangeListener}"
-                                    autoSubmit="true">
-                <f:validator binding="#{bindings.VendorName.validator}"/>
-                <af:autoSuggestBehavior suggestedItems="#{bindings.VendorName.suggestedItems}"/>
-              </af:inputListOfValues>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="12%" id="gc20">
-              <af:outputLabel value="#{viewcontrollerBundle.EANNUMMER}"
-                              id="ol2"/>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="22%" id="gc6">
-              <af:inputListOfValues id="vendorNumberId"
-                                    contentStyle="width:250.0px;"
-                                    popupTitle="Search and Select: #{bindings.VendorNumber.hints.label}"
-                                    model="#{bindings.VendorNumber.listOfValuesModel}"
-                                    columns="#{bindings.VendorNumber.hints.displayWidth}"
-                                    shortDesc="#{bindings.VendorNumber.hints.tooltip}"
-                                    valueChangeListener="#{pageFlowScope.InvoiceSearchBean.invoiceVendorNumberValueChangeListener}"
-                                    autoSubmit="true">
-                <f:validator binding="#{bindings.VendorNumber.validator}"/>
-                <af:autoSuggestBehavior suggestedItems="#{bindings.VendorNumber.suggestedItems}"/>
-              </af:inputListOfValues>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="11%" id="gc3">
-              <af:outputLabel value="#{viewcontrollerBundle.STATUS}" id="ol3"/>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" marginEnd="5px" width="21%"
-                         id="gc26">
-              <af:selectOneChoice id="selectOneChoice2"
-                                  value="#{bindings.statusList.inputValue}"
-                                  contentStyle="width:250.0px;"
-                                  valueChangeListener="#{pageFlowScope.InvoiceSearchBean.invoiceStatusValueChange}"
-                                  autoSubmit="true"
-                                  binding="#{pageFlowScope.InvoiceSearchBean.invoiceStatusComponent}">
-                <f:selectItems value="#{bindings.statusList.items}"
-                               id="selectItems2"/>
-              </af:selectOneChoice>
-            </af:gridCell>
-          </af:gridRow>
-          <af:gridRow marginTop="5px" height="auto" id="gr3">
-            <af:gridCell marginStart="5px" width="12%" id="gc8">
-              <af:outputLabel value="#{viewcontrollerBundle.LEVERAND_U00F8RNUMMER}"
-                              id="ol4"/>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="22%" id="gc16">
-              <af:inputListOfValues id="ilov1" contentStyle="width:250.0px;"
-                                    popupTitle="Search and Select: #{bindings.VendorNumber.hints.label}"
-                                    model="#{bindings.VendorNumber.listOfValuesModel}"
-                                    columns="#{bindings.VendorNumber.hints.displayWidth}"
-                                    shortDesc="#{bindings.VendorNumber.hints.tooltip}"
-                                    valueChangeListener="#{pageFlowScope.InvoiceSearchBean.invoiceVendorNumberValueChangeListener}"
-                                    autoSubmit="true">
-                <f:validator binding="#{bindings.VendorNumber.validator}"/>
-                <af:autoSuggestBehavior suggestedItems="#{bindings.VendorNumber.suggestedItems}"/>
-              </af:inputListOfValues>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="12%" id="gc11">
-              <af:outputLabel value="#{viewcontrollerBundle.INSTITUTNUMMER}"
-                              id="outputLabel1"/>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="22%" id="gc2">
-              <af:selectOneChoice id="selectOneChoice4"
-                                  contentStyle="width:250.0px;">
-                <f:selectItems value="" id="selectItems4"/>
-              </af:selectOneChoice>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="11%" id="gc14">
-              <af:outputLabel value="#{viewcontrollerBundle.BRUGER}"
-                              id="outputLabel2"/>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" marginEnd="5px" width="21%"
-                         id="gc12">
-              <af:selectOneChoice id="selectOneChoice5"
-                                  contentStyle="width:250.0px;">
-                <f:selectItems value="" id="selectItems5"/>
-              </af:selectOneChoice>
-            </af:gridCell>
-          </af:gridRow>
-          <af:gridRow marginTop="5px" height="auto" id="gr1">
-            <af:gridCell marginStart="5px" width="12%" id="gc21">
-              <af:outputLabel value="#{viewcontrollerBundle.FAKTURANUMMER}"
-                              id="outputLabel6"/>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="22%" id="gc10">
-              <af:inputText id="it1"
-                            contentStyle="width:250.0px;text-align:left;"
-                            autoSubmit="true"
-                            value="#{pageFlowScope.InvoiceSearchBean.invoiceNumber}"/>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="12%" id="gc17">
-              <af:outputLabel value="#{viewcontrollerBundle.FAKTURADATO}"
-                              id="outputLabel7"/>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="22%" id="gc15">
-              <af:panelGroupLayout id="panelGroupLayout2" layout="horizontal"
-                                   inlineStyle="width:250.0px;">
-                <af:inputDate id="inputDate6" contentStyle="width:106.0px;"
-                              autoSubmit="true"
-                              value="#{pageFlowScope.InvoiceSearchBean.invoiceStartDate}">
-                  <af:convertDateTime pattern="dd-MM-yy"/>
-                </af:inputDate>
-                <af:outputText value="To" id="outputText2"/>
-                <af:inputDate id="inputDate7" contentStyle="width:106.0px;"
-                              autoSubmit="true"
-                              value="#{pageFlowScope.InvoiceSearchBean.invoiceEndDate}"
-                              minValue="#{pageFlowScope.InvoiceSearchBean.invoiceStartDate}"
-                              partialTriggers="inputDate6"
-                              disabled="#{pageFlowScope.InvoiceSearchBean.invoiceStartDate eq null ? true : false}">
-                  <af:convertDateTime pattern="dd-MM-yy"/>
-                </af:inputDate>
-              </af:panelGroupLayout>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="11%" id="gc19">
-              <af:outputLabel value="#{viewcontrollerBundle.INDL_U00E6SNINGSDATO}"
-                              id="outputLabel8"/>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" marginEnd="5px" width="21%"
-                         id="gc18">
-              <af:panelGroupLayout id="panelGroupLayout4" layout="horizontal"
-                                   inlineStyle="width:250.0px;">
-                <af:inputDate id="inputDate4" contentStyle="width:106.0px;"/>
-                <af:outputText value="To" id="outputText3"/>
-                <af:inputDate id="inputDate5" contentStyle="width:106.0px;"/>
-              </af:panelGroupLayout>
-            </af:gridCell>
-          </af:gridRow>
-          <af:gridRow marginTop="5px" height="auto" id="gr2">
-            <af:gridCell marginStart="5px" width="12%" id="gc23">
-              <af:outputLabel value="#{viewcontrollerBundle.VALUTA}"
-                              id="outputLabel3"/>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="22%" id="gc22">
-              <af:selectOneChoice id="selectOneChoice6"
-                                  value="#{bindings.currencyCodeList.inputValue}"
-                                  contentStyle="width:250.0px;"
-                                  valueChangeListener="#{pageFlowScope.InvoiceSearchBean.invoiceCurrencyCodeValueChange}"
-                                  autoSubmit="true"
-                                  binding="#{pageFlowScope.InvoiceSearchBean.invoiceCurrencyCodeComponent}">
-                <f:selectItems value="#{bindings.currencyCodeList.items}"
-                               id="selectItems6"/>
-              </af:selectOneChoice>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="12%" id="gc24">
-              <af:outputLabel value="#{viewcontrollerBundle.BEL_U00F8B}"
-                              id="outputLabel4"/>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="22%" id="gc30">
-              <af:panelGroupLayout id="pgl6" layout="horizontal"
-                                   inlineStyle="width:250.0px;">
-                <af:inputText id="it2"
-                              contentStyle="width:106.0px;text-align:left;"
-                              value="#{pageFlowScope.InvoiceSearchBean.invoiceFormAmount}"
-                              autoSubmit="true"/>
-                <af:outputText value="To" id="ot9"
-                               inlineStyle="padding-left: 20px;"/>
-                <af:inputText id="it3"
-                              contentStyle="width:106.0px;text-align:left;"
-                              value="#{pageFlowScope.InvoiceSearchBean.invoiceToAmount}"
-                              autoSubmit="true"/>
-              </af:panelGroupLayout>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="11%" id="gc25"/>
-            <af:gridCell marginStart="5px" marginEnd="5px" width="21%"
-                         id="gc5"/>
-          </af:gridRow>
-          <af:gridRow marginTop="5px" marginBottom="5px" height="auto" id="gr5">
-            <af:gridCell marginStart="5px" width="12%" id="gc13">
-              <af:outputLabel value="#{viewcontrollerBundle.TYPE}"
-                              id="outputLabel9"/>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="22%" id="gc27">
-              <af:selectOneRadio layout="horizontal"
-                                 valueChangeListener="#{pageFlowScope.InvoiceSearchBean.invoiceTypeValueChange}"
-                                 autoSubmit="true"
-                                 value="#{pageFlowScope.InvoiceSearchBean.invoiceType}">
-                <f:selectItem itemValue="Standard" itemLabel="Standard "/>
-                <f:selectItem itemLabel="Credit Memo" itemValue="Credit Memo"/>
-              </af:selectOneRadio>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="12%" id="gc4">
-              <af:outputLabel value="#{viewcontrollerBundle.FORFALDSDATO}"
-                              id="outputLabel10"/>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="22%" id="gc7">
-              <af:panelGroupLayout id="panelGroupLayout3" layout="horizontal"
-                                   inlineStyle="width:250.0px;">
-                <af:inputDate id="inputDate2" contentStyle="width:106.0px;"
-                              autoSubmit="true"
-                              value="#{pageFlowScope.InvoiceSearchBean.maturityStartDate}">
-                  <af:convertDateTime pattern="dd-MM-yy"/>
-                </af:inputDate>
-                <af:outputText value="To" id="outputText4"/>
-                <af:inputDate id="inputDate3" contentStyle="width:106.0px;"
-                              autoSubmit="true"
-                              value="#{pageFlowScope.InvoiceSearchBean.maturityEndDate}"
-                              minValue="#{pageFlowScope.InvoiceSearchBean.maturityStartDate}"
-                              partialTriggers="inputDate2"
-                              disabled="#{pageFlowScope.InvoiceSearchBean.maturityStartDate eq null ? true : false}">
-                  <af:convertDateTime pattern="dd-MM-yy"/>
-                </af:inputDate>
-              </af:panelGroupLayout>
-            </af:gridCell>
-            <af:gridCell marginStart="5px" width="11%" id="gc29"/>
-            <af:gridCell marginStart="5px" marginEnd="5px" width="21%" id="gc28"
-                         halign="end">
-              <af:panelGroupLayout id="pgl5" layout="horizontal">
-                <af:commandButton text="Search" id="cb1"
-                                  action="#{pageFlowScope.InvoiceSearchBean.searchInvoice}"
-                                  inlineStyle="height:30px; width:80.0px;"/>
-                <af:spacer width="10" height="10" id="s3"/>
-                <af:commandButton text="Reset" id="cb2"
-                                  action="#{pageFlowScope.InvoiceSearchBean.resetSearch}"
-                                  inlineStyle="height:30.0px; width:80.0px;">
-                  <af:resetActionListener/>
-                </af:commandButton>
-                <af:spacer width="35" height="10" id="spacer1"/>
-              </af:panelGroupLayout>
-            </af:gridCell>
-          </af:gridRow>
-        </af:panelGridLayout>
-      </af:panelBox>
-    </af:panelGroupLayout>
-    <af:spacer width="10" height="10" id="s1"/>
-    <af:spacer width="10" height="20" id="s2"/>
-    <af:panelGroupLayout id="pgl3" layout="scroll">
-      <af:panelCollection id="pc1" styleClass="AFStretchWidth">
-        <f:facet name="menus"/>
-        <f:facet name="toolbar"/>
-        <f:facet name="statusbar"/>
-        <af:table value="#{bindings.ApInvoicesSearchInterfaceVVO.collectionModel}"
-                  var="row"
-                  rows="#{bindings.ApInvoicesSearchInterfaceVVO.rangeSize}"
-                  emptyText="#{bindings.ApInvoicesSearchInterfaceVVO.viewable ? 'No data to display.' : 'Access Denied.'}"
-                  fetchSize="#{bindings.ApInvoicesSearchInterfaceVVO.rangeSize}"
-                  rowBandingInterval="0"
-                  selectionListener="#{bindings.ApInvoicesSearchInterfaceVVO.collectionModel.makeCurrent}"
-                  rowSelection="multiple" id="t1" columnStretching="last"
-                  styleClass="AFStretchWidth" autoHeightRows="20"
-                  partialTriggers=":::cb1">
-          <af:column sortProperty="#{bindings.ApInvoicesSearchInterfaceVVO.hints.VendorName.name}"
-                     sortable="false"
-                     headerText="#{bindings.ApInvoicesSearchInterfaceVVO.hints.VendorName.label}"
-                     id="c1" width="150">
-            <af:outputText value="#{row.VendorName}" id="ot2"/>
-          </af:column>
-          <af:column sortProperty="#{bindings.ApInvoicesSearchInterfaceVVO.hints.VendorNumber.name}"
-                     sortable="false"
-                     headerText="#{bindings.ApInvoicesSearchInterfaceVVO.hints.VendorNumber.label}"
-                     id="c5" width="150">
-            <af:outputText value="#{row.VendorNumber}" id="ot5"/>
-          </af:column>
-          <af:column sortProperty="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceNum.name}"
-                     sortable="false"
-                     headerText="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceNum.label}"
-                     id="c6" width="100" inlineStyle="text-align:right;">
-            <af:outputText value="#{row.InvoiceNum}" id="ot3"/>
-          </af:column>
-          <af:column sortProperty="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceDate.name}"
-                     sortable="false"
-                     headerText="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceDate.label}"
-                     id="c3">
-            <af:outputText value="#{row.InvoiceDate}" id="ot4">
-              <af:convertDateTime pattern="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceDate.format}"/>
-            </af:outputText>
-          </af:column>
-          <af:column sortProperty="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceCurrencyCode.name}"
-                     sortable="false"
-                     headerText="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceCurrencyCode.label}"
-                     id="c8" width="150">
-            <af:outputText value="#{row.InvoiceCurrencyCode}" id="ot8"/>
-          </af:column>
-          <af:column sortProperty="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceType.name}"
-                     sortable="false"
-                     headerText="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceType.label}"
-                     id="c7" width="100">
-            <af:outputText value="#{row.InvoiceType}" id="ot7"/>
-          </af:column>
-          <af:column sortProperty="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceAmount.name}"
-                     sortable="false"
-                     headerText="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceAmount.label}"
-                     id="c2">
-            <af:outputText value="#{row.InvoiceAmount}" id="ot6">
-              <af:convertNumber groupingUsed="false"
-                                pattern="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceAmount.format}"/>
-            </af:outputText>
-          </af:column>
-          <af:column sortProperty="#{bindings.ApInvoicesSearchInterfaceVVO.hints.Status.name}"
-                     sortable="false"
-                     headerText="#{bindings.ApInvoicesSearchInterfaceVVO.hints.Status.label}"
-                     id="c4">
-            <af:outputText value="#{row.Status}" id="ot1"/>
-          </af:column>
-          <af:column headerText="#{viewcontrollerBundle.EANNUMMER}" id="c9"></af:column>
-          <af:column headerText="#{viewcontrollerBundle.INSTITUTNUMMER}"
-                     id="c10"></af:column>
-          <af:column headerText="#{viewcontrollerBundle.FORFALDSDATO}" id="c13">
-            <af:outputText value="#{row.TermsDate}" id="ot11">
-              <af:convertDateTime pattern="#{bindings.ApInvoicesSearchInterfaceVVO.hints.TermsDate.format}"/>
-            </af:outputText>
-          </af:column>
-          <af:column headerText="#{viewcontrollerBundle.BRUGER}" id="c11">
-            <af:outputText value="#{row.GroupId}" id="ot13"/>
-          </af:column>
-        </af:table>
-      </af:panelCollection>
-    </af:panelGroupLayout>
+    <af:panelGroupLayout id="pgl1"/>
   </af:panelGroupLayout>
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelGroupLayout layout="vertical"
+                           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                           id="pgl7" styleClass="AFStretchWidth">
+        <af:panelBox text="Search" id="pb1">
+          <f:facet name="toolbar"/>
+          <af:panelGridLayout id="pgl4">
+            <af:gridRow marginTop="5px" height="auto" id="gr4">
+              <af:gridCell marginStart="5px" width="12%" id="gc1">
+                <af:outputLabel value="#{viewcontrollerBundle.LEVERANDORNAVN}"
+                                id="ol1"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="22%" id="gc9">
+                <af:inputListOfValues id="vendorNameId"
+                                      contentStyle="width:250.0px;"
+                                      popupTitle="Search and Select: #{bindings.VendorName.hints.label}"
+                                      model="#{bindings.VendorName.listOfValuesModel}"
+                                      columns="#{bindings.VendorName.hints.displayWidth}"
+                                      shortDesc="#{bindings.VendorName.hints.tooltip}"
+                                      valueChangeListener="#{pageFlowScope.InvoiceSearchBean.invoiceVendorNameValueChangeListener}"
+                                      autoSubmit="true">
+                  <f:validator binding="#{bindings.VendorName.validator}"/>
+                  <af:autoSuggestBehavior suggestedItems="#{bindings.VendorName.suggestedItems}"/>
+                </af:inputListOfValues>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="12%" id="gc20">
+                <af:outputLabel value="#{viewcontrollerBundle.EANNUMMER}"
+                                id="ol2"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="22%" id="gc6">
+                <af:inputListOfValues id="vendorNumberId"
+                                      contentStyle="width:250.0px;"
+                                      popupTitle="Search and Select: #{bindings.VendorNumber.hints.label}"
+                                      model="#{bindings.VendorNumber.listOfValuesModel}"
+                                      columns="#{bindings.VendorNumber.hints.displayWidth}"
+                                      shortDesc="#{bindings.VendorNumber.hints.tooltip}"
+                                      valueChangeListener="#{pageFlowScope.InvoiceSearchBean.invoiceVendorNumberValueChangeListener}"
+                                      autoSubmit="true">
+                  <f:validator binding="#{bindings.VendorNumber.validator}"/>
+                  <af:autoSuggestBehavior suggestedItems="#{bindings.VendorNumber.suggestedItems}"/>
+                </af:inputListOfValues>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="11%" id="gc3">
+                <af:outputLabel value="#{viewcontrollerBundle.STATUS}"
+                                id="ol3"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" marginEnd="5px" width="21%"
+                           id="gc26">
+                <af:selectOneChoice id="selectOneChoice2"
+                                    value="#{bindings.statusList.inputValue}"
+                                    contentStyle="width:250.0px;"
+                                    valueChangeListener="#{pageFlowScope.InvoiceSearchBean.invoiceStatusValueChange}"
+                                    autoSubmit="true"
+                                    binding="#{pageFlowScope.InvoiceSearchBean.invoiceStatusComponent}">
+                  <f:selectItems value="#{bindings.statusList.items}"
+                                 id="selectItems2"/>
+                </af:selectOneChoice>
+              </af:gridCell>
+            </af:gridRow>
+            <af:gridRow marginTop="5px" height="auto" id="gr3">
+              <af:gridCell marginStart="5px" width="12%" id="gc8">
+                <af:outputLabel value="#{viewcontrollerBundle.LEVERAND_U00F8RNUMMER}"
+                                id="ol4"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="22%" id="gc16">
+                <af:inputListOfValues id="ilov1" contentStyle="width:250.0px;"
+                                      popupTitle="Search and Select: #{bindings.VendorNumber.hints.label}"
+                                      model="#{bindings.VendorNumber.listOfValuesModel}"
+                                      columns="#{bindings.VendorNumber.hints.displayWidth}"
+                                      shortDesc="#{bindings.VendorNumber.hints.tooltip}"
+                                      valueChangeListener="#{pageFlowScope.InvoiceSearchBean.invoiceVendorNumberValueChangeListener}"
+                                      autoSubmit="true">
+                  <f:validator binding="#{bindings.VendorNumber.validator}"/>
+                  <af:autoSuggestBehavior suggestedItems="#{bindings.VendorNumber.suggestedItems}"/>
+                </af:inputListOfValues>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="12%" id="gc11">
+                <af:outputLabel value="#{viewcontrollerBundle.INSTITUTNUMMER}"
+                                id="outputLabel1"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="22%" id="gc2">
+                <af:selectOneChoice id="selectOneChoice4"
+                                    contentStyle="width:250.0px;">
+                  <f:selectItems value="" id="selectItems4"/>
+                </af:selectOneChoice>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="11%" id="gc14">
+                <af:outputLabel value="#{viewcontrollerBundle.BRUGER}"
+                                id="outputLabel2"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" marginEnd="5px" width="21%"
+                           id="gc12">
+                <af:selectOneChoice id="selectOneChoice5"
+                                    contentStyle="width:250.0px;">
+                  <f:selectItems value="" id="selectItems5"/>
+                </af:selectOneChoice>
+              </af:gridCell>
+            </af:gridRow>
+            <af:gridRow marginTop="5px" height="auto" id="gr1">
+              <af:gridCell marginStart="5px" width="12%" id="gc21">
+                <af:outputLabel value="#{viewcontrollerBundle.FAKTURANUMMER}"
+                                id="outputLabel6"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="22%" id="gc10">
+                <af:inputText id="it1"
+                              contentStyle="width:250.0px;text-align:left;"
+                              autoSubmit="true"
+                              value="#{pageFlowScope.InvoiceSearchBean.invoiceNumber}"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="12%" id="gc17">
+                <af:outputLabel value="#{viewcontrollerBundle.FAKTURADATO}"
+                                id="outputLabel7"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="22%" id="gc15">
+                <af:panelGroupLayout id="panelGroupLayout2" layout="horizontal"
+                                     inlineStyle="width:250.0px;">
+                  <af:inputDate id="inputDate6" contentStyle="width:106.0px;"
+                                autoSubmit="true"
+                                value="#{pageFlowScope.InvoiceSearchBean.invoiceStartDate}">
+                    <af:convertDateTime pattern="dd-MM-yy"/>
+                  </af:inputDate>
+                  <af:outputText value="To" id="outputText2"/>
+                  <af:inputDate id="inputDate7" contentStyle="width:106.0px;"
+                                autoSubmit="true"
+                                value="#{pageFlowScope.InvoiceSearchBean.invoiceEndDate}"
+                                minValue="#{pageFlowScope.InvoiceSearchBean.invoiceStartDate}"
+                                partialTriggers="inputDate6"
+                                disabled="#{pageFlowScope.InvoiceSearchBean.invoiceStartDate eq null ? true : false}">
+                    <af:convertDateTime pattern="dd-MM-yy"/>
+                  </af:inputDate>
+                </af:panelGroupLayout>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="11%" id="gc19">
+                <af:outputLabel value="#{viewcontrollerBundle.INDL_U00E6SNINGSDATO}"
+                                id="outputLabel8"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" marginEnd="5px" width="21%"
+                           id="gc18">
+                <af:panelGroupLayout id="panelGroupLayout4" layout="horizontal"
+                                     inlineStyle="width:250.0px;">
+                  <af:inputDate id="inputDate4" contentStyle="width:106.0px;"/>
+                  <af:outputText value="To" id="outputText3"/>
+                  <af:inputDate id="inputDate5" contentStyle="width:106.0px;"/>
+                </af:panelGroupLayout>
+              </af:gridCell>
+            </af:gridRow>
+            <af:gridRow marginTop="5px" height="auto" id="gr2">
+              <af:gridCell marginStart="5px" width="12%" id="gc23">
+                <af:outputLabel value="#{viewcontrollerBundle.VALUTA}"
+                                id="outputLabel3"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="22%" id="gc22">
+                <af:selectOneChoice id="selectOneChoice6"
+                                    value="#{bindings.currencyCodeList.inputValue}"
+                                    contentStyle="width:250.0px;"
+                                    valueChangeListener="#{pageFlowScope.InvoiceSearchBean.invoiceCurrencyCodeValueChange}"
+                                    autoSubmit="true"
+                                    binding="#{pageFlowScope.InvoiceSearchBean.invoiceCurrencyCodeComponent}">
+                  <f:selectItems value="#{bindings.currencyCodeList.items}"
+                                 id="selectItems6"/>
+                </af:selectOneChoice>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="12%" id="gc24">
+                <af:outputLabel value="#{viewcontrollerBundle.BEL_U00F8B}"
+                                id="outputLabel4"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="22%" id="gc30">
+                <af:panelGroupLayout id="pgl6" layout="horizontal"
+                                     inlineStyle="width:250.0px;">
+                  <af:inputText id="it2"
+                                contentStyle="width:106.0px;text-align:left;"
+                                value="#{pageFlowScope.InvoiceSearchBean.invoiceFormAmount}"
+                                autoSubmit="true"/>
+                  <af:outputText value="To" id="ot9"
+                                 inlineStyle="padding-left: 20px;"/>
+                  <af:inputText id="it3"
+                                contentStyle="width:106.0px;text-align:left;"
+                                value="#{pageFlowScope.InvoiceSearchBean.invoiceToAmount}"
+                                autoSubmit="true"/>
+                </af:panelGroupLayout>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="11%" id="gc25"/>
+              <af:gridCell marginStart="5px" marginEnd="5px" width="21%"
+                           id="gc5"/>
+            </af:gridRow>
+            <af:gridRow marginTop="5px" marginBottom="5px" height="auto"
+                        id="gr5">
+              <af:gridCell marginStart="5px" width="12%" id="gc13">
+                <af:outputLabel value="#{viewcontrollerBundle.TYPE}"
+                                id="outputLabel9"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="22%" id="gc27">
+                <af:selectOneRadio layout="horizontal"
+                                   valueChangeListener="#{pageFlowScope.InvoiceSearchBean.invoiceTypeValueChange}"
+                                   autoSubmit="true"
+                                   value="#{pageFlowScope.InvoiceSearchBean.invoiceType}"
+                                   id="sor1">
+                  <f:selectItem itemValue="Standard" itemLabel="Standard "
+                                id="si1"/>
+                  <f:selectItem itemLabel="Credit Memo"
+                                itemValue="Credit Memo" id="si2"/>
+                </af:selectOneRadio>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="12%" id="gc4">
+                <af:outputLabel value="#{viewcontrollerBundle.FORFALDSDATO}"
+                                id="outputLabel10"/>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="22%" id="gc7">
+                <af:panelGroupLayout id="panelGroupLayout3" layout="horizontal"
+                                     inlineStyle="width:250.0px;">
+                  <af:inputDate id="inputDate2" contentStyle="width:106.0px;"
+                                autoSubmit="true"
+                                value="#{pageFlowScope.InvoiceSearchBean.maturityStartDate}">
+                    <af:convertDateTime pattern="dd-MM-yy"/>
+                  </af:inputDate>
+                  <af:outputText value="To" id="outputText4"/>
+                  <af:inputDate id="inputDate3" contentStyle="width:106.0px;"
+                                autoSubmit="true"
+                                value="#{pageFlowScope.InvoiceSearchBean.maturityEndDate}"
+                                minValue="#{pageFlowScope.InvoiceSearchBean.maturityStartDate}"
+                                partialTriggers="inputDate2"
+                                disabled="#{pageFlowScope.InvoiceSearchBean.maturityStartDate eq null ? true : false}">
+                    <af:convertDateTime pattern="dd-MM-yy"/>
+                  </af:inputDate>
+                </af:panelGroupLayout>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="11%" id="gc29"/>
+              <af:gridCell marginStart="5px" marginEnd="5px" width="21%"
+                           id="gc28" halign="end">
+                <af:panelGroupLayout id="pgl5" layout="horizontal">
+                  <af:commandButton text="Search" id="cb1"
+                                    action="#{pageFlowScope.InvoiceSearchBean.searchInvoice}"
+                                    inlineStyle="height:30px; width:80.0px;"/>
+                  <af:spacer width="10" height="10" id="s3"/>
+                  <af:commandButton text="Reset" id="cb2"
+                                    action="#{pageFlowScope.InvoiceSearchBean.resetSearch}"
+                                    inlineStyle="height:30.0px; width:80.0px;">
+                    <af:resetActionListener/>
+                  </af:commandButton>
+                  <af:spacer width="35" height="10" id="spacer1"/>
+                </af:panelGroupLayout>
+              </af:gridCell>
+            </af:gridRow>
+          </af:panelGridLayout>
+        </af:panelBox>
+        <af:spacer width="10" height="30" id="s2"/>
+        <af:panelGroupLayout id="pgl3" layout="scroll">
+          <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar"/>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.ApInvoicesSearchInterfaceVVO.collectionModel}"
+                      var="row"
+                      rows="#{bindings.ApInvoicesSearchInterfaceVVO.rangeSize}"
+                      emptyText="#{bindings.ApInvoicesSearchInterfaceVVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.ApInvoicesSearchInterfaceVVO.rangeSize}"
+                      rowBandingInterval="0"
+                      selectionListener="#{bindings.ApInvoicesSearchInterfaceVVO.collectionModel.makeCurrent}"
+                      rowSelection="multiple" id="t1" columnStretching="last"
+                      styleClass="AFStretchWidth" autoHeightRows="20"
+                      partialTriggers=":::cb1">
+              <af:column sortProperty="#{bindings.ApInvoicesSearchInterfaceVVO.hints.VendorName.name}"
+                         sortable="false"
+                         headerText="#{bindings.ApInvoicesSearchInterfaceVVO.hints.VendorName.label}"
+                         id="c1" width="150">
+                <af:outputText value="#{row.VendorName}" id="ot2"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.ApInvoicesSearchInterfaceVVO.hints.VendorNumber.name}"
+                         sortable="false"
+                         headerText="#{bindings.ApInvoicesSearchInterfaceVVO.hints.VendorNumber.label}"
+                         id="c5" width="150">
+                <af:outputText value="#{row.VendorNumber}" id="ot5"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceNum.name}"
+                         sortable="false"
+                         headerText="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceNum.label}"
+                         id="c6" width="100" inlineStyle="text-align:right;">
+                <af:outputText value="#{row.InvoiceNum}" id="ot3"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceDate.name}"
+                         sortable="false"
+                         headerText="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceDate.label}"
+                         id="c3">
+                <af:outputText value="#{row.InvoiceDate}" id="ot4">
+                  <af:convertDateTime pattern="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceDate.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceCurrencyCode.name}"
+                         sortable="false"
+                         headerText="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceCurrencyCode.label}"
+                         id="c8" width="150">
+                <af:outputText value="#{row.InvoiceCurrencyCode}" id="ot8"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceType.name}"
+                         sortable="false"
+                         headerText="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceType.label}"
+                         id="c7" width="100">
+                <af:outputText value="#{row.InvoiceType}" id="ot7"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceAmount.name}"
+                         sortable="false"
+                         headerText="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceAmount.label}"
+                         id="c2">
+                <af:outputText value="#{row.InvoiceAmount}" id="ot6">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.ApInvoicesSearchInterfaceVVO.hints.InvoiceAmount.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.ApInvoicesSearchInterfaceVVO.hints.Status.name}"
+                         sortable="false"
+                         headerText="#{bindings.ApInvoicesSearchInterfaceVVO.hints.Status.label}"
+                         id="c4">
+                <af:outputText value="#{row.Status}" id="ot1"/>
+              </af:column>
+              <af:column headerText="#{viewcontrollerBundle.EANNUMMER}"
+                         id="c9"/>
+              <af:column headerText="#{viewcontrollerBundle.INSTITUTNUMMER}"
+                         id="c10"/>
+              <af:column headerText="#{viewcontrollerBundle.FORFALDSDATO}"
+                         id="c13">
+                <af:outputText value="#{row.TermsDate}" id="ot11">
+                  <af:convertDateTime pattern="#{bindings.ApInvoicesSearchInterfaceVVO.hints.TermsDate.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column headerText="#{viewcontrollerBundle.BRUGER}" id="c11">
+                <af:outputText value="#{row.GroupId}" id="ot13"/>
+              </af:column>
+            </af:table>
+          </af:panelCollection>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
 </jsp:root>

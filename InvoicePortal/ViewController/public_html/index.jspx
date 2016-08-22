@@ -61,6 +61,11 @@
             </af:panelGroupLayout>
           </f:facet>
         </af:pageTemplate>
+        <af:resource type="javascript">
+        function resizeIframe(obj) {
+    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+  }
+        </af:resource>
       </af:form>
     </af:document>
   </f:view>

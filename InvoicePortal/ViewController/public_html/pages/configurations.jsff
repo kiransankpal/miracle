@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelBox text="Configuration Details" id="pb1" showDisclosure="false">
+    <f:facet name="toolbar">
+        <af:toolbar id="t1">
+          <af:panelGroupLayout id="pgl2" layout="horizontal">
+            <af:commandToolbarButton actionListener="#{bindings.CreateInsert.execute}"
+                                     text="Create View"
+                                     disabled="#{!bindings.CreateInsert.enabled}"
+                                     id="ctb1"/>
+            <af:spacer width="10" height="10" id="s1"/>
+            <af:commandToolbarButton text="Invoice Details" id="ctb2"
+                                     action="backinvoice"/>
+          </af:panelGroupLayout>
+        </af:toolbar>
+    </f:facet>
+    <af:panelFormLayout id="pfl1">
+      <af:selectOneRadio value="#{bindings.AccessibilityType.inputValue}"
+                         label="#{bindings.AccessibilityType.label}"
+                         required="#{bindings.AccessibilityType.hints.mandatory}"
+                         shortDesc="#{bindings.AccessibilityType.hints.tooltip}"
+                         id="sor1">
+        <f:selectItems value="#{bindings.AccessibilityType.items}" id="si1"/>
+      </af:selectOneRadio>
+      <af:selectOneChoice value="#{bindings.Name.inputValue}"
+                          label="#{bindings.Name.label}"
+                          required="#{bindings.Name.hints.mandatory}"
+                          shortDesc="#{bindings.Name.hints.tooltip}" id="soc1">
+        <f:selectItems value="#{bindings.Name.items}" id="si2"/>
+      </af:selectOneChoice>
+      <af:selectBooleanCheckbox value="#{bindings.IsDefaultView.inputValue}"
+                                label="#{bindings.IsDefaultView.label}"
+                                shortDesc="#{bindings.IsDefaultView.hints.tooltip}"
+                                id="sbc1"/>
+      <f:facet name="footer">
+        <af:panelGroupLayout id="pgl1" layout="horizontal">
+          <af:commandButton actionListener="#{bindings.Commit.execute}"
+                            text="Save" disabled="#{!bindings.Commit.enabled}"
+                            id="cb1"/>
+          <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                            text="Cancel"
+                            disabled="#{!bindings.Rollback.enabled}"
+                            immediate="true" id="cb2">
+            <af:resetActionListener/>
+          </af:commandButton>
+        </af:panelGroupLayout>
+      </f:facet>
+    </af:panelFormLayout>
+  </af:panelBox>
+  <af:panelAccordion id="pa1" styleClass="AFStretchWidth" discloseMany="true">
+    <af:showDetailItem text="Invoice Main" id="sdi1">
+      <af:panelTabbed id="pt1" styleClass="AFStretchWidth">
+        <af:showDetailItem text="Tab 1" id="sdi3">
+          <af:selectOrderShuttle id="sos1">
+            <f:selectItems value="#{pageFlowScope.ConfigBean.shuttleList}"
+                           id="si3"/>
+          </af:selectOrderShuttle>
+        </af:showDetailItem>
+        <af:showDetailItem text="Tab 2" id="showDetailItem1"/>
+        <af:showDetailItem text="Tab 3" id="showDetailItem2"/>
+      </af:panelTabbed>
+      <af:selectOneChoice label="Tabs" id="soc2">
+        <af:selectItem label="Tab 1" value="tab1" id="si5"/>
+        <af:selectItem label="Tab 2" value="tab2" id="si4"/>
+      </af:selectOneChoice>
+    </af:showDetailItem>
+    <af:showDetailItem text="Invoice Line" id="sdi2">
+      <af:panelTabbed id="panelTabbed1" styleClass="AFStretchWidth">
+        <af:showDetailItem text="Tab 1" id="showDetailItem3"/>
+        <af:showDetailItem text="Tab 2" id="showDetailItem4"/>
+        <af:showDetailItem text="Tab 3" id="showDetailItem5"/>
+        <af:showDetailItem text="Tab 4" id="showDetailItem6"/>
+        <af:showDetailItem text="Tab 5" id="showDetailItem7"/>
+      </af:panelTabbed>
+    </af:showDetailItem>
+  </af:panelAccordion>
+</jsp:root>

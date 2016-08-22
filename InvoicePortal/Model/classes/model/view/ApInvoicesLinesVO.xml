@@ -163,7 +163,8 @@
   PageIterMode="Full"
   UseGlueCode="false"
   FetchMode="FETCH_AS_NEEDED"
-  FetchSize="50">
+  FetchSize="50"
+  OrderBy="ApInvoiceLinesInterface.LINE_NUMBER asc">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
   </DesignTime>

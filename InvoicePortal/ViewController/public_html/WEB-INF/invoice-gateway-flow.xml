@@ -12,6 +12,11 @@
       <managed-bean-class id="__16">view.helper.InvoicePortalHelper</managed-bean-class>
       <managed-bean-scope id="__13">backingBean</managed-bean-scope>
     </managed-bean>
+    <managed-bean id="__39">
+      <managed-bean-name id="__38">ConfigBean</managed-bean-name>
+      <managed-bean-class id="__36">view.bean.backing.ConfigBean</managed-bean-class>
+      <managed-bean-scope id="__37">pageFlow</managed-bean-scope>
+    </managed-bean>
     <router id="displaySearchPage">
       <case>
         <expression></expression>
@@ -26,9 +31,6 @@
     <view id="InvoiceDetails">
       <page>/pages/InvoiceDetails.jsff</page>
     </view>
-    <view id="InvoiceSearchList">
-      <page>/pages/InvoiceSearchList.jsff</page>
-    </view>
     <view id="InvoicesSearch">
       <page>/pages/InvoicesSearch.jsff</page>
     </view>
@@ -38,6 +40,9 @@
         <fixed-outcome>toRouter</fixed-outcome>
       </outcome>
     </method-call>
+    <view id="configurations">
+      <page>/pages/configurations.jsff</page>
+    </view>
     <control-flow-rule id="__2">
       <from-activity-id id="__3">displaySearchPage</from-activity-id>
       <control-flow-case id="__4">
@@ -54,6 +59,20 @@
       <control-flow-case id="__19">
         <from-outcome id="__21">toRouter</from-outcome>
         <to-activity-id id="__20">displaySearchPage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id id="__8">InvoiceDetails</from-activity-id>
+      <control-flow-case id="__28">
+        <from-outcome id="__30">configAction</from-outcome>
+        <to-activity-id id="__29">configurations</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__31">
+      <from-activity-id id="__32">configurations</from-activity-id>
+      <control-flow-case id="__34">
+        <from-outcome id="__35">backinvoice</from-outcome>
+        <to-activity-id id="__33">InvoiceDetails</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <use-page-fragments/>

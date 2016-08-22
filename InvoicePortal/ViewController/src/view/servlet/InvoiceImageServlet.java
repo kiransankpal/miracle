@@ -4,16 +4,24 @@ package view.servlet;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
+import java.io.Reader;
+
+import java.sql.Clob;
 import java.sql.SQLException;
 
 import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -21,10 +29,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import javax.xml.bind.DatatypeConverter;
+
 import oracle.jbo.ApplicationModule;
 import oracle.jbo.Row;
 import oracle.jbo.client.Configuration;
 import oracle.jbo.domain.BlobDomain;
+import oracle.jbo.domain.ClobDomain;
 import oracle.jbo.server.ViewObjectImpl;
 
 import org.apache.commons.imaging.ImageReadException;
@@ -69,71 +80,78 @@ public class InvoiceImageServlet extends HttpServlet {
         vo.setNamedWhereClauseParam("bind_invoice_id", pInvoiceId);
         vo.executeQuery();
         boolean isImagePresent = false;
-        
+
         if (vo.hasNext()) {
 
             Row encodedDocumentRow = vo.first();
             BlobDomain image =
                 (BlobDomain)encodedDocumentRow.getAttribute("Encodeddocument");
-            if(image != null){
+            if (image != null) {
                 isImagePresent = true;
             }
-            
+
         }
-        
+
         if (isImagePresent) {
 
             Row encodedDocumentRow = vo.first();
             BlobDomain image =
                 (BlobDomain)encodedDocumentRow.getAttribute("Encodeddocument");
-            
-                
-                OutputStream output = response.getOutputStream();
-                byte[] buf = new byte[1024];
 
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                InputStream in = image.getBinaryStream();
-                int n = 0;
-                while ((n = in.read(buf)) >= 0) {
-                    baos.write(buf, 0, n);
-                }
 
-                PDDocument doc = new PDDocument();
-                List<BufferedImage> bimages = null;
+            OutputStream output = response.getOutputStream();
+            byte[] buf = new byte[1024];
+
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            InputStream in = image.getBinaryStream();
+            int n = 0;
+            while ((n = in.read(buf)) >= 0) {
+                baos.write(buf, 0, n);
+            }
+
+            PDDocument doc = new PDDocument();
+            List<BufferedImage> bimages = null;
+            try {
+                bimages = Imaging.getAllBufferedImages(baos.toByteArray());
+            } catch (ImageReadException e) {
+                e.printStackTrace();
+            }
+            for (BufferedImage bi : bimages) {
+                PDPage page = new PDPage();
+                doc.addPage(page);
+                PDPageContentStream contentStream =
+                    new PDPageContentStream(doc, page);
                 try {
-                    bimages = Imaging.getAllBufferedImages(baos.toByteArray());
-                } catch (ImageReadException e) {
-                    e.printStackTrace();
+                    PDImageXObject pdfImage =
+                        JPEGFactory.createFromImage(doc, bi, 0.08f);
+                    Dimension scaledDim =
+                        getScaledDimension(new Dimension(pdfImage.getWidth(),
+                                                         pdfImage.getHeight()),
+                                           new Dimension((int)page.getMediaBox().getWidth(),
+                                                         (int)page.getMediaBox().getHeight()));
+                    contentStream.drawImage(pdfImage, 1, 1, scaledDim.width,
+                                            scaledDim.height);
+                } finally {
+                    contentStream.close();
                 }
-                for (BufferedImage bi : bimages) {
-                    PDPage page = new PDPage();
-                    doc.addPage(page);
-                    PDPageContentStream contentStream =
-                        new PDPageContentStream(doc, page);
-                    try {
-                        PDImageXObject pdfImage =
-                            JPEGFactory.createFromImage(doc, bi, 0.08f);
-                        Dimension scaledDim =
-                            getScaledDimension(new Dimension(pdfImage.getWidth(),
-                                                             pdfImage.getHeight()),
-                                               new Dimension((int)page.getMediaBox().getWidth(),
-                                                             (int)page.getMediaBox().getHeight()));
-                        contentStream.drawImage(pdfImage, 1, 1,
-                                                scaledDim.width,
-                                                scaledDim.height);
-                    } finally {
-                        contentStream.close();
-                    }
-                    doc.save(output);
-                }
-                in.close();
-                doc.close();
-                baos.close();
-                baos.flush();
-                output.close();
-                output.flush();
+                doc.save(output);
+            }
+            in.close();
+            doc.close();
+            baos.close();
+            baos.flush();
+            output.close();
+            output.flush();
         } else {
-            printBlankResponse(response);
+            Row encodedDocumentRow = vo.first();
+            Clob data = (Clob)encodedDocumentRow.getAttribute("InvoiceHtml");
+            if (data != null) {
+                String invoiceHtml = clobToString(data);
+                System.out.println(invoiceHtml);
+                printHtmlResponse(response, invoiceHtml);
+            } else {
+                printBlankResponse(response);
+            }
         }
 
 
@@ -149,6 +167,37 @@ public class InvoiceImageServlet extends HttpServlet {
             }
         }
     }
+
+    /**Get String from Clob object used for getting selected columns in Config
+     * @param data
+     * @return
+     */
+    private String clobToString(Clob data) {
+
+        final StringBuilder sb = new StringBuilder();
+
+        try {
+            final Reader reader = data.getCharacterStream();
+            final BufferedReader br = new BufferedReader(reader);
+
+            int b;
+            while (-1 != (b = br.read())) {
+                sb.append((char)b);
+            }
+
+            br.close();
+        }
+
+        catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return sb.toString();
+    }
+
 
     private Dimension getScaledDimension(Dimension imgSize,
                                          Dimension boundary) {
@@ -192,6 +241,21 @@ public class InvoiceImageServlet extends HttpServlet {
         out.println("<body>");
         out.println("<p>No Invoice Attached.</p>");
         out.println("</body></html>");
+        out.close();
+        out.flush();
+    }
+
+    private void printHtmlResponse(HttpServletResponse response,
+                                   String invoiceHtml) {
+        response.reset();
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = null;
+        try {
+            out = response.getWriter();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        out.println(invoiceHtml);
         out.close();
         out.flush();
     }

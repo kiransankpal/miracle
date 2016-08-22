@@ -216,7 +216,7 @@
          <list n="libraryDefinitions">
             <hash>
                <list n="classPath">
-                  <url protocol="jar" path="file:/Volumes/Miracle/fndext.jar!/"/>
+                  <url path="../../../../fndext.jar" jar-entry=""/>
                </list>
                <value n="deployedByDefault" v="true"/>
                <value n="description" v="Fndext.jar"/>

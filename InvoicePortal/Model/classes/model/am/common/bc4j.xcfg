@@ -2,6 +2,7 @@
 <BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
    <AppModuleConfigBag ApplicationName="model.am.CommonAppModule">
       <AppModuleConfig DeployPlatform="LOCAL" JDBCName="Apps" jbo.project="model.Model" name="CommonAppModuleLocal" ApplicationName="model.am.CommonAppModule">
+         <AM-Pooling jbo.doconnectionpooling="true"/>
          <Database jbo.locking.mode="optimistic"/>
          <Security AppModuleJndiName="model.am.CommonAppModule"/>
       </AppModuleConfig>

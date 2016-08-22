@@ -128,7 +128,8 @@ public class ApInvoiceSearchVVORowImpl extends ViewRowImpl {
         RelationshipId,
         RemitToSupplierNum,
         SupplierNameLOV,
-        SupplierNumberLOV;
+        SupplierNumberLOV,
+        InvoiceStatusLOV;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
 
@@ -264,6 +265,7 @@ public class ApInvoiceSearchVVORowImpl extends ViewRowImpl {
     public static final int REMITTOSUPPLIERNUM = AttributesEnum.RemitToSupplierNum.index();
     public static final int SUPPLIERNAMELOV = AttributesEnum.SupplierNameLOV.index();
     public static final int SUPPLIERNUMBERLOV = AttributesEnum.SupplierNumberLOV.index();
+    public static final int INVOICESTATUSLOV = AttributesEnum.InvoiceStatusLOV.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -2027,5 +2029,12 @@ public class ApInvoiceSearchVVORowImpl extends ViewRowImpl {
      */
     public RowSet getSupplierNumberLOV() {
         return (RowSet)getAttributeInternal(SUPPLIERNUMBERLOV);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> InvoiceStatusLOV.
+     */
+    public RowSet getInvoiceStatusLOV() {
+        return (RowSet)getAttributeInternal(INVOICESTATUSLOV);
     }
 }

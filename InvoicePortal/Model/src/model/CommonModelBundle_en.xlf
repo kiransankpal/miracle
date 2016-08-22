@@ -255,6 +255,11 @@
         <source>FunctionName</source>
         <target>Function Name</target>
       </trans-unit>
+      
+      <trans-unit id="NUMBER_FORMAT">
+        <source>#,##0.00</source>
+        <target>#,##0.00</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

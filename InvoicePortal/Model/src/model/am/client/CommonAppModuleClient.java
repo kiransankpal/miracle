@@ -1,5 +1,7 @@
 package model.am.client;
 
+import java.util.List;
+
 import model.am.common.CommonAppModule;
 
 import oracle.jbo.client.remote.ApplicationModuleImpl;
@@ -19,5 +21,11 @@ public class CommonAppModuleClient extends ApplicationModuleImpl implements Comm
     public void checkAMConn() {
         Object _ret = this.riInvokeExportedMethod(this,"checkAMConn",null,null);
         return;
+    }
+
+    public List getViewObjectAttributes() {
+        Object _ret =
+            this.riInvokeExportedMethod(this,"getViewObjectAttributes",null,null);
+        return (List)_ret;
     }
 }

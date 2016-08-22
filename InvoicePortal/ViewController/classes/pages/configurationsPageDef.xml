@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="configurationsPageDef"
+                Package="pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="ConfigurationViewHeaderVOIterator"
+              Binds="ConfigurationViewHeaderVO"
+              DataControl="CommonAppModuleDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <list IterBinding="ConfigurationViewHeaderVOIterator" StaticList="false"
+          Uses="LOV_AccessibilityType" id="AccessibilityType"
+          DTSupportsMRU="false"/>
+    <list IterBinding="ConfigurationViewHeaderVOIterator" StaticList="false"
+          Uses="LOV_Name" id="Name" DTSupportsMRU="false"/>
+    <button IterBinding="ConfigurationViewHeaderVOIterator" id="IsDefaultView"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="IsDefaultView"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="CommonAppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction"
+            DataControl="CommonAppModuleDataControl"/>
+    <action IterBinding="ConfigurationViewHeaderVOIterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <methodAction id="getViewObjectAttributes"
+                  InstanceName="CommonAppModuleDataControl.dataProvider"
+                  DataControl="CommonAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getViewObjectAttributes"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.CommonAppModuleDataControl.methodResults.getViewObjectAttributes_CommonAppModuleDataControl_dataProvider_getViewObjectAttributes_result"/>
+  </bindings>
+</pageDefinition>

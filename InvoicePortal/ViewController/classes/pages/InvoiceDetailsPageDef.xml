@@ -285,5 +285,7 @@
         <Item Value="InvoiceId"/>
       </AttrNames>
     </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="CommonAppModuleDataControl"/>
   </bindings>
 </pageDefinition>

@@ -328,24 +328,28 @@
         <source>Ap Invoice Search Vvo</source>
         <target/>
       </trans-unit>
-      <trans-unit id="model.view.ApInvoiceSearchVVO.InvoiceDate_FMT_FORMATTER">
-        <source>oracle.jbo.format.DefaultDateFormatter</source>
+      <trans-unit id="model.view.ConfigurationViewHeaderVO_LABEL">
+        <source>Configuration View Header Vo</source>
         <target/>
       </trans-unit>
-      <trans-unit id="model.view.ApInvoiceSearchVVO.InvoiceDate_FMT_FORMAT">
-        <source>dd-MM-yy</source>
+      <trans-unit id="model.view.ConfigurationViewTabsVO_LABEL">
+        <source>Configuration View Tabs Vo</source>
         <target/>
       </trans-unit>
-      <trans-unit id="model.view.ApInvoiceSearchVVO.TermsDate_FMT_FORMATTER">
-        <source>oracle.jbo.format.DefaultDateFormatter</source>
+      <trans-unit id="model.view.ConfigViewTabColumnsVO_LABEL">
+        <source>Config View Tab Columns Vo</source>
         <target/>
       </trans-unit>
-      <trans-unit id="model.view.ApInvoiceSearchVVO.TermsDate_FMT_FORMAT">
-        <source>dd-MM-yy</source>
+      <trans-unit id="NUMBER_FORMAT">
+        <source>#,##0.00</source>
         <target/>
       </trans-unit>
-      <trans-unit id="model.view.lov.InvoiceStatusLOV_LABEL">
-        <source>Invoice Status Lov</source>
+      <trans-unit id="model.view.link.ConfigurationHeaderTabsVL_LABEL">
+        <source>ConfigurationHeaderTabsVL</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="model.view.link.ConfigurationViewTabsColumnVL_LABEL">
+        <source>ConfigurationViewTabsColumnVL</source>
         <target/>
       </trans-unit>
     </body>

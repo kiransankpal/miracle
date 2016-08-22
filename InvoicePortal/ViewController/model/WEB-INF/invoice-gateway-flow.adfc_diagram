@@ -30,26 +30,9 @@
       <property
          name="y">349.5332</property>
       <property
+         name="pageFragment">true</property>
+      <property
          name="x">465.3506</property>
-      <property
-         name="pageFragment">true</property>
-   </View>
-   <View
-      id="View4">
-      <property
-         name="activityId">InvoiceSearchList</property>
-      <property
-         name="page">/pages/InvoiceSearchList.jsff</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>InvoiceSearchList&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
-      <property
-         name="exceptionHandler">false</property>
-      <property
-         name="y">85.96484</property>
-      <property
-         name="x">465.3584</property>
-      <property
-         name="pageFragment">true</property>
    </View>
    <View
       id="View5">
@@ -64,9 +47,9 @@
       <property
          name="y">208.28125</property>
       <property
-         name="x">461.03418</property>
-      <property
          name="pageFragment">true</property>
+      <property
+         name="x">461.03418</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -76,7 +59,7 @@
       <property
          name="fromOutcome">details</property>
       <property
-         name="sdm:polyPoints">R54,284.0,265.917,424.3506,349.4668,L50</property>
+         name="sdm:polyPoints">R54,284.0,265.6328,424.3506,349.18262,L50</property>
    </ControlFlowCase>
    <MethodCall
       id="MethodCall7">
@@ -101,7 +84,7 @@
       <property
          name="fromOutcome">toRouter</property>
       <property
-         name="sdm:polyPoints">R50,120.0,262.13672,202.0,262.417,L50</property>
+         name="sdm:polyPoints">R50,120.0,261.85254,202.0,262.1328,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -111,6 +94,43 @@
       <property
          name="fromOutcome">search</property>
       <property
-         name="sdm:polyPoints">R46,284.0,258.917,420.03418,208.21484,L50</property>
+         name="sdm:polyPoints">R46,284.0,258.6328,420.03418,207.93066,L50</property>
+   </ControlFlowCase>
+   <View
+      id="View10">
+      <property
+         name="activityId">configurations</property>
+      <property
+         name="page">/pages/configurations.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>configurations&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">244.79883</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">676.35645</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase11"
+      from="View3"
+      to="View10">
+      <property
+         name="fromOutcome">configAction</property>
+      <property
+         name="sdm:polyPoints">R46,506.3506,345.68262,632.8539,240.94824,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase12"
+      from="View10"
+      to="View3">
+      <property
+         name="fromOutcome">backinvoice</property>
+      <property
+         name="sdm:polyPoints">L54,635.35645,247.94824,508.83435,352.68262,R54</property>
    </ControlFlowCase>
 </SDM>

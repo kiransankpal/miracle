@@ -44,6 +44,18 @@
   <ViewUsage
     Name="InvoiceStatusLOV"
     ViewObjectName="model.view.lov.InvoiceStatusLOV"/>
+  <ViewUsage
+    Name="ConfigurationViewHeaderVO"
+    ViewObjectName="model.view.ConfigurationViewHeaderVO"/>
+  <ViewUsage
+    Name="ConfigurationViewTabsVO"
+    ViewObjectName="model.view.ConfigurationViewTabsVO"/>
+  <ViewUsage
+    Name="DetailConfigurationViewTabsVO"
+    ViewObjectName="model.view.ConfigurationViewTabsVO"/>
+  <ViewUsage
+    Name="ConfigViewTabColumnsVO"
+    ViewObjectName="model.view.ConfigViewTabColumnsVO"/>
   <ViewLinkUsage
     Name="ApInvoiceLinesVL1"
     ViewLinkObjectName="model.view.link.ApInvoiceLinesVL"
@@ -56,11 +68,28 @@
     SrcViewUsageName="model.am.CommonAppModule.ApInvoicesInterfaceVVO"
     DstViewUsageName="model.am.CommonAppModule.InvoiceAttachmentsListVO"
     Reversed="false"/>
+  <ViewLinkUsage
+    Name="ConfigurationHeaderTabsVL"
+    ViewLinkObjectName="model.view.link.ConfigurationHeaderTabsVL"
+    SrcViewUsageName="model.am.CommonAppModule.ConfigurationViewHeaderVO"
+    DstViewUsageName="model.am.CommonAppModule.ConfigurationViewTabsVO"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="ConfigurationViewTabsColumnVL"
+    ViewLinkObjectName="model.view.link.ConfigurationViewTabsColumnVL"
+    SrcViewUsageName="model.am.CommonAppModule.DetailConfigurationViewTabsVO"
+    DstViewUsageName="model.am.CommonAppModule.ConfigViewTabColumnsVO"
+    Reversed="false"/>
   <ClientInterface>
     <Method
       Name="checkAMConn">
       <Return
         Type="void"/>
+    </Method>
+    <Method
+      Name="getViewObjectAttributes">
+      <Return
+        Type="java.util.List"/>
     </Method>
   </ClientInterface>
 </AppModule>

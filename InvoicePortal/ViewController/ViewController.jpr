@@ -434,7 +434,7 @@
             </hash>
             <hash>
                <list n="classPath">
-                  <url path="../../../fndext.jar" jar-entry=""/>
+                  <url path="../../../../fndext.jar" jar-entry=""/>
                </list>
                <value n="deployedByDefault" v="true"/>
                <value n="description" v="Fndext.jar"/>
@@ -728,6 +728,15 @@
             <value n="tldURL" v="@oracle.home@../modules/glassfish.jstl_1.2.0.1.jar!/META-INF/scriptfree.tld"/>
             <value n="URI" v="http://jakarta.apache.org/taglibs/standard/scriptfree"/>
             <value n="version" v="1.2"/>
+         </hash>
+      </list>
+   </hash>
+   <hash n="ResourceBundleOptions">
+      <list n="RegisteredResourceBundles">
+         <hash>
+            <value n="BundleId" v="model.CommonModelBundle"/>
+            <value n="LibraryURL"/>
+            <url n="ProjectURL" path="../Model/Model.jpr"/>
          </hash>
       </list>
    </hash>
